@@ -329,7 +329,7 @@ export const FIRA: Place[] = [
   {
     id: 'luckys',
     imageAlt:
-      'A skewer of Greek spit-roasted pork. Not Lucky’s itself',
+      'A gyros from Lucky’s, in their own printed wrapper',
     name: "Lucky's Souvlakis",
     kind: 'food',
     town: 'fira',
@@ -343,7 +343,7 @@ export const FIRA: Place[] = [
   {
     id: 'obelix',
     imageAlt:
-      'A Greek gyros plate with shaved pork, onion and tomato. Not Obelix itself',
+      'The counter at Obelix, with the photo menu board and the gyros spit',
     name: 'Obelix',
     kind: 'food',
     town: 'fira',
@@ -356,7 +356,7 @@ export const FIRA: Place[] = [
   {
     id: 'pelican-kipos',
     imageAlt:
-      'A shaded courtyard cafe in Lindos, Rhodes — the kind of spot this is, not the place itself',
+      'The walled garden courtyard at Pelican Kipos at dusk',
     name: 'Pelican Kipos',
     kind: 'cafe',
     town: 'fira',
@@ -369,7 +369,7 @@ export const FIRA: Place[] = [
   {
     id: 'mama-thira',
     imageAlt:
-      'The Firostefani caldera walkway at sunset, with Mama Thira on the left',
+      'Mama Thira’s clifftop terrace in Firostefani, tables laid for dinner',
     name: 'Mama Thira Taverna',
     kind: 'food',
     town: 'firostefani',
@@ -381,7 +381,7 @@ export const FIRA: Place[] = [
   {
     id: 'irinis',
     imageAlt:
-      'A traditional Greek kafenio on a village square. Not Irini’s itself',
+      'Irini’s Cafe — a cream Cycladic building above the caldera',
     name: "Irini's Cafe",
     kind: 'cafe',
     town: 'fira',

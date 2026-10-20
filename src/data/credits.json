@@ -602,62 +602,6 @@
     "source": "https://commons.wikimedia.org/wiki/File%3AMinoan_gold_necklace_archmus_Heraklion.jpg"
   },
   {
-    "id": "luckys-2",
-    "subject": "Greek pork kontosouvli turning on a spit over charcoal",
-    "license": "CC0",
-    "attribution": "Photo: Benoît Prieur (via Wikimedia Commons), CC0",
-    "source": "https://commons.wikimedia.org/wiki/File:Souvlaki_%C3%A0_la_broche_%C3%A0_Gavalochori_(Cr%C3%A8te).jpg"
-  },
-  {
-    "id": "obelix-1",
-    "subject": "Greek gyros plate with chips, onion, tomato and pita",
-    "license": "CC BY-SA 4.0",
-    "attribution": "Photo: Anagoria (via Wikimedia Commons), CC BY-SA 4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:20240429_Gyros_Restaurant_Achilles_anagoria.jpg"
-  },
-  {
-    "id": "pelican-kipos-2",
-    "subject": "Shaded Greek courtyard cafe with pebble-mosaic floor",
-    "license": "CC BY-SA 3.0",
-    "attribution": "Photo: Wknight94 (via Wikimedia Commons), CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Outdoor_caf%C3%A9_in_Lindos,_Rhodes.jpg"
-  },
-  {
-    "id": "mama-thira-2",
-    "subject": "Mama Thira's frontage on the Firostefani caldera path at sunset",
-    "license": "CC BY 2.0",
-    "attribution": "Photo: Klearchos Kapoutsis (via Wikimedia Commons), CC BY 2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Sunset_(5023194257).jpg"
-  },
-  {
-    "id": "irinis-1",
-    "subject": "Traditional Greek kafenio under an arched portico",
-    "license": "CC BY-SA 4.0",
-    "attribution": "Photo: Mariolovre (via Wikimedia Commons), CC BY-SA 4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Pirgi_Chios_Small_Coffee_Shop.jpg"
-  },
-  {
-    "id": "rarity-gallery-1",
-    "subject": "Minimal white-cube contemporary gallery interior",
-    "license": "Unsplash License",
-    "attribution": "Photo: Dannie Jing (via Unsplash)",
-    "source": "https://unsplash.com/photos/assorted-paintings-on-white-painted-wall-3GZlhROZIQg"
-  },
-  {
-    "id": "parthenis-1",
-    "subject": "Folded natural linen in off-white and oatmeal",
-    "license": "Unsplash License",
-    "attribution": "Photo: Maite Oñate (via Unsplash)",
-    "source": "https://unsplash.com/photos/white-textile-on-brown-wooden-table-AXWyDjC_Y3U"
-  },
-  {
-    "id": "gioras-1",
-    "subject": "Flatbread baking in a glowing wood-fired oven",
-    "license": "CC BY 2.0",
-    "attribution": "Photo: George M. Groutas (via Wikimedia Commons), CC BY 2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Baking_Bread_001.jpg"
-  },
-  {
     "id": "mati-gallery-1",
     "subject": "Mati Art Gallery shopfront, Fira",
     "license": "All rights reserved",
@@ -684,5 +628,61 @@
     "license": "All rights reserved",
     "attribution": "Jewellery and image: Ilias LALAoUNIS (lalaounis.com) - all rights reserved",
     "source": "https://lalaounis.com/"
+  },
+  {
+    "id": "luckys-real",
+    "subject": "A Lucky's gyros in its own branded wrapper with a FIX beer",
+    "license": "All rights reserved (restaurant gallery via santorini-view.com)",
+    "attribution": "Photo: Lucky's Souvlakis, via santorini-view.com",
+    "source": "https://www.santorini-view.com/restaurants/luckys-souvlakis"
+  },
+  {
+    "id": "obelix-real",
+    "subject": "The Obelix counter, menu board and gyros spit",
+    "license": "All rights reserved (business website, obelix.gr)",
+    "attribution": "Obelix Santorini (obelix.gr)",
+    "source": "https://obelix.gr"
+  },
+  {
+    "id": "pelican-kipos-real",
+    "subject": "The Pelican Kipos garden courtyard at dusk",
+    "license": "All rights reserved (business website, pelicankipos.com)",
+    "attribution": "Pelican Kipos, Fira (pelicankipos.com) — no photographer credited",
+    "source": "https://www.pelicankipos.com/gallery"
+  },
+  {
+    "id": "mama-thira-real",
+    "subject": "Mama Thira's caldera terrace, laid for lunch",
+    "license": "All rights reserved (restaurant gallery via greeka.com)",
+    "attribution": "Photo: Mama Thira, Firostefani, via greeka.com",
+    "source": "https://greeka.com/cyclades/santorini/eat-drink/restaurants/firostefani/mama-thira"
+  },
+  {
+    "id": "irinis-real",
+    "subject": "Irini's Cafe building and clifftop terrace",
+    "license": "All rights reserved (business website)",
+    "attribution": "Traditional Cafe Irini, Fira (iriniscafesantorini.com) — no photographer credited",
+    "source": "https://iriniscafesantorini.com"
+  },
+  {
+    "id": "rarity-gallery-real",
+    "subject": "Rarity Gallery's arched white hall with a Julian Opie installation",
+    "license": "All rights reserved (gallery's own website)",
+    "attribution": "Rarity Gallery, Mykonos (raritygallery.com) — photographer not credited",
+    "source": "https://www.raritygallery.com/about"
+  },
+  {
+    "id": "parthenis-real",
+    "subject": "The Parthenis boutique interior with backlit logo and linen dresses",
+    "license": "All rights reserved — Images (c) Yiorgos Kordakis",
+    "attribution": "Photo (c) Yiorgos Kordakis / interior by ANAKTAE for Parthenis",
+    "source": "https://thegreekfoundation.com/architecture/interiors/parthenis-cafe-in-mykonos-island-by-anaktae"
+  },
+  {
+    "id": "gioras-real",
+    "subject": "The vaulted basement bakery room and wood-fired oven",
+    "license": "All rights reserved (Tripadvisor listing gallery, uploader not named)",
+    "attribution": "Via Tripadvisor listing for Gioras Wood Medieval Mykonian Bakery — photographer unknown",
+    "source": "https://www.tripadvisor.com/Attraction_Review-g662620-d7133219-Reviews-Gioras_Wood_Medieval_Mykonian_Bakery-Mykonos_Town_Mykonos_Cyclades_South_Aegean.html"
   }
 ]

@@ -73,16 +73,16 @@ const ALIAS: Record<string, string> = {
   'bead-shop': 'bead-shop-1',
 
   // Food. Mostly representative of what you'd eat, not the premises.
-  luckys: 'luckys-2',
-  obelix: 'obelix-1',
-  'pelican-kipos': 'pelican-kipos-2',
-  'mama-thira': 'mama-thira-2',
-  irinis: 'irinis-1',
-  gioras: 'gioras-1',
+  luckys: 'luckys-real',
+  obelix: 'obelix-real',
+  'pelican-kipos': 'pelican-kipos-real',
+  'mama-thira': 'mama-thira-real',
+  irinis: 'irinis-real',
+  gioras: 'gioras-real',
 
   // Mykonos shops
-  'rarity-gallery': 'rarity-gallery-1',
-  parthenis: 'parthenis-1',
+  'rarity-gallery': 'rarity-gallery-real',
+  parthenis: 'parthenis-real',
 
   // Mykonos
   'little-venice': 'mykonos-little-venice-1',
