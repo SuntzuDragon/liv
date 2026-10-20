@@ -25,6 +25,14 @@ const { places } = Astro.props;
     padding: 0;
     margin: 0;
   }
-  /* Cards lean; the extra inline padding stops a tilted corner clipping. */
-  .grid > li { padding-inline: 2px; }
+  .grid > li {
+    /* Cards lean; the extra inline padding stops a tilted corner clipping. */
+    padding-inline: 2px;
+    /* Per card, not per section: Safari skips paint for the ones off-screen and
+       can release their decoded photos, which is what stops it dropping images
+       it then never re-decodes. `auto` means the real height is remembered after
+       first render, so scrolling stays stable. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 26rem;
+  }
 </style>

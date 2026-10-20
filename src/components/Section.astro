@@ -25,11 +25,6 @@ const { id, eyebrow, title, lede, tone = 'paper' } = Astro.props;
   .band {
     padding-block: var(--sp-2xl);
     scroll-margin-block-start: 4.5rem;
-    /* Skips layout and paint while off-screen, and lets Safari release the
-       backing store — the main defence against its habit of dropping decoded
-       off-screen images and never re-decoding them. */
-    content-visibility: auto;
-    contain-intrinsic-size: auto 1200px;
   }
   .band--sunk { background: var(--bg-sunk); }
   .band--sky {

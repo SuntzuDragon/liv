@@ -63,21 +63,33 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <slot />
 
     <script is:inline>
-      // Reveal on scroll. One observer, unobserve after firing — nothing retained.
+      // Reveal on scroll. Decoration only — this must never be the reason she
+      // can't read something, so there are two safety nets: anything already in
+      // view is shown immediately, and everything is force-shown after 2.5s no
+      // matter what the observer did.
       (() => {
         const els = document.querySelectorAll('[data-reveal]');
         if (!els.length || !('IntersectionObserver' in window)) return;
+
+        const show = (el) => el.classList.add('is-in');
+        const showAll = () => els.forEach(show);
+
         const io = new IntersectionObserver(
           (entries) => {
             for (const e of entries) {
               if (!e.isIntersecting) continue;
-              e.target.classList.add('is-in');
+              show(e.target);
               io.unobserve(e.target);
             }
           },
           { rootMargin: '0px 0px -8% 0px', threshold: 0.06 },
         );
         for (const el of els) io.observe(el);
+
+        setTimeout(showAll, 2500);
+        addEventListener('beforeprint', showAll);
+        // Restoring from the back/forward cache can skip observer callbacks.
+        addEventListener('pageshow', (e) => { if (e.persisted) showAll(); });
       })();
     </script>
 

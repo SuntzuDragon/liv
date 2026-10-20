@@ -1,0 +1,98 @@
+---
+import { appleMaps, googleMaps, type Coords } from '../lib/maps';
+
+interface Pin {
+  name: string;
+  greek?: string;
+  note?: string;
+  coords: Coords;
+}
+interface Props {
+  pins: Pin[];
+  title?: string;
+}
+const { pins, title } = Astro.props;
+---
+
+<div class="pins" data-reveal>
+  {title && <h3 class="pins__h">{title}</h3>}
+  <ul class="pins__list">
+    {pins.map((p) => (
+      <li class="pin">
+        <div class="pin__text">
+          <span class="pin__name">{p.name}</span>
+          {p.greek && <span class="pin__greek" lang="el">{p.greek}</span>}
+          {p.note && <span class="pin__note">{p.note}</span>}
+        </div>
+        <div class="pin__links">
+          <a class="pin__go" href={appleMaps(p.name, p.coords)}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14">
+              <path
+                d="M12 2.6a6.6 6.6 0 0 0-6.6 6.6c0 4.8 6.6 12.2 6.6 12.2s6.6-7.4 6.6-12.2A6.6 6.6 0 0 0 12 2.6Zm0 9.3a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z"
+                fill="currentColor"
+              />
+            </svg>
+            Maps
+          </a>
+          <a class="pin__alt" href={googleMaps(p.coords)} target="_blank" rel="noopener">
+            <span class="visually-hidden">Open in Google Maps</span>
+            <span aria-hidden="true">G</span>
+          </a>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .pins {
+    max-width: var(--measure);
+    margin-block-start: var(--sp-lg);
+  }
+  .pins__h { font-size: var(--step-2); margin-block-end: var(--sp-sm); }
+  .pins__list {
+    display: grid;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-sm);
+    padding: 0.6rem var(--sp-md);
+    border-radius: var(--r-sm);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+  }
+  .pin__text { display: flex; flex-direction: column; gap: 0.05rem; min-width: 0; }
+  .pin__name { font-weight: 650; }
+  .pin__greek,
+  .pin__note {
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+  }
+  .pin__links { display: flex; align-items: center; gap: 0.3rem; flex: none; }
+  .pin__go,
+  .pin__alt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    min-height: 44px;
+    min-width: 44px;
+    padding-inline: 0.7rem;
+    border-radius: var(--r-pill);
+    font-size: var(--step--1);
+    font-weight: 650;
+    text-decoration: none;
+    transition: background-color var(--t-fast) var(--ease-out), scale var(--t-fast) var(--ease-spring);
+  }
+  .pin__go { background: var(--c-dome); color: var(--c-white); }
+  .pin__go:hover { background: var(--c-dome-deep); color: var(--c-white); }
+  .pin__alt { color: oklch(62% 0.02 255); padding-inline: 0.5rem; font-weight: 700; }
+  .pin__alt:hover { background: var(--bg-sunk); }
+  .pin__go:active, .pin__alt:active { scale: 0.96; }
+</style>
