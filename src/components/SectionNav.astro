@@ -1,0 +1,112 @@
+---
+interface Props {
+  /** In document order — the scrollspy relies on it. */
+  items: { id: string; label: string }[];
+}
+const { items } = Astro.props;
+---
+
+<nav class="snav" aria-label="Sections">
+  <ul class="snav__list">
+    {items.map((it) => (
+      <li>
+        <a class="snav__pill" href={`#${it.id}`} data-spy={it.id}>{it.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script is:inline>
+  (() => {
+    const pills = [...document.querySelectorAll('[data-spy]')];
+    if (!pills.length || !('IntersectionObserver' in window)) return;
+
+    const byId = new Map(pills.map((p) => [p.dataset.spy, p]));
+    const targets = [...byId.keys()]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!targets.length) return;
+
+    let current = null;
+    const setActive = (id) => {
+      if (id === current) return;
+      current = id;
+      for (const [pid, pill] of byId) {
+        const on = pid === id;
+        pill.classList.toggle('is-active', on);
+        if (on) pill.setAttribute('aria-current', 'true');
+        else pill.removeAttribute('aria-current');
+      }
+      // Keep the active pill in view in the horizontally-scrolling bar.
+      const pill = byId.get(id);
+      pill?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    };
+
+    // Topmost section whose start is above the nav line wins.
+    const io = new IntersectionObserver(
+      () => {
+        const line = 100;
+        let best = null;
+        for (const t of targets) {
+          if (t.getBoundingClientRect().top <= line) best = t.id;
+        }
+        setActive(best ?? targets[0].id);
+      },
+      { rootMargin: '-96px 0px -70% 0px', threshold: [0, 0.01, 0.5, 1] },
+    );
+    for (const t of targets) io.observe(t);
+  })();
+</script>
+
+<style>
+  .snav {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 30;
+    padding-block: 0.55rem;
+    padding-block-start: max(0.55rem, env(safe-area-inset-top));
+    background: oklch(98.4% 0.008 85 / 0.82);
+    -webkit-backdrop-filter: blur(14px) saturate(1.6);
+    backdrop-filter: blur(14px) saturate(1.6);
+    border-block-end: 1px solid oklch(88% 0.012 250 / 0.7);
+  }
+
+  .snav__list {
+    display: flex;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    scroll-snap-type: inline proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .snav__list::-webkit-scrollbar { display: none; }
+  .snav__list > li { scroll-snap-align: center; }
+
+  .snav__pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0.3rem 0.9rem;
+    border-radius: var(--r-pill);
+    font-size: var(--step--1);
+    font-weight: 650;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--fg-soft);
+    background: transparent;
+    transition:
+      background-color var(--t-fast) var(--ease-out),
+      color var(--t-fast) var(--ease-out),
+      scale var(--t-fast) var(--ease-spring);
+  }
+  .snav__pill:hover { background: var(--bg-sunk); color: var(--fg); }
+  .snav__pill:active { scale: 0.95; }
+  .snav__pill.is-active {
+    background: var(--c-dome);
+    color: var(--c-white);
+  }
+</style>

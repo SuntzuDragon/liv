@@ -1,0 +1,83 @@
+---
+interface Fact {
+  label: string;
+  value: string;
+  note?: string;
+  /** 'warn' for the things that ruin a day if ignored. */
+  tone?: 'cool' | 'warm' | 'warn';
+}
+interface Props {
+  facts: Fact[];
+}
+const { facts } = Astro.props;
+---
+
+<ul class="facts">
+  {facts.map((f, i) => (
+    <li
+      class="fact"
+      class:list={[`fact--${f.tone ?? 'cool'}`]}
+      style={`--lean:${i % 2 === 0 ? -1 : 1};--reveal-delay:${i * 60}ms;`}
+      data-reveal
+    >
+      <span class="fact__label">{f.label}</span>
+      <strong class="fact__value">{f.value}</strong>
+      {f.note && <span class="fact__note">{f.note}</span>}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    gap: var(--sp-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: var(--sp-md) var(--sp-md) calc(var(--sp-md) - 0.15rem);
+    border-radius: var(--r-md);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+    rotate: calc(var(--lean) * 0.45deg);
+    transition: rotate var(--t-mid) var(--ease-spring), translate var(--t-mid) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .fact:hover { rotate: 0deg; translate: 0 -3px; }
+  }
+
+  .fact__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--fg-soft);
+  }
+  .fact__value {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.1;
+    font-variation-settings: 'SOFT' 30, 'WONK' 1;
+    color: var(--c-aegean);
+  }
+  .fact__note {
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+    line-height: 1.4;
+  }
+
+  .fact--cool { box-shadow: inset 3px 0 0 var(--c-dome), var(--sh-sm); }
+  .fact--warm { box-shadow: inset 3px 0 0 var(--c-sun), var(--sh-sm); }
+  .fact--warn {
+    background: oklch(72% 0.165 45 / 0.09);
+    box-shadow: inset 3px 0 0 var(--c-sunset), var(--sh-sm);
+  }
+  .fact--warn .fact__value { color: oklch(44% 0.14 42); }
+</style>

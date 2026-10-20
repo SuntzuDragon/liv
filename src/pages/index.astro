@@ -1,0 +1,191 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Itinerary from '../components/Itinerary.astro';
+import Footer from '../components/Footer.astro';
+import { SHIP, SAILING } from '../data/cruise';
+import { photo } from '../lib/photos';
+
+const islands = [
+  {
+    href: '/santorini',
+    name: 'Santorini',
+    greek: 'Σαντορίνη',
+    when: 'Wednesday 21 October',
+    hours: '07:00 – 22:00',
+    imageId: 'oia-hero',
+    blurb:
+      'Oia and Fira — the views, the shops worth going into, where to eat, and how to get up the cliff.',
+    status: 'ready' as const,
+  },
+  {
+    href: '/mykonos',
+    name: 'Mykonos',
+    greek: 'Μύκονος',
+    when: 'Thursday 22 October',
+    hours: '07:00 – 17:00',
+    imageId: 'mykonos-windmills',
+    blurb:
+      'The windmills, Little Venice, and the alleys you are supposed to get lost in. Shorter day — one town, all on foot.',
+    status: 'ready' as const,
+  },
+];
+---
+
+<Base
+  title="Liv's Islands"
+  description="Santorini and Mykonos, worked out ahead of time. Made for Liv's Greek Isles sailing, 18–25 October 2026."
+  themeColor="#0d3a5c"
+>
+  <Hero
+    eyebrow={`${SHIP} · ${SAILING}`}
+    title="Two islands,"
+    accent="worked out ahead"
+    lede="Everything you'd want to know before you step off the tender — and it all still works with no signal."
+    imageId="oia-hero"
+    alt="White houses and blue domes stepping down the caldera cliff at Oia, Santorini"
+  />
+
+  <main id="main">
+    <Section
+      id="islands"
+      eyebrow="Start here"
+      title="Where you're going"
+      lede="Both are tender ports, so you'll ride a small boat ashore. Tap an island."
+    >
+      <ul class="islands">
+        {islands.map((is, i) => {
+          const img = photo(is.imageId);
+          return (
+            <li style={`--lean:${i % 2 === 0 ? -1 : 1};--reveal-delay:${i * 90}ms;`} data-reveal>
+              <a class="isle" href={is.href}>
+                {img && (
+                  <div class="isle__frame">
+                    <Image
+                      src={img}
+                      alt=""
+                      widths={[480, 720, 1040]}
+                      sizes="(min-width: 760px) 50vw, 92vw"
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      class="isle__img"
+                    />
+                  </div>
+                )}
+                <div class="isle__body">
+                  <p class="isle__when">{is.when} · {is.hours}</p>
+                  <h3 class="isle__name">
+                    {is.name}
+                    <span class="isle__greek" lang="el">{is.greek}</span>
+                  </h3>
+                  <p class="isle__blurb">{is.blurb}</p>
+                  <span class="isle__go">Open the guide &rarr;</span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
+
+    <Section
+      id="itinerary"
+      tone="sunk"
+      eyebrow="The whole week"
+      title="Your sailing"
+      lede="Today is highlighted. ⛴ means you tender ashore rather than walk off."
+    >
+      <Itinerary />
+    </Section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .islands {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--sp-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .isle {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: var(--r-xl);
+    background: var(--bg-card);
+    box-shadow: var(--sh-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    rotate: calc(var(--lean) * 0.7deg);
+    transition:
+      rotate var(--t-mid) var(--ease-spring),
+      translate var(--t-mid) var(--ease-out),
+      box-shadow var(--t-mid) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .isle:hover { rotate: 0deg; translate: 0 -6px; box-shadow: var(--sh-lift); }
+  }
+  .isle:active { rotate: 0deg; translate: 0 -2px; }
+
+  .isle__frame {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-sunk);
+  }
+  .isle__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale var(--t-slow) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .isle:hover .isle__img { scale: 1.05; }
+  }
+
+  .isle__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: var(--sp-lg) var(--sp-md) var(--sp-md);
+  }
+  .isle__when {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+  }
+  .isle__name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: var(--step-3);
+    font-variation-settings: 'SOFT' 36, 'WONK' 1, 'opsz' 60;
+  }
+  .isle__greek {
+    font-family: var(--font-text);
+    font-size: var(--step--1);
+    font-weight: 500;
+    color: var(--fg-soft);
+    opacity: 0.75;
+  }
+  .isle__blurb {
+    color: var(--fg-soft);
+    font-size: var(--step-0);
+  }
+  .isle__go {
+    margin-block-start: var(--sp-xs);
+    font-weight: 700;
+    font-size: var(--step--1);
+    color: var(--c-dome-deep);
+  }
+</style>

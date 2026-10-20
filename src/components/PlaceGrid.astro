@@ -1,0 +1,30 @@
+---
+import PlaceCard from './PlaceCard.astro';
+import type { Place } from '../data/types';
+
+interface Props {
+  places: Place[];
+}
+const { places } = Astro.props;
+---
+
+<ul class="grid">
+  {places.map((p, i) => (
+    <li style={`--reveal-delay:${Math.min(i, 5) * 55}ms;`} data-reveal>
+      <PlaceCard place={p} i={i} />
+    </li>
+  ))}
+</ul>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: var(--sp-lg) var(--sp-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  /* Cards lean; the extra inline padding stops a tilted corner clipping. */
+  .grid > li { padding-inline: 2px; }
+</style>

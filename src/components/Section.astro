@@ -1,0 +1,48 @@
+---
+interface Props {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+  /** Tints the band so long pages stay legible as you scroll. */
+  tone?: 'paper' | 'sunk' | 'sky';
+}
+const { id, eyebrow, title, lede, tone = 'paper' } = Astro.props;
+---
+
+<section id={id} class={`band band--${tone}`}>
+  <div class="wrap">
+    <div class="band__head" data-reveal>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h2 class="band__title">{title}</h2>
+      {lede && <p class="lede">{lede}</p>}
+    </div>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .band {
+    padding-block: var(--sp-2xl);
+    scroll-margin-block-start: 4.5rem;
+  }
+  .band--sunk { background: var(--bg-sunk); }
+  .band--sky {
+    background: linear-gradient(
+      180deg,
+      oklch(87% 0.062 225 / 0.34),
+      transparent
+    );
+  }
+
+  .band__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xs);
+    margin-block-end: var(--sp-lg);
+  }
+  .band__title {
+    font-size: var(--step-4);
+    font-variation-settings: 'SOFT' 34, 'WONK' 1, 'opsz' 72;
+  }
+</style>

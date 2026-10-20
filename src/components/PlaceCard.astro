@@ -1,0 +1,276 @@
+---
+import { Image } from 'astro:assets';
+import type { Place } from '../data/types';
+import { mapLink, googleMaps } from '../lib/maps';
+import { photo } from '../lib/photos';
+
+interface Props {
+  place: Place;
+  /** Index in the grid — drives which way the card tilts. */
+  i?: number;
+}
+
+const { place: p, i = 0 } = Astro.props;
+const img = photo(p.id);
+const maps = mapLink(p.name, p.coords, p.placeId);
+const kindLabel: Record<Place['kind'], string> = {
+  view: 'View',
+  church: 'Church',
+  museum: 'Museum',
+  shop: 'Shop',
+  food: 'Food',
+  cafe: 'Coffee',
+  winery: 'Wine',
+};
+// Alternate the lean so a grid reads as a hand-pinned collage.
+const lean = i % 2 === 0 ? 1 : -1;
+---
+
+<article
+  class="card"
+  class:list={[{ 'card--star': p.star }]}
+  style={`--lean:${lean};`}
+>
+  {img && (
+    <div class="card__frame">
+      <Image
+        src={img}
+        alt={p.name}
+        widths={[320, 480, 720]}
+        sizes="(min-width: 900px) 340px, (min-width: 600px) 45vw, 88vw"
+        loading="lazy"
+        decoding="async"
+        class="card__img"
+      />
+      <span class="card__kind">{kindLabel[p.kind]}</span>
+    </div>
+  )}
+
+  <div class="card__body">
+    <h3 class="card__name">
+      {p.name}
+      {p.star && <span class="card__star" aria-label="Don't miss">★</span>}
+    </h3>
+    {p.greek && <p class="card__greek" lang="el">{p.greek}</p>}
+
+    <p class="card__blurb">{p.blurb}</p>
+
+    {(p.hours || p.price || p.tags?.length) && (
+      <ul class="chips">
+        {p.hours && <li class="chip chip--time">{p.hours}</li>}
+        {p.price && <li class="chip chip--price">{p.price}</li>}
+        {p.tags?.map((t) => <li class="chip">{t}</li>)}
+      </ul>
+    )}
+
+    {p.unverified && (
+      <p class="card__hedge">Couldn’t confirm this one — worth a look as you pass.</p>
+    )}
+
+    <div class="card__actions">
+      {maps && (
+        <a class="btn btn--map" href={maps}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15">
+            <path
+              d="M12 2.6a6.6 6.6 0 0 0-6.6 6.6c0 4.8 6.6 12.2 6.6 12.2s6.6-7.4 6.6-12.2A6.6 6.6 0 0 0 12 2.6Zm0 9.3a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z"
+              fill="currentColor"
+            />
+          </svg>
+          Maps
+        </a>
+      )}
+      {p.url && (
+        <a class="btn btn--ghost" href={p.url} target="_blank" rel="noopener">Site</a>
+      )}
+      {p.coords && (
+        <a
+          class="btn btn--quiet"
+          href={googleMaps(p.coords)}
+          target="_blank"
+          rel="noopener"
+          title="Google Maps"
+        >G</a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    /* The tilt lives on the outer element and the clip on the inner frame —
+       Safari loses a border-radius when it clips inside a rotated, animating box. */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-md);
+    rotate: calc(var(--lean, 1) * 0.55deg);
+    transition:
+      rotate var(--t-mid) var(--ease-spring),
+      translate var(--t-mid) var(--ease-out),
+      box-shadow var(--t-mid) var(--ease-out);
+  }
+
+  /* Straighten up and lift when she reaches for it. */
+  @media (hover: hover) {
+    .card:hover {
+      rotate: 0deg;
+      translate: 0 -5px;
+      box-shadow: var(--sh-lift);
+    }
+  }
+  .card:active {
+    rotate: 0deg;
+    translate: 0 -2px;
+  }
+
+  .card--star {
+    box-shadow:
+      0 0 0 2px var(--c-sun),
+      var(--sh-md);
+  }
+
+  .card__frame {
+    position: relative;
+    overflow: hidden;
+    border-start-start-radius: var(--r-lg);
+    border-start-end-radius: var(--r-lg);
+    aspect-ratio: 4 / 3;
+    background: var(--bg-sunk);
+    isolation: isolate;
+  }
+  .card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale var(--t-slow) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .card:hover .card__img { scale: 1.045; }
+  }
+
+  .card__kind {
+    position: absolute;
+    inset-block-end: var(--sp-xs);
+    inset-inline-start: var(--sp-xs);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--r-pill);
+    background: oklch(100% 0 0 / 0.86);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c-dome-deep);
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xs);
+    padding: var(--sp-md);
+  }
+
+  .card__name {
+    font-size: var(--step-1);
+    line-height: 1.15;
+  }
+  .card__star {
+    color: var(--c-sun);
+    font-size: 0.8em;
+    margin-inline-start: 0.15em;
+  }
+  .card__greek {
+    margin-block-start: -0.3rem;
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+    opacity: 0.8;
+  }
+  .card__blurb {
+    font-size: var(--step-0);
+    color: var(--fg-soft);
+    line-height: 1.52;
+  }
+  .card__hedge {
+    font-size: var(--step--1);
+    font-style: italic;
+    color: var(--fg-soft);
+    opacity: 0.75;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    list-style: none;
+    padding: 0;
+    margin-block-start: var(--sp-2xs);
+  }
+  .chip {
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--r-pill);
+    background: var(--bg-sunk);
+    font-size: 0.74rem;
+    font-weight: 550;
+    color: var(--fg-soft);
+    white-space: nowrap;
+  }
+  .chip--time {
+    background: oklch(87% 0.062 225 / 0.55);
+    color: var(--c-aegean);
+  }
+  .chip--price {
+    background: oklch(82% 0.135 72 / 0.32);
+    color: oklch(42% 0.11 60);
+  }
+
+  .card__actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-block-start: var(--sp-xs);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 40px;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--r-pill);
+    font-size: var(--step--1);
+    font-weight: 650;
+    text-decoration: none;
+    transition:
+      background-color var(--t-fast) var(--ease-out),
+      scale var(--t-fast) var(--ease-spring);
+  }
+  .btn:active { scale: 0.96; }
+  .btn--map {
+    background: var(--c-dome);
+    color: var(--c-white);
+  }
+  .btn--map:hover {
+    background: var(--c-dome-deep);
+    color: var(--c-white);
+  }
+  .btn--ghost {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--line);
+    color: var(--fg-soft);
+  }
+  .btn--ghost:hover {
+    background: var(--bg-sunk);
+    color: var(--fg);
+  }
+  /* Secondary, for a non-Apple phone — Apple's web Maps won't hand off there. */
+  .btn--quiet {
+    min-width: 40px;
+    justify-content: center;
+    padding-inline: 0.5rem;
+    background: transparent;
+    color: oklch(60% 0.02 255);
+    font-weight: 700;
+  }
+  .btn--quiet:hover { background: var(--bg-sunk); color: var(--fg-soft); }
+</style>

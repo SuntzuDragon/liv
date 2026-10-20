@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "liv",
+  "compatibility_date": "2026-10-20",
+
+  // No "main": this is an assets-only Worker, so no script runs and requests
+  // are not billed as Worker invocations.
+
+  "assets": {
+    "directory": "./dist",
+    // Pairs with Astro's trailingSlash: 'never' so /santorini is a 200 served
+    // from dist/santorini/index.html with no redirect hop.
+    "html_handling": "drop-trailing-slash",
+    // Serves dist/404.html with a real 404 status. The SPA mode would return
+    // the homepage with a 200 for every typo.
+    "not_found_handling": "404-page"
+  },
+
+  // Custom Domain, not a Route: the Worker *is* the origin here, and a Route
+  // would require us to keep our own proxied DNS record at that hostname.
+  "routes": [{ "pattern": "liv.ianmcbride.com", "custom_domain": true }],
+
+  "workers_dev": false
+}

@@ -1,0 +1,43 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p class="foot__mark">Made for Liv 🤍</p>
+    <p class="foot__note">
+      Saved to your phone — this page works with no signal once you've opened it.
+    </p>
+    <p class="foot__year">{year}</p>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    padding-block: var(--sp-xl);
+    padding-block-end: max(var(--sp-xl), env(safe-area-inset-bottom));
+    background: var(--c-aegean);
+    color: oklch(100% 0 0 / 0.78);
+  }
+  .foot__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2xs);
+    align-items: center;
+    text-align: center;
+  }
+  .foot__mark {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    color: var(--c-white);
+    font-variation-settings: 'SOFT' 40, 'WONK' 1;
+  }
+  .foot__note {
+    font-size: var(--step--1);
+    max-width: 34ch;
+  }
+  .foot__year {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    opacity: 0.6;
+  }
+</style>

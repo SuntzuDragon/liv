@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Mykonos — Liv's Islands"
+  description="Mykonos notes, still being put together."
+  themeColor="#0d3a5c"
+>
+  <Hero
+    eyebrow="Coming together"
+    title="Mykonos"
+    accent="still cooking"
+    lede="The windmills, Little Venice, and the good alleys. Ian's still working this one out — check back."
+    imageId="mykonos-windmills"
+    alt="The Kato Mili windmills above Mykonos Town"
+  />
+
+  <main id="main" class="wrap section">
+    <div class="wip" data-reveal>
+      <p class="wip__kicker">Work in progress</p>
+      <h2 class="wip__title">Not ready yet</h2>
+      <p class="wip__body">
+        Santorini got finished first because it came first. Mykonos is next —
+        same deal: the views, the shops worth walking into, where to actually eat,
+        and the walk between them.
+      </p>
+      <ul class="wip__list">
+        <li>Kato Mili — the windmill row</li>
+        <li>Little Venice at golden hour</li>
+        <li>Panagia Paraportiani</li>
+        <li>The alleys, and how not to get lost in them</li>
+        <li>Getting from the port into town</li>
+      </ul>
+      <a class="wip__back" href="/santorini">Santorini is ready though &rarr;</a>
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .wip {
+    position: relative;
+    max-width: 42rem;
+    margin-inline: auto;
+    padding: var(--sp-xl) var(--sp-lg);
+    border-radius: var(--r-xl);
+    background: var(--bg-card);
+    box-shadow: var(--sh-lg);
+    rotate: -0.5deg;
+    text-align: center;
+  }
+  .wip__kicker {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    border-radius: var(--r-pill);
+    background: oklch(82% 0.135 72 / 0.3);
+    color: oklch(42% 0.11 60);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .wip__title {
+    margin-block: var(--sp-sm) var(--sp-xs);
+    font-size: var(--step-4);
+  }
+  .wip__body {
+    color: var(--fg-soft);
+    max-width: 38ch;
+    margin-inline: auto;
+  }
+  .wip__list {
+    display: grid;
+    gap: 0.4rem;
+    margin-block: var(--sp-lg);
+    padding: 0;
+    list-style: none;
+    text-align: start;
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+  .wip__list li {
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--r-sm);
+    background: var(--bg-sunk);
+    font-size: var(--step--1);
+    font-weight: 550;
+    color: var(--fg-soft);
+  }
+  .wip__back {
+    display: inline-block;
+    font-weight: 650;
+    text-decoration: none;
+    color: var(--c-dome-deep);
+  }
+  .wip__back:hover { color: var(--accent-warm); }
+</style>

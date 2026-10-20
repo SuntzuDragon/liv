@@ -1,0 +1,110 @@
+---
+import '../styles/fonts.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Hex for the iOS status-bar tint; match the top of the page. */
+  themeColor?: string;
+  ogImage?: string;
+}
+
+const { title, description, themeColor = '#fbf8f3', ogImage } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="theme-color" content={themeColor} />
+    <meta name="apple-mobile-web-app-title" content="Liv's Islands" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).href} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <slot name="head" />
+
+    <script is:inline>
+      // Opt in to reveal animations only where we can actually drive them.
+      if ('IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-reveal');
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <slot />
+
+    <script is:inline>
+      // Reveal on scroll. One observer, unobserve after firing — nothing retained.
+      (() => {
+        const els = document.querySelectorAll('[data-reveal]');
+        if (!els.length || !('IntersectionObserver' in window)) return;
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.06 },
+        );
+        for (const el of els) io.observe(el);
+      })();
+    </script>
+
+    <script is:inline>
+      // Offline cache. Registered late so it never competes with first paint.
+      if ('serviceWorker' in navigator) {
+        addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    translate: -50% -120%;
+    z-index: 100;
+    padding: 0.6rem 1.1rem;
+    background: var(--c-dome-deep);
+    color: var(--c-white);
+    border-end-start-radius: var(--r-sm);
+    border-end-end-radius: var(--r-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: translate var(--t-fast) var(--ease-out);
+  }
+  .skip:focus-visible {
+    translate: -50% 0;
+  }
+</style>

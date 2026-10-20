@@ -1,0 +1,144 @@
+---
+import { ITINERARY } from '../data/cruise';
+
+const fmt = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<ol class="itin">
+  {ITINERARY.map((d, i) => (
+    <li
+      class="itin__day"
+      class:list={[{ 'itin__day--sea': d.port === 'At sea', 'itin__day--linked': !!d.href }]}
+      data-date={d.date}
+      style={`--reveal-delay:${Math.min(i, 6) * 40}ms;`}
+      data-reveal
+    >
+      <div class="itin__when">
+        <span class="itin__date">{fmt(d.date)}</span>
+        <span class="itin__badge" hidden>Today</span>
+      </div>
+
+      <div class="itin__what">
+        <h3 class="itin__port">
+          {d.href ? <a href={d.href}>{d.port}</a> : d.port}
+          {d.tender && <span class="itin__tender" title="Tender port">⛴</span>}
+        </h3>
+        {d.country && <span class="itin__country">{d.country}</span>}
+        {(d.arrive || d.depart) && (
+          <span class="itin__times">
+            {d.arrive && <>in {d.arrive}</>}
+            {d.arrive && d.depart && ' · '}
+            {d.depart && <>out {d.depart}</>}
+          </span>
+        )}
+        {d.note && <span class="itin__note">{d.note}</span>}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<script is:inline>
+  // The page is static, so "today" is decided in her timezone, on her phone.
+  (() => {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(
+      now.getDate(),
+    ).padStart(2, '0')}`;
+    const row = document.querySelector(`.itin__day[data-date="${today}"]`);
+    if (!row) return;
+    row.classList.add('is-today');
+    const badge = row.querySelector('.itin__badge');
+    if (badge) badge.hidden = false;
+  })();
+</script>
+
+<style>
+  .itin {
+    display: grid;
+    gap: 0.45rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: day;
+  }
+
+  .itin__day {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: var(--sp-md);
+    align-items: start;
+    padding: var(--sp-md);
+    border-radius: var(--r-md);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+    transition: box-shadow var(--t-mid) var(--ease-out), translate var(--t-mid) var(--ease-out);
+  }
+  .itin__day--sea {
+    background: linear-gradient(100deg, oklch(87% 0.062 225 / 0.38), oklch(87% 0.062 225 / 0.12));
+    box-shadow: none;
+  }
+  @media (hover: hover) {
+    .itin__day--linked:hover { translate: 0 -2px; box-shadow: var(--sh-md); }
+  }
+  .itin__day.is-today {
+    box-shadow: 0 0 0 2.5px var(--c-sun), var(--sh-md);
+  }
+
+  .itin__when {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .itin__date {
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--c-dome-deep);
+  }
+  .itin__badge {
+    align-self: start;
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--r-pill);
+    background: var(--c-sun);
+    color: oklch(34% 0.1 60);
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .itin__what {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .itin__port {
+    font-size: var(--step-1);
+    line-height: 1.2;
+  }
+  .itin__port a { text-decoration: none; }
+  .itin__port a::after { content: ' →'; font-size: 0.7em; opacity: 0.55; }
+  .itin__tender {
+    margin-inline-start: 0.3rem;
+    font-size: 0.65em;
+    opacity: 0.5;
+  }
+  .itin__country,
+  .itin__times,
+  .itin__note {
+    font-size: var(--step--1);
+    color: var(--fg-soft);
+  }
+  .itin__times { font-variant-numeric: tabular-nums; }
+  .itin__note { font-style: italic; opacity: 0.85; }
+
+  @media (max-width: 26rem) {
+    .itin__day { grid-template-columns: 1fr; gap: 0.3rem; }
+    .itin__when { flex-direction: row; align-items: center; gap: 0.5rem; }
+  }
+</style>
