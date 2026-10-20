@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+import credits from '../data/credits.json';
+
+// Deduplicate by photographer so the page reads as a list of people, not files.
+const seen = new Map<string, { attribution: string; license: string; source: string }>();
+for (const c of credits) {
+  if (!seen.has(c.attribution)) seen.set(c.attribution, c);
+}
+const people = [...seen.values()].sort((a, b) => a.attribution.localeCompare(b.attribution));
+---
+
+<Base
+  title="Photo credits — Liv's Islands"
+  description="Who took the photographs on this site, and under what licence."
+>
+  <main id="main" class="wrap wrap--narrow section stack">
+    <p class="eyebrow">Credits</p>
+    <h1>The photographs</h1>
+    <p class="lede">
+      Every photo here was taken by someone else and shared under a Creative
+      Commons licence. {people.length} photographers, {credits.length} images.
+    </p>
+
+    <ul class="credits">
+      {people.map((c) => (
+        <li class="credit">
+          <span class="credit__who">{c.attribution}</span>
+          <a class="credit__src" href={c.source} target="_blank" rel="noopener">Source</a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="back"><a href="/">Back to the islands &larr;</a></p>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .credits {
+    display: grid;
+    gap: 0.35rem;
+    list-style: none;
+    padding: 0;
+    margin-block-start: var(--sp-lg);
+  }
+  .credit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-sm);
+    padding: 0.6rem var(--sp-md);
+    border-radius: var(--r-sm);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+    font-size: var(--step--1);
+  }
+  .credit__who { color: var(--fg-soft); }
+  .credit__src {
+    flex: none;
+    font-weight: 650;
+    text-decoration: none;
+  }
+  .back { margin-block-start: var(--sp-xl); font-weight: 650; }
+  .back a { text-decoration: none; }
+</style>

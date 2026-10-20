@@ -9,7 +9,7 @@
  * photos fail or blow a quota, the site is still fully usable as text.
  */
 import { createHash } from 'node:crypto';
-import { readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
 
 const DIST = new URL('../dist/', import.meta.url).pathname;
@@ -30,7 +30,30 @@ async function walk(dir) {
   return out;
 }
 
-const files = (await walk(DIST)).sort();
+let files = (await walk(DIST)).sort();
+
+/**
+ * Astro emits the original of every image it imports, including the ones only
+ * ever rendered as derived AVIF/WebP. Nothing links to those originals, so they
+ * are dead weight in both the upload and the offline cache — find what the built
+ * HTML actually references and drop the rest.
+ */
+const html = files.filter((f) => f.endsWith('.html'));
+const referenced = new Set();
+for (const f of html) {
+  const text = await readFile(f, 'utf8');
+  for (const m of text.matchAll(/\/_astro\/[A-Za-z0-9._-]+/g)) referenced.add(m[0]);
+}
+
+const pruned = [];
+for (const f of files) {
+  const rel = '/' + relative(DIST, f).split(sep).join('/');
+  if (!rel.startsWith('/_astro/')) continue;
+  if (referenced.has(rel)) continue;
+  await rm(f);
+  pruned.push(rel);
+}
+if (pruned.length) files = (await walk(DIST)).sort();
 
 const shell = new Set();
 const media = new Set();
@@ -183,5 +206,6 @@ function revalidate(cache, request) {
 
 await writeFile(join(DIST, 'sw.js'), sw, 'utf8');
 console.log(
-  `sw.js  shell:${shell.size}  media:${media.size}  ${(bytes / 1048576).toFixed(2)} MB  v${version}`,
+  `sw.js  shell:${shell.size}  media:${media.size}  ${(bytes / 1048576).toFixed(2)} MB  v${version}` +
+    (pruned.length ? `  (pruned ${pruned.length} unreferenced)` : ''),
 );

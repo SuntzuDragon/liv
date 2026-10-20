@@ -1,0 +1,60 @@
+---
+interface Props {
+  /** ISO date of the port day, local to the island. */
+  date: string;
+  /** Rendered before JS runs, and for anyone without it. */
+  fallback: string;
+}
+const { date, fallback } = Astro.props;
+---
+
+<p class="when" data-when={date}>{fallback}</p>
+
+<script is:inline>
+  // The page is static and cached for days, so "today" has to be decided on her
+  // phone, in her timezone, every time she opens it.
+  (() => {
+    const el = document.querySelector('[data-when]');
+    if (!el) return;
+    const target = new Date(el.dataset.when + 'T00:00:00');
+    const now = new Date();
+    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const days = Math.round((target - midnight) / 86400000);
+
+    const label =
+      days === 0 ? 'Today — you’re here' :
+      days === 1 ? 'Tomorrow' :
+      days === -1 ? 'That was yesterday' :
+      days > 1 ? `In ${days} days` :
+      `${Math.abs(days)} days ago`;
+
+    el.textContent = label;
+    if (days === 0) el.classList.add('when--now');
+    else if (days < 0) el.classList.add('when--past');
+  })();
+</script>
+
+<style>
+  .when {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    padding: 0.25rem 0.8rem;
+    border-radius: var(--r-pill);
+    background: oklch(100% 0 0 / 0.2);
+    box-shadow: inset 0 0 0 1.5px oklch(100% 0 0 / 0.4);
+    color: var(--c-white);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .when--now {
+    background: var(--c-sun);
+    box-shadow: none;
+    color: oklch(32% 0.1 60);
+  }
+  .when--past {
+    opacity: 0.6;
+  }
+</style>

@@ -9,6 +9,7 @@ import Timeline from '../components/Timeline.astro';
 import PlaceGrid from '../components/PlaceGrid.astro';
 import PhraseList from '../components/PhraseList.astro';
 import PinList from '../components/PinList.astro';
+import DayStatus from '../components/DayStatus.astro';
 import Footer from '../components/Footer.astro';
 import {
   FACTS,
@@ -46,9 +47,11 @@ type Place = (typeof OIA)[number];
     title="Santorini"
     accent="fifteen hours"
     lede={`Long enough to do Oia properly, come back for Fira, and still be standing on a wall at ${SUNSET} when the sun goes down. Most ships sail before that. Yours doesn't.`}
-    imageId="oia-hero"
-    alt="White houses and blue domes stepping down the caldera cliff at Oia"
-  />
+    imageId="santorini-hero"
+    alt="White houses stepping down the caldera cliff at Oia, a windmill above them"
+  >
+    <DayStatus date="2026-10-21" fallback="Wednesday 21 October" />
+  </Hero>
 
   <SectionNav items={nav} />
 

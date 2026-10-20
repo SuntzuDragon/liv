@@ -8,7 +8,7 @@
  *
  *   node scripts/fetch-images.mjs <manifest.json>
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import sharp from 'sharp';
 
@@ -19,10 +19,36 @@ if (!manifestPath) {
 }
 
 const ROOT = new URL('../', import.meta.url).pathname;
-const OUT = join(ROOT, 'src/assets/places');
+const OUT = join(ROOT, 'assets-pool');
 const MAX_EDGE = 2000;
 
 await mkdir(OUT, { recursive: true });
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Wikimedia rate-limits hard. Back off and respect Retry-After. */
+async function fetchWithRetry(url, attempts = 5) {
+  let wait = 2000;
+  for (let i = 0; i < attempts; i += 1) {
+    const res = await fetch(url, {
+      headers: {
+        'user-agent':
+          'liv-island-guide/1.0 (personal static site; contact via repo)',
+        accept: 'image/avif,image/webp,image/*,*/*;q=0.8',
+      },
+      redirect: 'follow',
+    });
+    if (res.ok) return res;
+    if (res.status !== 429 && res.status < 500) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    const retryAfter = Number(res.headers.get('retry-after'));
+    const delay = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : wait;
+    await sleep(delay);
+    wait = Math.min(wait * 2, 30000);
+  }
+  throw new Error('rate limited after retries');
+}
 
 const entries = JSON.parse(await readFile(manifestPath, 'utf8'));
 const credits = [];
@@ -31,17 +57,26 @@ let failed = 0;
 
 for (const e of entries) {
   const id = e.id;
-  try {
-    const res = await fetch(e.url, {
-      headers: {
-        // Wikimedia blocks requests without a descriptive agent.
-        'user-agent': 'liv-island-guide/1.0 (personal static site; contact via repo)',
-        accept: 'image/avif,image/webp,image/*,*/*;q=0.8',
-      },
-      redirect: 'follow',
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const outPath = join(OUT, `${id}.jpg`);
 
+  // Resume: a rate-limited run can be re-run without refetching what landed.
+  try {
+    await access(outPath);
+    credits.push({
+      id,
+      subject: e.subject,
+      license: e.license,
+      attribution: e.attribution,
+      source: e.source_page,
+    });
+    ok += 1;
+    continue;
+  } catch {
+    /* not downloaded yet */
+  }
+
+  try {
+    const res = await fetchWithRetry(e.url);
     const buf = Buffer.from(await res.arrayBuffer());
     const img = sharp(buf, { failOn: 'none' });
     const meta = await img.metadata();
@@ -57,7 +92,6 @@ for (const e of entries) {
         : img;
 
     // One normalised intermediate; Astro does the real AVIF/WebP work at build.
-    const outPath = join(OUT, `${id}.jpg`);
     const info = await pipeline
       .jpeg({ quality: 88, mozjpeg: true, progressive: true })
       .toFile(outPath);
@@ -71,6 +105,7 @@ for (const e of entries) {
     });
     ok += 1;
     console.log(`  ok   ${id}  ${info.width}x${info.height}  ${(info.size / 1024).toFixed(0)}KB`);
+    await sleep(700);
   } catch (err) {
     failed += 1;
     console.warn(`  FAIL ${id}  ${err.message}`);

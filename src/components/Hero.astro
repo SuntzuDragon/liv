@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { photo } from '../lib/photos';
 
 interface Props {
@@ -19,9 +19,11 @@ const img = imageId ? photo(imageId) : undefined;
 <header class="hero" class:list={[{ 'hero--plain': !img }]}>
   {img && (
     <div class="hero__media">
-      <Image
+      <Picture
         src={img}
         alt={alt}
+        formats={['avif']}
+        fallbackFormat="webp"
         widths={[640, 960, 1440]}
         sizes="100vw"
         loading="eager"

@@ -7,7 +7,11 @@ const year = new Date().getFullYear();
     <p class="foot__note">
       Saved to your phone — this page works with no signal once you've opened it.
     </p>
-    <p class="foot__year">{year}</p>
+    <p class="foot__links">
+      <a href="/credits">Photo credits</a>
+      <span aria-hidden="true">·</span>
+      <span>{year}</span>
+    </p>
   </div>
 </footer>
 
@@ -35,9 +39,12 @@ const year = new Date().getFullYear();
     font-size: var(--step--1);
     max-width: 34ch;
   }
-  .foot__year {
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    opacity: 0.6;
+  .foot__links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.74rem;
+    opacity: 0.72;
   }
+  .foot__links a { color: inherit; }
 </style>
