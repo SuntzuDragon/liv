@@ -11,10 +11,8 @@ export default defineConfig({
   // adjacent inline elements. Not worth the risk on a page full of them.
   compressHTML: true,
   prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },
-  image: {
-    // Everything is baked at build time; no runtime image service.
-    responsiveStyles: true,
-    layout: 'constrained',
-  },
+  // No global `image.layout`: it makes Astro treat every image as responsive
+  // and point the `src` fallback at the full-size original, which the service
+  // worker then dutifully precaches. The components set their own widths.
   devToolbar: { enabled: false },
 });

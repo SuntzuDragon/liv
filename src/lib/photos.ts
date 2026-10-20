@@ -31,44 +31,35 @@ const ALIAS: Record<string, string> = {
   'mykonos-windmills': 'mykonos-windmills-3',
 
   // Oia sights
-  'oia-blue-domes': 'oia-three-domes-1',
+  'three-domes': 'oia-three-domes-3',
   'oia-castle': 'oia-castle-1',
   'oia-windmills': 'oia-windmill-1',
   'panagia-platsani': 'platsani-1',
-  'oia-sunset': 'caldera-sunset-1',
+  'oia-alley': 'oia-alley-1',
+
+  // Oia shops and coffee
+  epilekton: 'santorini-art-shop-1',
+  galanopoulos: 'santorini-shop-2',
+  aquamarine: 'santorini-shop-1',
+  'the-yard': 'freddo-cappuccino-1',
+  skiza: 'freddo-espresso-1',
 
   // Ammoudi
-  'ammoudi-bay': 'ammoudi-1',
-  'ammoudi-steps': 'ammoudi-steps-1',
   'ammoudi-fish-tavern': 'ammoudi-dusk-1',
+  'ammoudi-steps': 'ammoudi-steps-1',
 
   // Fira
-  'fira-caldera': 'fira-caldera-2',
-  'cable-car': 'fira-cablecar-1',
-  'old-port': 'fira-oldport-1',
-  'karavolades-steps': 'fira-donkey-steps-1',
   'three-bells': 'three-bells-1',
-  'fira-cathedral': 'fira-cathedral-1',
+  'metropolitan-cathedral': 'fira-cathedral-1',
   'catholic-cathedral': 'fira-belltower-1',
-
-  // Shops, streets, texture
+  'gold-street': 'santorini-alley-1',
   'atlantis-books': 'atlantis-books-1',
-  'gold-street': 'santorini-shop-1',
-  'santorini-alley': 'santorini-alley-1',
-  'oia-alley': 'oia-alley-1',
-  'art-gallery': 'santorini-art-shop-1',
+  'santo-wines': 'santo-wines-terrace-1',
+
+  // Scene-setting
+  'oia-sunset': 'caldera-sunset-1',
   bougainvillea: 'santorini-alley-bougainvillea-1',
   'blue-dome': 'blue-dome-detail-1',
-
-  // Food and wine
-  freddo: 'freddo-cappuccino-1',
-  gyros: 'greek-gyros-1',
-  meze: 'greek-meze-1',
-  fava: 'greek-fava-1',
-  tomatokeftedes: 'tomatokeftedes-1',
-  'santo-wines': 'santo-wines-terrace-1',
-  'wine-tasting': 'santorini-wine-tasting-1',
-  vineyard: 'santorini-vine-1',
 
   // Mykonos
   'little-venice': 'mykonos-little-venice-1',
