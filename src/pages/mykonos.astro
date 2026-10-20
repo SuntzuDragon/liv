@@ -1,101 +1,247 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import SectionNav from '../components/SectionNav.astro';
+import Section from '../components/Section.astro';
+import FactStrip from '../components/FactStrip.astro';
+import Warnings from '../components/Warnings.astro';
+import Timeline from '../components/Timeline.astro';
+import PlaceGrid from '../components/PlaceGrid.astro';
+import PinList from '../components/PinList.astro';
+import DayStatus from '../components/DayStatus.astro';
 import Footer from '../components/Footer.astro';
+import { FACTS, WARNINGS, PLAN, SPECIALITIES, SUNSET } from '../data/mykonos-essentials';
+import { MYKONOS_SIGHTS, MYKONOS_FOOD, MYKONOS_PINS } from '../data/mykonos-places';
+
+const nav = [
+  { id: 'day', label: 'The day' },
+  { id: 'ashore', label: 'Getting ashore' },
+  { id: 'see', label: 'See' },
+  { id: 'eat', label: 'Eat' },
+  { id: 'know', label: 'Know this' },
+];
+
+const sights = MYKONOS_SIGHTS.filter((p) => p.kind !== 'shop');
+const shops = MYKONOS_SIGHTS.filter((p) => p.kind === 'shop');
 ---
 
 <Base
   title="Mykonos — Liv's Islands"
-  description="Mykonos notes, still being put together."
+  description="One day in Mykonos Town on foot: the windmills, Little Venice, the alleys and where to eat. Thursday 22 October 2026."
   themeColor="#0d3a5c"
 >
   <Hero
-    eyebrow="Coming together"
+    eyebrow="Thursday 22 October · 07:00 – 17:00"
     title="Mykonos"
-    accent="still cooking"
-    lede="The windmills, Little Venice, and the good alleys. Ian's still working this one out — check back."
-    imageId="mykonos-windmills"
-    alt="The Kato Mili windmills above Mykonos Town"
-  />
+    accent="all within 400 metres"
+    lede="The tender drops you in the middle of the thing you came to see. No bus, no shuttle, no transfer — every famous sight is a five-minute walk from the pier."
+    imageId="mykonos-hero"
+    alt="The row of windmills at Kato Mili above Mykonos Town"
+  >
+    <DayStatus date="2026-10-22" fallback="Thursday 22 October" />
+  </Hero>
 
-  <main id="main" class="wrap section">
-    <div class="wip" data-reveal>
-      <p class="wip__kicker">Work in progress</p>
-      <h2 class="wip__title">Not ready yet</h2>
-      <p class="wip__body">
-        Santorini got finished first because it came first. Mykonos is next —
-        same deal: the views, the shops worth walking into, where to actually eat,
-        and the walk between them.
-      </p>
-      <ul class="wip__list">
-        <li>Kato Mili — the windmill row</li>
-        <li>Little Venice at golden hour</li>
-        <li>Panagia Paraportiani</li>
-        <li>The alleys, and how not to get lost in them</li>
-        <li>Getting from the port into town</li>
+  <SectionNav items={nav} />
+
+  <main id="main">
+    <Section
+      id="day"
+      eyebrow="At a glance"
+      title="The numbers that matter"
+      lede="A shorter day than Santorini, and the clock is the whole game."
+    >
+      <FactStrip facts={FACTS} />
+
+      <div class="plan" data-reveal>
+        <h3 class="plan__h">Front-load everything</h3>
+        <p class="plan__p">
+          Paraportiani and Little Venice are empty at 08:15 and unbearable by
+          noon, and you sail before the sunset everyone else is waiting for.
+          So do the famous things first, in the morning light, and spend the
+          middle of the day in the alleys where the crowd doesn't matter.
+        </p>
+      </div>
+      <Timeline legs={PLAN} />
+    </Section>
+
+    <Section
+      id="ashore"
+      tone="sunk"
+      eyebrow="The bit that goes wrong"
+      title="Getting ashore, and back"
+      lede="Another tender port — the ship is too big for the quay, so she anchors and you ride in."
+    >
+      <div class="prose stack" data-reveal>
+        <h3>Two landing points, and you don't pick</h3>
+        <p>
+          The port authority and the ship decide. Best case is the town pier by
+          the Town Hall, where you step off directly into Chora. The other is the
+          old port bus station end, which is a flat ten to twelve minute walk
+          south-west along the water — still no shuttle needed, but
+          <strong>shift every leg of the day twelve minutes earlier</strong> if
+          that's where you land.
+        </p>
+        <p>
+          A new tender berth at the old port was finished in May 2026 and may be
+          in service for your call, which can only make the landing better.
+        </p>
+
+        <h3>The deadline, honestly</h3>
+        <p>
+          The ship sails at 17:00, but that is not your deadline. Tendering eats
+          thirty to forty-five minutes at each end, and the last-tender queue is
+          the longest of the day. <strong>Be in the queue by 15:45</strong> and
+          treat whatever time the Cruise Compass prints as half an hour earlier
+          than printed. The forty-five minutes that buys you is the plan, not
+          slack.
+        </p>
+
+        <h3>Don't bother with a beach</h3>
+        <p>
+          The sea is about 20°C, the beach clubs have shut for the season, and
+          Ornos or Platys Gialos costs you two and a half to three hours of an
+          eight-hour day on an hourly winter bus — miss one and you cannot get
+          that back against a hard tender time. If you want your feet in the sea,
+          walk to Megali Ammos instead. It's close enough to be safe.
+        </p>
+      </div>
+
+      <PinList title="Pin these before you lose signal" pins={MYKONOS_PINS} />
+    </Section>
+
+    <Section
+      id="see"
+      eyebrow="Morning"
+      title="What to actually see"
+      lede="All of it inside a four-hundred-metre circle, which is why the day works at all."
+    >
+      <PlaceGrid places={sights} />
+      <h3 class="sub">Worth going into</h3>
+      <PlaceGrid places={shops} />
+    </Section>
+
+    <Section
+      id="eat"
+      tone="sky"
+      eyebrow="Midday"
+      title="Where to eat"
+      lede="Most of the famous restaurants here open at 19:00 and are useless to you. These are open while you're ashore."
+    >
+      <PlaceGrid places={MYKONOS_FOOD} />
+
+      <h3 class="sub">Order these</h3>
+      <ul class="specs">
+        {SPECIALITIES.map((s, i) => (
+          <li class="spec" style={`--reveal-delay:${i * 45}ms;`} data-reveal>
+            <h4 class="spec__name">
+              {s.name}
+              {s.greek && <span class="spec__greek" lang="el">{s.greek}</span>}
+            </h4>
+            <p class="spec__what">{s.what}</p>
+          </li>
+        ))}
       </ul>
-      <a class="wip__back" href="/santorini">Santorini is ready though &rarr;</a>
-    </div>
+    </Section>
+
+    <Section
+      id="know"
+      tone="sunk"
+      eyebrow="Before you step off"
+      title="Five things that decide the day"
+    >
+      <Warnings items={WARNINGS} />
+
+      <div class="prose stack" data-reveal>
+        <h3>Everything else, briefly</h3>
+        <ul class="plain">
+          <li>
+            <strong>Sunset is {SUNSET}</strong>, and you'll be aboard about ninety
+            minutes before it. Anyone telling you Mykonos sunsets in October are
+            at half five is an hour wrong — the clocks don't change until the
+            25th.
+          </li>
+          <li>
+            <strong>Water.</strong> Don't drink the tap water. Buy bottled, and
+            buy some for the tender queue before you walk down.
+          </li>
+          <li>
+            <strong>There is no good bookshop</strong> in Mykonos Town. Don't
+            spend any of the day looking for one.
+          </li>
+          <li>
+            <strong>Most "best of Mykonos" restaurant lists are dinner-only</strong>
+            — To Maereio, m-eating, Kalita and the rest open at 19:00. If you walk
+            past To Maereio on Kalogera, read the door anyway; it costs nothing.
+          </li>
+          <li>
+            <strong>Greek October is kind here.</strong> Royal Caribbean's own
+            guidance says most shops and restaurants stay open through the month.
+            Some won't be. Have a second option for lunch.
+          </li>
+          <li>
+            <strong>The Greek on the Santorini page works here too</strong> —
+            same country, same please and thank you.
+          </li>
+        </ul>
+        <p><a class="xlink" href="/santorini">The Santorini page &rarr;</a></p>
+      </div>
+    </Section>
   </main>
 
   <Footer />
 </Base>
 
 <style>
-  .wip {
-    position: relative;
-    max-width: 42rem;
-    margin-inline: auto;
-    padding: var(--sp-xl) var(--sp-lg);
-    border-radius: var(--r-xl);
-    background: var(--bg-card);
-    box-shadow: var(--sh-lg);
-    rotate: -0.5deg;
-    text-align: center;
-  }
-  .wip__kicker {
-    display: inline-block;
-    padding: 0.25rem 0.8rem;
-    border-radius: var(--r-pill);
-    background: oklch(82% 0.135 72 / 0.3);
-    color: oklch(42% 0.11 60);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .wip__title {
-    margin-block: var(--sp-sm) var(--sp-xs);
-    font-size: var(--step-4);
-  }
-  .wip__body {
+  .prose { max-width: var(--measure); }
+  .prose h3 { font-size: var(--step-2); margin-block-start: var(--sp-lg); }
+  .prose h3:first-child { margin-block-start: 0; }
+  .prose p { color: var(--fg-soft); }
+  .prose strong { color: var(--fg); font-weight: 650; }
+
+  .plain { display: grid; gap: var(--sp-sm); padding: 0; list-style: none; }
+  .plain li {
+    padding-inline-start: var(--sp-md);
+    border-inline-start: 2px solid var(--line);
     color: var(--fg-soft);
-    max-width: 38ch;
-    margin-inline: auto;
   }
-  .wip__list {
+  .plain strong { color: var(--fg); }
+
+  .plan { max-width: var(--measure); margin-block: var(--sp-xl) var(--sp-lg); }
+  .plan__h { font-size: var(--step-2); margin-block-end: var(--sp-xs); }
+  .plan__p { color: var(--fg-soft); }
+
+  .sub { margin-block: var(--sp-xl) var(--sp-md); font-size: var(--step-2); }
+
+  .xlink { font-weight: 700; text-decoration: none; }
+
+  .specs {
     display: grid;
-    gap: 0.4rem;
-    margin-block: var(--sp-lg);
-    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--sp-md);
     list-style: none;
-    text-align: start;
-    max-width: 24rem;
-    margin-inline: auto;
+    padding: 0;
+    margin: 0;
   }
-  .wip__list li {
-    padding: 0.5rem 0.9rem;
-    border-radius: var(--r-sm);
-    background: var(--bg-sunk);
+  .spec {
+    padding: var(--sp-md);
+    border-radius: var(--r-md);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+  }
+  .spec__name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    font-size: var(--step-1);
+    margin-block-end: 0.3rem;
+  }
+  .spec__greek {
+    font-family: var(--font-text);
     font-size: var(--step--1);
-    font-weight: 550;
+    font-weight: 500;
     color: var(--fg-soft);
+    opacity: 0.75;
   }
-  .wip__back {
-    display: inline-block;
-    font-weight: 650;
-    text-decoration: none;
-    color: var(--c-dome-deep);
-  }
-  .wip__back:hover { color: var(--accent-warm); }
+  .spec__what { font-size: var(--step-0); color: var(--fg-soft); line-height: 1.5; }
 </style>

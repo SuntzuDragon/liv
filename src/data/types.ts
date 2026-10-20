@@ -9,7 +9,14 @@ export type PlaceKind =
   | 'cafe'
   | 'winery';
 
-export type Town = 'oia' | 'ammoudi' | 'fira' | 'firostefani' | 'pyrgos';
+export type Town =
+  | 'oia'
+  | 'ammoudi'
+  | 'fira'
+  | 'firostefani'
+  | 'pyrgos'
+  /** Mykonos Town. */
+  | 'chora';
 
 export interface Place {
   /** Stable kebab-case id; also the image filename. */

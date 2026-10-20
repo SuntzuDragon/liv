@@ -89,7 +89,7 @@ export interface Leg {
   time: string;
   title: string;
   body: string;
-  tone?: 'go' | 'eat' | 'watch';
+  tone?: 'go' | 'eat' | 'watch' | 'warn';
 }
 
 /**

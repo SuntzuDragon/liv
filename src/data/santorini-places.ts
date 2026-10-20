@@ -178,12 +178,12 @@ export const FIRA: Place[] = [
   {
     id: 'three-bells',
     name: 'Three Bells of Fira',
-    greek: 'Άγιοι Θεόδωροι',
+    greek: 'Church of the Dormition · Άγιοι Θεόδωροι',
     kind: 'church',
     town: 'firostefani',
     star: true,
     blurb:
-      'The blue dome with three bells stacked above it, about fifteen minutes’ walk north along the caldera path. For the classic photo go up the road behind and above it — the viewpoint is a few metres uphill. The inside is normally shut.',
+      'The blue dome with three bells stacked above it, fifteen minutes’ walk north along the caldera path. Built 1757, and it goes by two names — Agioi Theodoroi is the same church, not a different one. For the classic photo go up the road behind and above it. The inside is normally shut.',
     price: 'Free',
     coords: { lat: 36.42333, lng: 25.42855 },
     tags: ['15 min walk north'],
@@ -270,6 +270,99 @@ export const FIRA: Place[] = [
     url: 'https://atlantisbooks.org',
     tags: ['Moved from Oia', 'Phone to confirm'],
   },
+  {
+    id: 'lalaounis',
+    name: 'Ilias Lalaounis',
+    kind: 'shop',
+    town: 'fira',
+    blurb:
+      'The famous Greek jeweller, on Ypapantis a few metres north of the Orthodox cathedral. Archaeological-revival pieces copied from Minoan and Byzantine originals. This is the island’s genuine luxury end — lovely to look at, no prices in the window.',
+    coords: { lat: 36.41725, lng: 25.4317 },
+    url: 'https://www.lalaounis.com/',
+  },
+  {
+    id: 'mati-gallery',
+    name: 'Mati Art Gallery',
+    kind: 'shop',
+    town: 'fira',
+    blurb:
+      'Yorgos Kypris’s gallery on Gold Street — glass and metal fish, shoals and birds, some wearable. Genuinely unlike the rest of the street.',
+    coords: { lat: 36.41711, lng: 25.43171 },
+    url: 'https://matiartgallery.com/',
+  },
+  {
+    id: 'ak-gallery',
+    name: 'AK Art Gallery',
+    kind: 'shop',
+    town: 'fira',
+    blurb:
+      'The oldest gallery on the island, in a converted flour mill just north on Ypapantis. Paintings by Christoforos Asimis and sculpture by Eleni Kolaitou.',
+    coords: { lat: 36.41732, lng: 25.4317 },
+    url: 'https://www.ak-galleries.com/ak-art-gallery-fira',
+  },
+  {
+    id: 'bead-shop',
+    name: 'The Bead Shop',
+    kind: 'shop',
+    town: 'fira',
+    blurb:
+      'Beads carved from lava, near the Archaeological Museum. Worth a look if you pass it.',
+    coords: { lat: 36.41632, lng: 25.4323 },
+    unverified: true,
+  },
+  {
+    id: 'luckys',
+    name: "Lucky's Souvlakis",
+    kind: 'food',
+    town: 'fira',
+    star: true,
+    blurb:
+      'The cheap, fast, genuinely good gyros everyone sends you to. No view, no ceremony, €4–6 and you eat it standing up. The correct lunch on a day where time is the scarce thing.',
+    price: 'Gyros €4–6',
+    coords: { lat: 36.41727, lng: 25.43242 },
+    tags: ['Cash is easiest'],
+  },
+  {
+    id: 'obelix',
+    name: 'Obelix',
+    kind: 'food',
+    town: 'fira',
+    blurb:
+      'Behind the main square in the Fabrika area, where people who live here actually eat. Gyros €5–9. The website is Greek-only, which tells you most of what you need to know.',
+    price: '€5–9',
+    coords: { lat: 36.41798, lng: 25.432 },
+    url: 'https://obelix.gr',
+  },
+  {
+    id: 'pelican-kipos',
+    name: 'Pelican Kipos',
+    kind: 'cafe',
+    town: 'fira',
+    blurb:
+      'A garden courtyard tucked behind the square — shade, which by mid-afternoon in Fira is the thing you want most. Breakfast €8–14, lunch €12–20.',
+    price: '€8–20',
+    coords: { lat: 36.41837, lng: 25.43277 },
+    url: 'https://www.pelicankipos.com',
+  },
+  {
+    id: 'mama-thira',
+    name: 'Mama Thira Taverna',
+    kind: 'food',
+    town: 'firostefani',
+    blurb:
+      'In Firostefani near the Three Bells, with the caldera view. Note this is the substitute for Galini Cafe, which half the internet still recommends — Galini is now a hotel and does not reopen until 2027.',
+    coords: { lat: 36.42402, lng: 25.42839 },
+    tags: ['Go here, not Galini'],
+  },
+  {
+    id: 'irinis',
+    name: "Irini's Cafe",
+    kind: 'cafe',
+    town: 'fira',
+    blurb:
+      'A small traditional Greek cafe on the way north out of town. Unfussy, and priced like somewhere locals drink.',
+    coords: { lat: 36.42144, lng: 25.42905 },
+  },
 ];
 
 export const BEYOND: Place[] = [
@@ -279,7 +372,7 @@ export const BEYOND: Place[] = [
     kind: 'winery',
     town: 'pyrgos',
     blurb:
-      'The caldera-view terrace everyone photographs, about 4km south at Pyrgos — bus from Fira or roughly €20 by taxi. Tour €14, tasting flights €35 / €40 / €45, and only the €45 one includes Vinsanto. Book ahead; the terrace is rammed at sunset. Realistically this costs you Oia.',
+      'The caldera-view terrace everyone photographs, 4km south near Pyrgos. The bus is €2.20 and stops a couple of hundred metres away, slightly downhill — it does not drop you in Pyrgos village. Tour €14; flights are €35 / €40 / €45 and only the €45 includes Vinsanto. Rows three and four cannot be reserved, so there is always a walk-up tier. Realistically, this costs you Oia.',
     price: 'Tour €14 · flights €35–45',
     coords: { lat: 36.38757, lng: 25.43651 },
     url: 'https://santowines.gr/',

@@ -94,14 +94,15 @@ type Place = (typeof OIA)[number];
           It also shuts without warning in strong wind.
         </p>
         <p>
-          <strong>The 587 steps.</strong> Free, 25–45 minutes up, 15–30 down.
-          A wall beside them collapsed in July 2026 and they were closed for a
-          week, reopening on 3 August — so they should be open, but it is worth a
-          glance on the day. They are the donkey route, which means manure,
-          slippery marble-edged treads and loaded animals pushing past you.
-          Walking <em>down</em> them is a genuinely useful escape hatch if the
-          evening queue looks impossible. Walking up them is a waste of a
-          15-hour day.
+          <strong>The 587 steps — status uncertain.</strong> A wall beside them
+          collapsed in late July 2026 and they were closed. Two cruise outlets
+          reported them reopening on 3 August; a separate check found no
+          reopening ever announced. So: <strong>assume they are shut and plan on
+          the cable car</strong>, and treat it as a bonus if they're open. Either
+          way they're the donkey route — manure, slippery marble-edged treads,
+          loaded animals pushing past you — 25–45 minutes up, 15–30 down. Walking
+          <em>down</em> is a useful escape hatch if the evening queue is hopeless.
+          Walking up is a waste of a 15-hour day.
         </p>
         <p>
           <strong>The donkeys.</strong> Don't. There is a cable car that does the
@@ -149,11 +150,11 @@ type Place = (typeof OIA)[number];
     >
       {OIA.length > 0 ? (
         <>
-          <h3 class="sub">Sights &amp; views</h3>
+          <h3 class="sub">Sights and views</h3>
           <PlaceGrid places={byKind(OIA, ['view', 'church', 'museum'])} />
           <h3 class="sub">Shops</h3>
           <PlaceGrid places={byKind(OIA, ['shop'])} />
-          <h3 class="sub">Food &amp; coffee</h3>
+          <h3 class="sub">Food and coffee</h3>
           <PlaceGrid places={byKind(OIA, ['food', 'cafe'])} />
           {AMMOUDI.length > 0 && (
             <>
@@ -182,11 +183,11 @@ type Place = (typeof OIA)[number];
     >
       {FIRA.length > 0 ? (
         <>
-          <h3 class="sub">Sights &amp; museums</h3>
+          <h3 class="sub">Sights and museums</h3>
           <PlaceGrid places={byKind(FIRA, ['view', 'church', 'museum'])} />
           <h3 class="sub">Shops</h3>
           <PlaceGrid places={byKind(FIRA, ['shop'])} />
-          <h3 class="sub">Food &amp; coffee</h3>
+          <h3 class="sub">Food and coffee</h3>
           <PlaceGrid places={byKind(FIRA, ['food', 'cafe'])} />
           {BEYOND.length > 0 && (
             <>

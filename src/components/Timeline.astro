@@ -98,6 +98,8 @@ const { legs } = Astro.props;
   .tl__leg--go .tl__card { box-shadow: inset 3px 0 0 var(--c-dome), var(--sh-sm); }
   .tl__leg--eat .tl__card { box-shadow: inset 3px 0 0 var(--c-olive), var(--sh-sm); }
   .tl__leg--watch .tl__card { box-shadow: inset 3px 0 0 var(--c-sun), var(--sh-sm); }
+  .tl__leg--warn .tl__card { box-shadow: inset 3px 0 0 var(--c-sunset), var(--sh-sm); }
+  .tl__leg--warn .tl__time time { background: var(--c-sunset); }
 
   @media (max-width: 26rem) {
     .tl__leg { grid-template-columns: 3.5rem 1fr; gap: var(--sp-sm); }

@@ -20,18 +20,18 @@ for (const [path, mod] of Object.entries(files)) {
 const ALIAS: Record<string, string> = {
   // Heroes. A full-bleed hero on a phone is tall, so an ultra-wide panorama
   // crops to a narrow strip of itself — these are 3:2 or portrait on purpose.
-  'oia-hero': 'oia-three-domes-1',
+  'oia-hero': 'oia-hero-2',
   'santorini-hero': 'oia-hero-3',
   'fira-hero': 'fira-caldera-1',
   'mykonos-hero': 'mykonos-windmills-1',
 
   // Card thumbnails for the hub (16:10 frames).
-  'santorini-card': 'oia-hero-2',
+  'santorini-card': 'oia-hero-4',
   'mykonos-card': 'mykonos-windmills-3',
   'mykonos-windmills': 'mykonos-windmills-3',
 
   // Oia sights
-  'three-domes': 'oia-three-domes-3',
+  'three-domes': 'oia-three-domes-1',
   'oia-castle': 'oia-castle-1',
   'oia-windmills': 'oia-windmill-1',
   'panagia-platsani': 'platsani-1',
@@ -64,8 +64,14 @@ const ALIAS: Record<string, string> = {
   // Mykonos
   'little-venice': 'mykonos-little-venice-1',
   paraportiani: 'mykonos-paraportiani-1',
+  'kato-mili': 'mykonos-windmills-3',
   'mykonos-alley': 'mykonos-alley-1',
-  'mykonos-harbour': 'mykonos-harbour-1',
+  pelican: 'mykonos-harbour-1',
+  'folklore-museum': 'mykonos-white-house-1',
+  'nice-n-easy': 'mykonos-little-venice-2',
+  kastros: 'mykonos-town-water-1',
+  sakis: 'greek-gyros-1',
+  kadena: 'greek-meze-1',
 };
 
 export function photo(id: string): ImageMetadata | undefined {
