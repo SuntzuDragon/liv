@@ -62,16 +62,18 @@ const islands = [
             <li style={`--lean:${i % 2 === 0 ? -1 : 1};--reveal-delay:${i * 90}ms;`} data-reveal>
               <a class="isle" href={is.href}>
                 {img && (
-                  <div class="isle__frame">
-                    <Image
-                      src={img}
-                      alt=""
-                      widths={[480, 720, 1040]}
-                      sizes="(min-width: 760px) 50vw, 92vw"
-                      loading={i === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
-                      class="isle__img"
-                    />
+                  <div class="isle__tilt">
+                    <div class="isle__frame">
+                      <Image
+                        src={img}
+                        alt=""
+                        widths={[480, 720, 1040]}
+                        sizes="(min-width: 760px) 46vw, 88vw"
+                        loading={i === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        class="isle__img"
+                      />
+                    </div>
                   </div>
                 )}
                 <div class="isle__body">
@@ -121,40 +123,46 @@ const islands = [
     border-radius: var(--r-xl);
     background: var(--bg-card);
     box-shadow: var(--sh-md);
-    overflow: hidden;
+    overflow: clip;
     text-decoration: none;
     color: inherit;
-    rotate: calc(var(--lean) * 0.7deg);
     transition:
-      rotate var(--t-mid) var(--ease-spring),
       translate var(--t-mid) var(--ease-out),
       box-shadow var(--t-mid) var(--ease-out);
   }
   @media (hover: hover) {
-    .isle:hover { rotate: 0deg; translate: 0 -6px; box-shadow: var(--sh-lift); }
+    .isle:hover { translate: 0 -6px; box-shadow: var(--sh-lift); }
   }
-  .isle:active { rotate: 0deg; translate: 0 -2px; }
+  .isle:active { translate: 0 -2px; }
+
+  /* Only the photo leans; the name and copy below it stay upright and crisp. */
+  .isle__tilt {
+    margin: 0.8rem 0.8rem 0;
+    rotate: calc(var(--lean) * 1.2deg);
+    transition: rotate var(--t-mid) var(--ease-spring);
+  }
+  @media (hover: hover) {
+    .isle:hover .isle__tilt { rotate: 0deg; }
+  }
 
   .isle__frame {
     aspect-ratio: 16 / 10;
-    overflow: hidden;
+    overflow: clip;
+    border-radius: var(--r-md);
     background: var(--bg-sunk);
+    isolation: isolate;
   }
   .isle__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: scale var(--t-slow) var(--ease-out);
-  }
-  @media (hover: hover) {
-    .isle:hover .isle__img { scale: 1.05; }
   }
 
   .isle__body {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    padding: var(--sp-lg) var(--sp-md) var(--sp-md);
+    padding: var(--sp-md) var(--sp-md) var(--sp-lg);
   }
   .isle__when {
     font-size: 0.72rem;

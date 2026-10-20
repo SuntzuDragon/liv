@@ -65,10 +65,12 @@ const { items } = Astro.props;
     z-index: 30;
     padding-block: 0.55rem;
     padding-block-start: max(0.55rem, env(safe-area-inset-top));
-    background: oklch(98.4% 0.008 85 / 0.82);
-    -webkit-backdrop-filter: blur(14px) saturate(1.6);
-    backdrop-filter: blur(14px) saturate(1.6);
-    border-block-end: 1px solid oklch(88% 0.012 250 / 0.7);
+    /* Deliberately opaque and deliberately the page background. A translucent
+       backdrop-filter here would tear during iOS rubber-band overscroll AND
+       hijack the Liquid Glass toolbar tint; matching --bg makes the tint
+       correct either way. */
+    background-color: var(--bg);
+    border-block-end: 1px solid var(--line);
   }
 
   .snav__list {
@@ -81,7 +83,6 @@ const { items } = Astro.props;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
     scroll-snap-type: inline proximity;
-    -webkit-overflow-scrolling: touch;
   }
   .snav__list::-webkit-scrollbar { display: none; }
   .snav__list > li { scroll-snap-align: center; }

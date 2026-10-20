@@ -1,0 +1,342 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionNav from '../components/SectionNav.astro';
+import Section from '../components/Section.astro';
+import FactStrip from '../components/FactStrip.astro';
+import Warnings from '../components/Warnings.astro';
+import Timeline from '../components/Timeline.astro';
+import PlaceGrid from '../components/PlaceGrid.astro';
+import PhraseList from '../components/PhraseList.astro';
+import Footer from '../components/Footer.astro';
+import {
+  FACTS,
+  WARNINGS,
+  PLAN,
+  PHRASES,
+  SPECIALITIES,
+  SUNSET,
+} from '../data/santorini-essentials';
+import { OIA, AMMOUDI, FIRA, BEYOND } from '../data/santorini-places';
+
+const nav = [
+  { id: 'day', label: 'The day' },
+  { id: 'ashore', label: 'Getting ashore' },
+  { id: 'oia', label: 'Oia' },
+  { id: 'fira', label: 'Fira' },
+  { id: 'know', label: 'Know this' },
+  { id: 'greek', label: 'Greek' },
+];
+
+const byKind = (places: typeof OIA, kinds: Place['kind'][]) =>
+  places.filter((p) => kinds.includes(p.kind));
+type Place = (typeof OIA)[number];
+---
+
+<Base
+  title="Santorini — Liv's Islands"
+  description="Oia and Fira on one cruise day: the views, the shops, the food, and how to get up the cliff. Wednesday 21 October 2026."
+  themeColor="#0d3a5c"
+  ogImage="/icon-512.png"
+>
+  <Hero
+    eyebrow="Wednesday 21 October · 07:00 – 22:00"
+    title="Santorini"
+    accent="fifteen hours"
+    lede={`Long enough to do Oia properly, come back for Fira, and still be standing on a wall at ${SUNSET} when the sun goes down. Most ships sail before that. Yours doesn't.`}
+    imageId="oia-hero"
+    alt="White houses and blue domes stepping down the caldera cliff at Oia"
+  />
+
+  <SectionNav items={nav} />
+
+  <main id="main">
+    <Section
+      id="day"
+      eyebrow="At a glance"
+      title="The numbers that matter"
+      lede="Screenshot this bit. It is the whole day in six tiles."
+    >
+      <FactStrip facts={FACTS} />
+
+      <div class="plan" data-reveal>
+        <h3 class="plan__h">A shape for the day</h3>
+        <p class="plan__p">
+          Oia first, then Fira. Oia at 09:00 is a completely different village from
+          Oia at 13:00, and doing it this way keeps the bus out of the endgame —
+          by late afternoon you are already in Fira, nine minutes from the cable car.
+        </p>
+      </div>
+      <Timeline legs={PLAN} />
+    </Section>
+
+    <Section
+      id="ashore"
+      tone="sunk"
+      eyebrow="The bit that goes wrong"
+      title="Getting ashore, and back"
+      lede="Santorini has no cruise pier. The ship anchors in the caldera and tenders you to the Old Port, at the bottom of a 220-metre cliff."
+    >
+      <div class="prose stack" data-reveal>
+        <h3>Up the cliff: three ways, one answer</h3>
+        <p>
+          <strong>The cable car.</strong> €10 one way per person, three minutes,
+          a car every 20 minutes from 07:00 to 22:00, last one down from the top
+          at 21:40. It carries about 600 people an hour in each direction, which
+          is the whole problem — a full ship wants to go up at once in the morning
+          and down at once in the evening. If you are ashore before about 08:30
+          you may walk straight on. Between 09:30 and 11:00 expect 45–60 minutes.
+          It also shuts without warning in strong wind.
+        </p>
+        <p>
+          <strong>The 587 steps.</strong> Free, 25–45 minutes up, 15–30 down.
+          A wall beside them collapsed in July 2026 and they were closed for a
+          week, reopening on 3 August — so they should be open, but it is worth a
+          glance on the day. They are the donkey route, which means manure,
+          slippery marble-edged treads and loaded animals pushing past you.
+          Walking <em>down</em> them is a genuinely useful escape hatch if the
+          evening queue looks impossible. Walking up them is a waste of a
+          15-hour day.
+        </p>
+        <p>
+          <strong>The donkeys.</strong> Don't. There is a cable car that does the
+          same climb in three minutes. Around a hundred animals work those steps
+          all day; the documented picture is saddle wounds, animals tethered in
+          full sun without water, and a legal weight limit set at roughly double
+          what vets consider safe and reportedly not enforced. In September 2026
+          handlers assaulted protesters on the stairway. €10 is the whole answer.
+        </p>
+
+        <h3>One thing to look up before you go ashore</h3>
+        <p>
+          The <strong>final tender time</strong>, from the day's Cruise Compass or
+          the Royal app. It is not the 22:00 sailing time — the two can be 60–90
+          minutes apart, and everything else on this page bends around it. Write
+          it on your hand.
+        </p>
+
+        <h3>Fira to Oia</h3>
+        <p>
+          The KTEL bus, €2.20 each per leg, 20–25 minutes, roughly every 30
+          minutes from 07:00 to 21:00 out of Fira and until 21:20 coming back
+          from Oia. <strong>Cash to a conductor on board — no cards.</strong>
+          The station is an open yard off 25is Martiou, about nine minutes' walk
+          from the cable car top station. Queue rather than drifting up at
+          departure time, because full buses skip stops and the next is half an
+          hour away.
+        </p>
+        <p>
+          Taxis exist but there are about 25 on the whole island, they aren't
+          metered in practice, and the rank in Fira is usually empty. Agree a
+          price before getting in; budget €25–35 for Fira to Oia. The one fixed
+          fare worth knowing is <strong>Oia to Ammoudi Bay, €10</strong>.
+        </p>
+      </div>
+    </Section>
+
+    <Section
+      id="oia"
+      eyebrow="Morning"
+      title="Oia"
+      lede="Go early. The excursion coaches land between 10:00 and 11:00, and before that you get the whole thing in low warm light with room to stand."
+    >
+      {OIA.length > 0 ? (
+        <>
+          <h3 class="sub">Sights &amp; views</h3>
+          <PlaceGrid places={byKind(OIA, ['view', 'church', 'museum'])} />
+          <h3 class="sub">Shops</h3>
+          <PlaceGrid places={byKind(OIA, ['shop'])} />
+          <h3 class="sub">Food &amp; coffee</h3>
+          <PlaceGrid places={byKind(OIA, ['food', 'cafe'])} />
+          {AMMOUDI.length > 0 && (
+            <>
+              <h3 class="sub">Down at Ammoudi Bay</h3>
+              <p class="sub__note">
+                About 280 steps below the village — 10–15 minutes down, 20–30 back
+                up with no shade. Walk down, eat, take the fixed €10 taxi up.
+                Fish is sold by weight here: ask the price per kilo and have it
+                weighed <em>before</em> you order.
+              </p>
+              <PlaceGrid places={AMMOUDI} />
+            </>
+          )}
+        </>
+      ) : (
+        <p class="pending">Still being filled in.</p>
+      )}
+    </Section>
+
+    <Section
+      id="fira"
+      tone="sky"
+      eyebrow="Afternoon"
+      title="Fira"
+      lede="More shade, more shops, more lunch, and you're already next to the cable car. The better afternoon town."
+    >
+      {FIRA.length > 0 ? (
+        <>
+          <h3 class="sub">Sights &amp; museums</h3>
+          <PlaceGrid places={byKind(FIRA, ['view', 'church', 'museum'])} />
+          <h3 class="sub">Shops</h3>
+          <PlaceGrid places={byKind(FIRA, ['shop'])} />
+          <h3 class="sub">Food &amp; coffee</h3>
+          <PlaceGrid places={byKind(FIRA, ['food', 'cafe'])} />
+          {BEYOND.length > 0 && (
+            <>
+              <h3 class="sub">Worth the trip out</h3>
+              <PlaceGrid places={BEYOND} />
+            </>
+          )}
+        </>
+      ) : (
+        <p class="pending">Still being filled in.</p>
+      )}
+    </Section>
+
+    <Section
+      id="know"
+      tone="sunk"
+      eyebrow="Before you step off"
+      title="Five things that decide the day"
+    >
+      <Warnings items={WARNINGS} />
+
+      <div class="prose stack" data-reveal>
+        <h3>Everything else, briefly</h3>
+        <ul class="plain">
+          <li>
+            <strong>Sun.</strong> 22°C feels mild, but the UV index is 5 and every
+            wall and paving slab on the island is white. People burn here in
+            October precisely because the air is cool. SPF 30–50, reapplied, and a
+            hat that survives wind.
+          </li>
+          <li>
+            <strong>Water.</strong> The tap water is desalinated and brackish.
+            Buy bottled, or fill bottles on the ship before you go.
+          </li>
+          <li>
+            <strong>Cards.</strong> Apple Pay works essentially everywhere —
+            terminals are legally mandatory in Greek retail now. The bus is the
+            one exception that matters.
+          </li>
+          <li>
+            <strong>Tipping.</strong> Not obligatory. Rounding up, or 5–10% for
+            good table service, is plenty.
+          </li>
+          <li>
+            <strong>Data.</strong> Put your phone on airplane mode with wifi on.
+            This page is saved to your phone and works with no signal at all.
+          </li>
+          <li>
+            <strong>Season's end.</strong> Late October is the quiet half of the
+            month, which is lovely — but some shops and tavernas start closing for
+            the winter, especially down at Ammoudi. Worth a glance before you
+            commit to a specific lunch.
+          </li>
+        </ul>
+      </div>
+    </Section>
+
+    <Section
+      id="greek"
+      eyebrow="Useful"
+      title="Enough Greek to be polite"
+      lede="The middle line is the one to say out loud. Nobody expects you to try, which is exactly why it lands."
+    >
+      <PhraseList phrases={PHRASES} />
+
+      <h3 class="sub">Order these</h3>
+      <ul class="specs">
+        {SPECIALITIES.map((s, i) => (
+          <li class="spec" style={`--reveal-delay:${i * 45}ms;`} data-reveal>
+            <h4 class="spec__name">
+              {s.name}
+              {s.greek && <span class="spec__greek" lang="el">{s.greek}</span>}
+            </h4>
+            <p class="spec__what">{s.what}</p>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .prose { max-width: var(--measure); }
+  .prose h3 {
+    font-size: var(--step-2);
+    margin-block-start: var(--sp-lg);
+  }
+  .prose h3:first-child { margin-block-start: 0; }
+  .prose p { color: var(--fg-soft); }
+  .prose strong { color: var(--fg); font-weight: 650; }
+
+  .plain {
+    display: grid;
+    gap: var(--sp-sm);
+    padding: 0;
+    list-style: none;
+  }
+  .plain li {
+    padding-inline-start: var(--sp-md);
+    border-inline-start: 2px solid var(--line);
+    color: var(--fg-soft);
+  }
+  .plain strong { color: var(--fg); }
+
+  .plan {
+    max-width: var(--measure);
+    margin-block: var(--sp-xl) var(--sp-lg);
+  }
+  .plan__h { font-size: var(--step-2); margin-block-end: var(--sp-xs); }
+  .plan__p { color: var(--fg-soft); }
+
+  .sub {
+    margin-block: var(--sp-xl) var(--sp-md);
+    font-size: var(--step-2);
+  }
+  .sub__note {
+    max-width: var(--measure);
+    margin-block-end: var(--sp-md);
+    color: var(--fg-soft);
+    font-size: var(--step-0);
+  }
+  .pending { color: var(--fg-soft); font-style: italic; }
+
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--sp-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .spec {
+    padding: var(--sp-md);
+    border-radius: var(--r-md);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+  }
+  .spec__name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    font-size: var(--step-1);
+    margin-block-end: 0.3rem;
+  }
+  .spec__greek {
+    font-family: var(--font-text);
+    font-size: var(--step--1);
+    font-weight: 500;
+    color: var(--fg-soft);
+    opacity: 0.75;
+  }
+  .spec__what {
+    font-size: var(--step-0);
+    color: var(--fg-soft);
+    line-height: 1.5;
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+import type { Leg } from '../data/santorini-essentials';
+
+interface Props {
+  legs: Leg[];
+}
+const { legs } = Astro.props;
+---
+
+<ol class="tl">
+  {legs.map((l, i) => (
+    <li
+      class="tl__leg"
+      class:list={[`tl__leg--${l.tone ?? 'go'}`]}
+      style={`--reveal-delay:${Math.min(i, 6) * 50}ms;`}
+      data-reveal
+    >
+      <div class="tl__time">
+        <time>{l.time}</time>
+      </div>
+      <div class="tl__card">
+        <h3 class="tl__title">{l.title}</h3>
+        <p class="tl__body">{l.body}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .tl {
+    display: grid;
+    gap: var(--sp-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tl__leg {
+    display: grid;
+    grid-template-columns: 4.25rem 1fr;
+    gap: var(--sp-md);
+    align-items: start;
+    position: relative;
+  }
+
+  /* The thread running down the times. */
+  .tl__leg::before {
+    content: '';
+    position: absolute;
+    inset-block: 2.1rem -0.75rem;
+    inset-inline-start: 1.55rem;
+    width: 2px;
+    background: linear-gradient(var(--line), oklch(88% 0.012 250 / 0.2));
+  }
+  .tl__leg:last-child::before { display: none; }
+
+  .tl__time {
+    display: flex;
+    justify-content: center;
+    padding-block-start: 0.85rem;
+  }
+  .tl__time time {
+    position: relative;
+    z-index: 1;
+    padding: 0.2rem 0.45rem;
+    border-radius: var(--r-pill);
+    background: var(--c-aegean);
+    color: var(--c-white);
+    font-size: 0.74rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  .tl__card {
+    padding: var(--sp-md);
+    border-radius: var(--r-md);
+    background: var(--bg-card);
+    box-shadow: var(--sh-sm);
+    transition: box-shadow var(--t-mid) var(--ease-out), translate var(--t-mid) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .tl__leg:hover .tl__card { translate: 0 -2px; box-shadow: var(--sh-md); }
+  }
+
+  .tl__title {
+    font-size: var(--step-1);
+    line-height: 1.2;
+    margin-block-end: 0.3rem;
+  }
+  .tl__body {
+    font-size: var(--step-0);
+    color: var(--fg-soft);
+    line-height: 1.55;
+  }
+
+  /* A colour per kind of moment, on the left edge of the card. */
+  .tl__leg--go .tl__card { box-shadow: inset 3px 0 0 var(--c-dome), var(--sh-sm); }
+  .tl__leg--eat .tl__card { box-shadow: inset 3px 0 0 var(--c-olive), var(--sh-sm); }
+  .tl__leg--watch .tl__card { box-shadow: inset 3px 0 0 var(--c-sun), var(--sh-sm); }
+
+  @media (max-width: 26rem) {
+    .tl__leg { grid-template-columns: 3.5rem 1fr; gap: var(--sp-sm); }
+    .tl__leg::before { inset-inline-start: 1.25rem; }
+  }
+</style>

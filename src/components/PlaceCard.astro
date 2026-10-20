@@ -6,7 +6,7 @@ import { photo } from '../lib/photos';
 
 interface Props {
   place: Place;
-  /** Index in the grid — drives which way the card tilts. */
+  /** Index in the grid — drives which way the photo leans. */
   i?: number;
 }
 
@@ -26,23 +26,24 @@ const kindLabel: Record<Place['kind'], string> = {
 const lean = i % 2 === 0 ? 1 : -1;
 ---
 
-<article
-  class="card"
-  class:list={[{ 'card--star': p.star }]}
-  style={`--lean:${lean};`}
->
+<article class="card" class:list={[{ 'card--star': p.star }]} style={`--lean:${lean};`}>
   {img && (
-    <div class="card__frame">
-      <Image
-        src={img}
-        alt={p.name}
-        widths={[320, 480, 720]}
-        sizes="(min-width: 900px) 340px, (min-width: 600px) 45vw, 88vw"
-        loading="lazy"
-        decoding="async"
-        class="card__img"
-      />
-      <span class="card__kind">{kindLabel[p.kind]}</span>
+    /* Three layers on purpose: .tilt rotates, .frame clips, the img is plain.
+       Safari loses a border-radius when the clipping box itself is transformed,
+       and rotated text goes soft — so only the photo leans, never the copy. */
+    <div class="card__tilt">
+      <div class="card__frame">
+        <Image
+          src={img}
+          alt={p.name}
+          widths={[220, 340, 440]}
+          sizes="(min-width: 900px) 320px, (min-width: 600px) 44vw, 86vw"
+          loading="lazy"
+          decoding="async"
+          class="card__img"
+        />
+        <span class="card__kind">{kindLabel[p.kind]}</span>
+      </div>
     </div>
   )}
 
@@ -83,13 +84,10 @@ const lean = i % 2 === 0 ? 1 : -1;
         <a class="btn btn--ghost" href={p.url} target="_blank" rel="noopener">Site</a>
       )}
       {p.coords && (
-        <a
-          class="btn btn--quiet"
-          href={googleMaps(p.coords)}
-          target="_blank"
-          rel="noopener"
-          title="Google Maps"
-        >G</a>
+        <a class="btn btn--quiet" href={googleMaps(p.coords)} target="_blank" rel="noopener">
+          <span class="visually-hidden">Open in Google Maps</span>
+          <span aria-hidden="true">G</span>
+        </a>
       )}
     </div>
   </div>
@@ -97,46 +95,43 @@ const lean = i % 2 === 0 ? 1 : -1;
 
 <style>
   .card {
-    /* The tilt lives on the outer element and the clip on the inner frame —
-       Safari loses a border-radius when it clips inside a rotated, animating box. */
-    position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
     background: var(--bg-card);
     border-radius: var(--r-lg);
     box-shadow: var(--sh-md);
-    rotate: calc(var(--lean, 1) * 0.55deg);
+    /* clip, not hidden: it makes no scroll container, so it can't break an
+       ancestor's position: sticky. */
+    overflow: clip;
     transition:
-      rotate var(--t-mid) var(--ease-spring),
       translate var(--t-mid) var(--ease-out),
       box-shadow var(--t-mid) var(--ease-out);
   }
-
-  /* Straighten up and lift when she reaches for it. */
   @media (hover: hover) {
-    .card:hover {
-      rotate: 0deg;
-      translate: 0 -5px;
-      box-shadow: var(--sh-lift);
-    }
+    .card:hover { translate: 0 -5px; box-shadow: var(--sh-lift); }
   }
-  .card:active {
-    rotate: 0deg;
-    translate: 0 -2px;
+  .card--star {
+    box-shadow: 0 0 0 2px var(--c-sun), var(--sh-md);
   }
 
-  .card--star {
-    box-shadow:
-      0 0 0 2px var(--c-sun),
-      var(--sh-md);
+  /* The only thing that rotates — a photo pinned on slightly askew. Inset far
+     enough that the rotated corners stay inside the card and nothing clips. */
+  .card__tilt {
+    margin: 0.7rem 0.7rem 0;
+    rotate: calc(var(--lean, 1) * 1.4deg);
+    transition: rotate var(--t-mid) var(--ease-spring);
+  }
+  @media (hover: hover) {
+    /* Straightens up when she reaches for it. */
+    .card:hover .card__tilt { rotate: 0deg; }
   }
 
   .card__frame {
     position: relative;
-    overflow: hidden;
-    border-start-start-radius: var(--r-lg);
-    border-start-end-radius: var(--r-lg);
     aspect-ratio: 4 / 3;
+    overflow: clip;
+    border-radius: var(--r-sm);
     background: var(--bg-sunk);
     isolation: isolate;
   }
@@ -144,10 +139,8 @@ const lean = i % 2 === 0 ? 1 : -1;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: scale var(--t-slow) var(--ease-out);
-  }
-  @media (hover: hover) {
-    .card:hover .card__img { scale: 1.045; }
+    /* No will-change, no translateZ, no filter: each promoted layer is its own
+       device-pixel surface, and there are dozens of these on a page. */
   }
 
   .card__kind {
@@ -156,9 +149,9 @@ const lean = i % 2 === 0 ? 1 : -1;
     inset-inline-start: var(--sp-xs);
     padding: 0.2rem 0.6rem;
     border-radius: var(--r-pill);
-    background: oklch(100% 0 0 / 0.86);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    /* Opaque rather than blurred — a backdrop-filter over a photo is the most
+       expensive thing you can put on a card you then have forty of. */
+    background: oklch(100% 0 0 / 0.93);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -171,6 +164,8 @@ const lean = i % 2 === 0 ? 1 : -1;
     flex-direction: column;
     gap: var(--sp-xs);
     padding: var(--sp-md);
+    padding-block-start: var(--sp-sm);
+    flex: 1;
   }
 
   .card__name {
@@ -215,7 +210,6 @@ const lean = i % 2 === 0 ? 1 : -1;
     font-size: 0.74rem;
     font-weight: 550;
     color: var(--fg-soft);
-    white-space: nowrap;
   }
   .chip--time {
     background: oklch(87% 0.062 225 / 0.55);
@@ -229,14 +223,18 @@ const lean = i % 2 === 0 ? 1 : -1;
   .card__actions {
     display: flex;
     gap: 0.5rem;
-    margin-block-start: var(--sp-xs);
+    margin-block-start: auto;
+    padding-block-start: var(--sp-xs);
   }
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.35rem;
-    min-height: 40px;
-    padding: 0.4rem 0.85rem;
+    /* 44px is Apple's own minimum touch target. */
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.4rem 0.9rem;
     border-radius: var(--r-pill);
     font-size: var(--step--1);
     font-weight: 650;
@@ -246,30 +244,17 @@ const lean = i % 2 === 0 ? 1 : -1;
       scale var(--t-fast) var(--ease-spring);
   }
   .btn:active { scale: 0.96; }
-  .btn--map {
-    background: var(--c-dome);
-    color: var(--c-white);
-  }
-  .btn--map:hover {
-    background: var(--c-dome-deep);
-    color: var(--c-white);
-  }
+  .btn--map { background: var(--c-dome); color: var(--c-white); }
+  .btn--map:hover { background: var(--c-dome-deep); color: var(--c-white); }
   .btn--ghost {
-    background: transparent;
     box-shadow: inset 0 0 0 1.5px var(--line);
     color: var(--fg-soft);
   }
-  .btn--ghost:hover {
-    background: var(--bg-sunk);
-    color: var(--fg);
-  }
+  .btn--ghost:hover { background: var(--bg-sunk); color: var(--fg); }
   /* Secondary, for a non-Apple phone — Apple's web Maps won't hand off there. */
   .btn--quiet {
-    min-width: 40px;
-    justify-content: center;
     padding-inline: 0.5rem;
-    background: transparent;
-    color: oklch(60% 0.02 255);
+    color: oklch(62% 0.02 255);
     font-weight: 700;
   }
   .btn--quiet:hover { background: var(--bg-sunk); color: var(--fg-soft); }

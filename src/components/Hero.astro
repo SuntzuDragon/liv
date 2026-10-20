@@ -22,11 +22,10 @@ const img = imageId ? photo(imageId) : undefined;
       <Image
         src={img}
         alt={alt}
-        widths={[640, 960, 1440, 1920]}
+        widths={[640, 960, 1440]}
         sizes="100vw"
         loading="eager"
         fetchpriority="high"
-        decoding="sync"
         class="hero__img"
       />
       <div class="hero__scrim" aria-hidden="true"></div>

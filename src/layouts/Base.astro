@@ -24,9 +24,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
+    <!-- iOS 26/27 ignore theme-color and sample the page background instead;
+         html and body both carry an explicit one. Kept for iOS 18.x + Android. -->
+    <meta name="color-scheme" content="light" />
     <meta name="theme-color" content={themeColor} />
     <meta name="apple-mobile-web-app-title" content="Liv's Islands" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
 
@@ -78,10 +82,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     </script>
 
     <script is:inline>
-      // Offline cache. Registered late so it never competes with first paint.
+      // Offline cache. Registered after load so it never competes with first
+      // paint. updateViaCache: 'none' keeps Safari from serving a stale worker.
       if ('serviceWorker' in navigator) {
         addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
+          navigator.serviceWorker
+            .register('/sw.js', { updateViaCache: 'none' })
+            .catch(() => {});
+          // Exempts the origin from Safari's quota/LRU eviction if granted.
+          // Heuristic, so it may be refused in a plain tab — costs nothing.
+          navigator.storage?.persist?.().catch(() => {});
         });
       }
     </script>
