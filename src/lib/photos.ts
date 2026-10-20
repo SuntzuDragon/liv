@@ -67,7 +67,10 @@ const ALIAS: Record<string, string> = {
   'prehistoric-thera': 'prehistoric-thera-1',
   'archaeological-museum': 'archaeological-museum-1',
   'megaro-gyzi': 'megaro-gyzi-1',
-  lalaounis: 'lalaounis-1',
+  lalaounis: 'lalaounis-3',
+  'mati-gallery': 'mati-gallery-1',
+  'ak-gallery': 'ak-gallery-1',
+  'bead-shop': 'bead-shop-1',
 
   // Food. Mostly representative of what you'd eat, not the premises.
   luckys: 'luckys-2',

@@ -656,5 +656,33 @@
     "license": "CC BY 2.0",
     "attribution": "Photo: George M. Groutas (via Wikimedia Commons), CC BY 2.0",
     "source": "https://commons.wikimedia.org/wiki/File:Baking_Bread_001.jpg"
+  },
+  {
+    "id": "mati-gallery-1",
+    "subject": "Mati Art Gallery shopfront, Fira",
+    "license": "All rights reserved",
+    "attribution": "Photo: Mati Art Gallery (matiartgallery.com) - all rights reserved",
+    "source": "https://matiartgallery.com/location/mati-fira/"
+  },
+  {
+    "id": "ak-gallery-1",
+    "subject": "AK Art Gallery shopfront, Fira",
+    "license": "All rights reserved",
+    "attribution": "Photo: AK Asimis-Kolaitou Art Gallery (ak-galleries.com) - all rights reserved",
+    "source": "https://www.ak-galleries.com/ak-art-gallery-fira"
+  },
+  {
+    "id": "bead-shop-1",
+    "subject": "Lava bead bracelet with turquoise and coral",
+    "license": "CC BY-NC 2.0",
+    "attribution": "Photo: spiralcraft (via Flickr), CC BY-NC 2.0",
+    "source": "https://www.flickr.com/photos/41635840@N02/4345229931"
+  },
+  {
+    "id": "lalaounis-3",
+    "subject": "Lalaounis gold cuff with animal-head terminals",
+    "license": "All rights reserved",
+    "attribution": "Jewellery and image: Ilias LALAoUNIS (lalaounis.com) - all rights reserved",
+    "source": "https://lalaounis.com/"
   }
 ]

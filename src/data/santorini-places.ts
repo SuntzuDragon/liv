@@ -281,7 +281,7 @@ export const FIRA: Place[] = [
   {
     id: 'lalaounis',
     imageAlt:
-      'An ancient Minoan gold necklace — the kind of piece this jeweller reproduces',
+      'A gold cuff by Ilias Lalaounis, from the house’s own collection',
     name: 'Ilias Lalaounis',
     kind: 'shop',
     town: 'fira',
@@ -292,6 +292,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'mati-gallery',
+    imageAlt:
+      'The Mati Art Gallery in Fira at dusk, with Kypris bronze fish on the facade',
     name: 'Mati Art Gallery',
     kind: 'shop',
     town: 'fira',
@@ -302,6 +304,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'ak-gallery',
+    imageAlt:
+      'The AK Art Gallery shopfront in Fira, in the old flour mill',
     name: 'AK Art Gallery',
     kind: 'shop',
     town: 'fira',
@@ -312,6 +316,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'bead-shop',
+    imageAlt:
+      'A bracelet of carved black volcanic lava beads — the kind of thing sold here',
     name: 'The Bead Shop',
     kind: 'shop',
     town: 'fira',
