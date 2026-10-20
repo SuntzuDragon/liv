@@ -2,11 +2,28 @@
 interface Props {
   /** In document order — the scrollspy relies on it. */
   items: { id: string; label: string }[];
+  /** Where the back arrow goes. */
+  home?: string;
+  homeLabel?: string;
 }
-const { items } = Astro.props;
+const { items, home = '/', homeLabel = 'Islands' } = Astro.props;
 ---
 
 <nav class="snav" aria-label="Sections">
+  <a class="snav__home" href={home}>
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
+      <path
+        d="M15.5 4.5 8 12l7.5 7.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <span>{homeLabel}</span>
+  </a>
+
   <ul class="snav__list">
     {items.map((it) => (
       <li>
@@ -21,8 +38,9 @@ const { items } = Astro.props;
   // do not exist yet while the parser is here.
   (() => {
     const start = () => {
+      const strip = document.querySelector('.snav__list');
       const pills = [...document.querySelectorAll('[data-spy]')];
-      if (!pills.length) return;
+      if (!strip || !pills.length) return;
 
       const byId = new Map(pills.map((p) => [p.dataset.spy, p]));
       const targets = [...byId.keys()]
@@ -31,6 +49,25 @@ const { items } = Astro.props;
       if (!targets.length) return;
 
       let current = null;
+
+      /**
+       * Scrolls the pill strip only — never the page.
+       *
+       * This used to call pill.scrollIntoView({block:'nearest'}), which on iOS
+       * Safari also moves the document and yanks you mid-scroll. Setting
+       * scrollLeft directly cannot touch the page, and it is skipped entirely
+       * while the pill is already comfortably in view.
+       */
+      const keepPillVisible = (pill) => {
+        const pad = 24;
+        const left = pill.offsetLeft;
+        const right = left + pill.offsetWidth;
+        const viewLeft = strip.scrollLeft;
+        const viewRight = viewLeft + strip.clientWidth;
+        if (left >= viewLeft + pad && right <= viewRight - pad) return;
+        strip.scrollLeft = left - strip.clientWidth / 2 + pill.offsetWidth / 2;
+      };
+
       const apply = (id) => {
         if (id === current) return;
         current = id;
@@ -40,13 +77,12 @@ const { items } = Astro.props;
           if (on) pill.setAttribute('aria-current', 'true');
           else pill.removeAttribute('aria-current');
         }
-        // Keep the active pill in view in the horizontally-scrolling bar.
-        byId.get(id)?.scrollIntoView({ block: 'nearest', inline: 'center' });
+        const pill = byId.get(id);
+        if (pill) keepPillVisible(pill);
       };
 
       // "Which section owns the top of the screen" — measured against a line a
-      // little below the nav, not the nav itself, so that a section jumped to
-      // by anchor (which lands below the nav) reads as the current one.
+      // little below the nav, so a section jumped to by anchor reads as current.
       const compute = () => {
         const line = Math.max(140, innerHeight * 0.3);
         let best = targets[0].id;
@@ -56,9 +92,6 @@ const { items } = Astro.props;
         apply(best);
       };
 
-      // Driven by scroll rather than only by observer thresholds, which can
-      // leave the highlight stale between crossings. rAF-throttled, and iOS
-      // pauses rAF during momentum scroll so it simply settles at the end.
       let ticking = false;
       const onScroll = () => {
         if (ticking) return;
@@ -87,8 +120,12 @@ const { items } = Astro.props;
     position: sticky;
     inset-block-start: 0;
     z-index: 30;
-    padding-block: 0.55rem;
-    padding-block-start: max(0.55rem, env(safe-area-inset-top));
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding-block: 0.5rem;
+    padding-block-start: max(0.5rem, env(safe-area-inset-top));
+    padding-inline-start: var(--gutter);
     /* Deliberately opaque and deliberately the page background. A translucent
        backdrop-filter here would tear during iOS rubber-band overscroll AND
        hijack the Liquid Glass toolbar tint; matching --bg makes the tint
@@ -97,25 +134,55 @@ const { items } = Astro.props;
     border-block-end: 1px solid var(--line);
   }
 
+  /* Outside the scrolling strip, so it is always reachable. */
+  .snav__home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    flex: none;
+    min-height: 44px;
+    padding-inline: 0.55rem 0.7rem;
+    border-radius: var(--r-pill);
+    background: var(--bg-sunk);
+    color: var(--c-dome-deep);
+    font-size: var(--step--1);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color var(--t-fast) var(--ease-out), scale var(--t-fast) var(--ease-spring);
+  }
+  .snav__home:active { scale: 0.95; }
+  .snav__home:hover { background: var(--c-sky); color: var(--c-aegean); }
+
+  /* A hairline so the pills visibly scroll under the home button. */
+  .snav::after {
+    content: '';
+    position: absolute;
+    inset-block: 0.5rem;
+    inset-inline-start: calc(var(--gutter) + 5.4rem);
+    width: 1px;
+    background: var(--line);
+    pointer-events: none;
+  }
+
   .snav__list {
     display: flex;
     gap: 0.4rem;
     list-style: none;
     margin: 0;
-    padding-inline: var(--gutter);
+    padding-inline: 0.5rem var(--gutter);
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
-    scroll-snap-type: inline proximity;
+    /* No scroll-snap: on iOS it fights momentum and makes programmatic
+       scrollLeft adjustments visibly lurch. */
   }
   .snav__list::-webkit-scrollbar { display: none; }
-  .snav__list > li { scroll-snap-align: center; }
 
   .snav__pill {
     display: inline-flex;
     align-items: center;
-    min-height: 38px;
-    padding: 0.3rem 0.9rem;
+    min-height: 44px;
+    padding: 0.3rem 0.95rem;
     border-radius: var(--r-pill);
     font-size: var(--step--1);
     font-weight: 650;
@@ -125,13 +192,18 @@ const { items } = Astro.props;
     background: transparent;
     transition:
       background-color var(--t-fast) var(--ease-out),
-      color var(--t-fast) var(--ease-out),
-      scale var(--t-fast) var(--ease-spring);
+      color var(--t-fast) var(--ease-out);
   }
   .snav__pill:hover { background: var(--bg-sunk); color: var(--fg); }
-  .snav__pill:active { scale: 0.95; }
+  .snav__pill:active { background: var(--bg-sunk); }
   .snav__pill.is-active {
     background: var(--c-dome);
     color: var(--c-white);
+  }
+
+  @media (max-width: 24rem) {
+    .snav__home span { display: none; }
+    .snav__home { padding-inline: 0.5rem; }
+    .snav::after { inset-inline-start: calc(var(--gutter) + 2.4rem); }
   }
 </style>

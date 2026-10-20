@@ -10,9 +10,13 @@ interface Props {
   lede?: string;
   imageId?: string;
   alt?: string;
+  /** Renders a back chip over the hero. The sticky nav sits below the fold. */
+  backHref?: string;
+  backLabel?: string;
 }
 
-const { eyebrow, title, accent, lede, imageId, alt = '' } = Astro.props;
+const { eyebrow, title, accent, lede, imageId, alt = '', backHref, backLabel = 'All islands' } =
+  Astro.props;
 const img = imageId ? photo(imageId) : undefined;
 ---
 
@@ -32,6 +36,22 @@ const img = imageId ? photo(imageId) : undefined;
       />
       <div class="hero__scrim" aria-hidden="true"></div>
     </div>
+  )}
+
+  {backHref && (
+    <a class="hero__back" href={backHref}>
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15">
+        <path
+          d="M15.5 4.5 8 12l7.5 7.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      {backLabel}
+    </a>
   )}
 
   <div class="hero__inner wrap">
@@ -82,15 +102,10 @@ const img = imageId ? photo(imageId) : undefined;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* A slow drift so the hero is never quite static. */
-    animation: drift 34s var(--ease-out) infinite alternate;
-  }
-  @keyframes drift {
-    from { scale: 1.06; object-position: 48% 50%; }
-    to   { scale: 1.14; object-position: 54% 44%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__img { animation: none; scale: 1.02; }
+    /* Deliberately static. This used to drift via an infinite animation on
+       scale + object-position; object-position is not compositor-friendly, so
+       it repainted a full-screen image every frame and made scrolling judder
+       on iOS for as long as the hero was on screen. */
   }
 
   .hero__scrim {
@@ -103,6 +118,35 @@ const img = imageId ? photo(imageId) : undefined;
       oklch(30% 0.06 254 / 0.08) 68%,
       transparent 100%
     );
+  }
+
+  /* Not sticky or fixed: an element pinned to the top edge would recolour
+     Safari's toolbar to its own background on iOS 26+. */
+  .hero__back {
+    position: absolute;
+    inset-block-start: max(var(--sp-md), calc(env(safe-area-inset-top) + 0.5rem));
+    inset-inline-start: var(--gutter);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 40px;
+    padding-inline: 0.6rem 0.85rem;
+    border-radius: var(--r-pill);
+    background: oklch(22% 0.05 254 / 0.55);
+    box-shadow: inset 0 0 0 1px oklch(100% 0 0 / 0.25);
+    color: var(--c-white);
+    font-size: var(--step--1);
+    font-weight: 650;
+    text-decoration: none;
+    transition: background-color var(--t-fast) var(--ease-out), scale var(--t-fast) var(--ease-spring);
+  }
+  .hero__back:active { scale: 0.95; }
+  .hero__back:hover { background: oklch(22% 0.05 254 / 0.78); color: var(--c-white); }
+  .hero--plain .hero__back {
+    background: var(--bg-sunk);
+    box-shadow: none;
+    color: var(--c-dome-deep);
   }
 
   .hero__inner {
