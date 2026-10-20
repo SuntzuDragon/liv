@@ -60,6 +60,8 @@ export const OIA: Place[] = [
   },
   {
     id: 'naval-museum',
+    imageAlt:
+      'A 19th-century Greek ship’s figurehead — the kind of thing Oia’s collection is built around, though this one is in Athens',
     name: 'Naval Museum of Oia',
     kind: 'museum',
     town: 'oia',
@@ -190,6 +192,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'prehistoric-thera',
+    imageAlt:
+      'The gold ibex figurine from Akrotiri, which is held in this museum',
     name: 'Museum of Prehistoric Thera',
     kind: 'museum',
     town: 'fira',
@@ -203,6 +207,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'archaeological-museum',
+    imageAlt:
+      'Theran amphorae from the cemetery of Ancient Thera, held in this museum',
     name: 'Archaeological Museum of Thera',
     kind: 'museum',
     town: 'fira',
@@ -215,6 +221,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'megaro-gyzi',
+    imageAlt:
+      'The courtyard of the Megaro Gyzi mansion in Fira',
     name: 'Megaro Gyzi Museum',
     kind: 'museum',
     town: 'fira',
@@ -272,6 +280,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'lalaounis',
+    imageAlt:
+      'An ancient Minoan gold necklace — the kind of piece this jeweller reproduces',
     name: 'Ilias Lalaounis',
     kind: 'shop',
     town: 'fira',
@@ -312,6 +322,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'luckys',
+    imageAlt:
+      'A skewer of Greek spit-roasted pork. Not Lucky’s itself',
     name: "Lucky's Souvlakis",
     kind: 'food',
     town: 'fira',
@@ -324,6 +336,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'obelix',
+    imageAlt:
+      'A Greek gyros plate with shaved pork, onion and tomato. Not Obelix itself',
     name: 'Obelix',
     kind: 'food',
     town: 'fira',
@@ -335,6 +349,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'pelican-kipos',
+    imageAlt:
+      'A shaded courtyard cafe in Lindos, Rhodes — the kind of spot this is, not the place itself',
     name: 'Pelican Kipos',
     kind: 'cafe',
     town: 'fira',
@@ -346,6 +362,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'mama-thira',
+    imageAlt:
+      'The Firostefani caldera walkway at sunset, with Mama Thira on the left',
     name: 'Mama Thira Taverna',
     kind: 'food',
     town: 'firostefani',
@@ -356,6 +374,8 @@ export const FIRA: Place[] = [
   },
   {
     id: 'irinis',
+    imageAlt:
+      'A traditional Greek kafenio on a village square. Not Irini’s itself',
     name: "Irini's Cafe",
     kind: 'cafe',
     town: 'fira',

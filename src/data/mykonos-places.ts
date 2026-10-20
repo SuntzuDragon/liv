@@ -74,6 +74,8 @@ export const MYKONOS_SIGHTS: Place[] = [
   },
   {
     id: 'rarity-gallery',
+    imageAlt:
+      'A white-walled contemporary gallery room. Not Rarity itself',
     name: 'Rarity Gallery',
     kind: 'shop',
     town: 'chora',
@@ -85,6 +87,8 @@ export const MYKONOS_SIGHTS: Place[] = [
   },
   {
     id: 'parthenis',
+    imageAlt:
+      'Folded loose-weave linen — the kind of thing this shop sells',
     name: 'Parthenis',
     kind: 'shop',
     town: 'chora',
@@ -97,6 +101,8 @@ export const MYKONOS_SIGHTS: Place[] = [
 export const MYKONOS_FOOD: Place[] = [
   {
     id: 'gioras',
+    imageAlt:
+      'Flatbread baking in a traditional wood-fired oven. Not Gioras itself',
     name: 'Gioras Bakery',
     greek: 'Φούρνος Γιώρας',
     kind: 'cafe',

@@ -61,6 +61,26 @@ const ALIAS: Record<string, string> = {
   bougainvillea: 'santorini-alley-bougainvillea-1',
   'blue-dome': 'blue-dome-detail-1',
 
+  // Museums and galleries. Several of these are the museum's own collection
+  // rather than its building — a truthful way to show what is inside.
+  'naval-museum': 'naval-museum-1',
+  'prehistoric-thera': 'prehistoric-thera-1',
+  'archaeological-museum': 'archaeological-museum-1',
+  'megaro-gyzi': 'megaro-gyzi-1',
+  lalaounis: 'lalaounis-1',
+
+  // Food. Mostly representative of what you'd eat, not the premises.
+  luckys: 'luckys-2',
+  obelix: 'obelix-1',
+  'pelican-kipos': 'pelican-kipos-2',
+  'mama-thira': 'mama-thira-2',
+  irinis: 'irinis-1',
+  gioras: 'gioras-1',
+
+  // Mykonos shops
+  'rarity-gallery': 'rarity-gallery-1',
+  parthenis: 'parthenis-1',
+
   // Mykonos
   'little-venice': 'mykonos-little-venice-1',
   paraportiani: 'mykonos-paraportiani-1',

@@ -35,6 +35,12 @@ export interface Place {
   url?: string;
   /** Harvested from the Apple Maps share sheet; unlocks the real listing. */
   placeId?: string;
+  /**
+   * What the photo actually shows. Required when the image is representative
+   * rather than a picture of this place — a generic gyros must not be
+   * described to a screen reader as "Lucky's Souvlakis".
+   */
+  imageAlt?: string;
   /** Short flags rendered as chips: 'cash only', '280 steps down', … */
   tags?: string[];
   /** Liv-should-not-miss-this. Gets the sun-coloured treatment. */
