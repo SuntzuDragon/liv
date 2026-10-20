@@ -1,5 +1,11 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    /* Strictness. The site is almost entirely data files indexed by components,
+       which is exactly where unchecked index access hides bugs. */
+    "noUncheckedIndexedAccess": true,
+    "verbatimModuleSyntax": true
+  },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "assets-pool"]
 }

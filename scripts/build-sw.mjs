@@ -14,6 +14,20 @@ import { join, relative, sep } from 'node:path';
 
 const DIST = new URL('../dist/', import.meta.url).pathname;
 
+/**
+ * Preflight. The precache manifest is the one artifact where a silent omission
+ * stays invisible until she is offline on an island — so a missing page fails
+ * the build here rather than failing her there.
+ */
+const REQUIRED = ['index.html', '404.html', 'santorini/index.html', 'mykonos/index.html'];
+for (const rel of REQUIRED) {
+  try {
+    await stat(join(DIST, rel));
+  } catch {
+    throw new Error(`build-sw: expected ${rel} in dist/ — did astro build run?`);
+  }
+}
+
 /** Consumed by Cloudflare, or must never be served from cache. */
 const EXCLUDE = new Set(['sw.js', '_headers', '_redirects', 'robots.txt']);
 

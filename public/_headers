@@ -1,3 +1,7 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
 # Workers static assets default to `max-age=0, must-revalidate` and do NOT
 # give hashed filenames a long cache on their own.
 /_astro/*
