@@ -17,44 +17,68 @@ const { items } = Astro.props;
 </nav>
 
 <script is:inline>
+  // Deferred: this component renders above <main>, so the sections it watches
+  // do not exist yet while the parser is here.
   (() => {
-    const pills = [...document.querySelectorAll('[data-spy]')];
-    if (!pills.length || !('IntersectionObserver' in window)) return;
+    const start = () => {
+      const pills = [...document.querySelectorAll('[data-spy]')];
+      if (!pills.length) return;
 
-    const byId = new Map(pills.map((p) => [p.dataset.spy, p]));
-    const targets = [...byId.keys()]
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
-    if (!targets.length) return;
+      const byId = new Map(pills.map((p) => [p.dataset.spy, p]));
+      const targets = [...byId.keys()]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+      if (!targets.length) return;
 
-    let current = null;
-    const setActive = (id) => {
-      if (id === current) return;
-      current = id;
-      for (const [pid, pill] of byId) {
-        const on = pid === id;
-        pill.classList.toggle('is-active', on);
-        if (on) pill.setAttribute('aria-current', 'true');
-        else pill.removeAttribute('aria-current');
-      }
-      // Keep the active pill in view in the horizontally-scrolling bar.
-      const pill = byId.get(id);
-      pill?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-    };
+      let current = null;
+      const apply = (id) => {
+        if (id === current) return;
+        current = id;
+        for (const [pid, pill] of byId) {
+          const on = pid === id;
+          pill.classList.toggle('is-active', on);
+          if (on) pill.setAttribute('aria-current', 'true');
+          else pill.removeAttribute('aria-current');
+        }
+        // Keep the active pill in view in the horizontally-scrolling bar.
+        byId.get(id)?.scrollIntoView({ block: 'nearest', inline: 'center' });
+      };
 
-    // Topmost section whose start is above the nav line wins.
-    const io = new IntersectionObserver(
-      () => {
-        const line = 100;
-        let best = null;
+      // "Which section owns the top of the screen" — measured against a line a
+      // little below the nav, not the nav itself, so that a section jumped to
+      // by anchor (which lands below the nav) reads as the current one.
+      const compute = () => {
+        const line = Math.max(140, innerHeight * 0.3);
+        let best = targets[0].id;
         for (const t of targets) {
           if (t.getBoundingClientRect().top <= line) best = t.id;
         }
-        setActive(best ?? targets[0].id);
-      },
-      { rootMargin: '-96px 0px -70% 0px', threshold: [0, 0.01, 0.5, 1] },
-    );
-    for (const t of targets) io.observe(t);
+        apply(best);
+      };
+
+      // Driven by scroll rather than only by observer thresholds, which can
+      // leave the highlight stale between crossings. rAF-throttled, and iOS
+      // pauses rAF during momentum scroll so it simply settles at the end.
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          compute();
+        });
+      };
+
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll, { passive: true });
+      compute();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start, { once: true });
+    } else {
+      start();
+    }
   })();
 </script>
 

@@ -28,11 +28,10 @@ const { places } = Astro.props;
   .grid > li {
     /* Cards lean; the extra inline padding stops a tilted corner clipping. */
     padding-inline: 2px;
-    /* Per card, not per section: Safari skips paint for the ones off-screen and
-       can release their decoded photos, which is what stops it dropping images
-       it then never re-decodes. `auto` means the real height is remembered after
-       first render, so scrolling stays stable. */
-    content-visibility: auto;
-    contain-intrinsic-size: auto 26rem;
+    /* Deliberately NO content-visibility here. It estimates each card's height
+       until first paint, so a jump from the section nav to a heading far down
+       the page lands in the wrong place. The thumbnails are 440px, roughly
+       0.6MB decoded each, so the memory it would save isn't worth a broken
+       anchor. loading="lazy" still keeps the live decoded set small. */
   }
 </style>
