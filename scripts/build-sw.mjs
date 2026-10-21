@@ -74,6 +74,21 @@ for (const f of html) {
   }
 }
 
+/**
+ * When a picture offers both an AVIF and a WebP candidate for the same source,
+ * only the AVIF is worth precaching: the offline case is her phone, and iOS
+ * Safari has taken AVIF since 16. The WebP twins stay in dist and stay in the
+ * HTML, so any browser online still resolves them - they just stop costing
+ * ~1.3MB of a bundle that has to come down over ship wifi.
+ *
+ * Scoped deliberately to sources that HAVE an AVIF sibling. The place cards are
+ * WebP-only, and dropping those would take the whole gallery offline.
+ */
+const stem = (url) => url.replace(/_[A-Za-z0-9-]+\.(avif|webp)$/, '');
+const avifStems = new Set();
+for (const url of inSrcset) if (url.endsWith('.avif')) avifStems.add(stem(url));
+const supersededByAvif = (url) => url.endsWith('.webp') && avifStems.has(stem(url));
+
 const pruned = [];
 for (const f of files) {
   const rel = '/' + relative(DIST, f).split(sep).join('/');
@@ -102,6 +117,7 @@ for (const f of files) {
     const url = '/' + rel;
     // Skip the unfetched <img src> fallbacks described above.
     if (url.startsWith('/_astro/') && !inSrcset.has(url)) continue;
+    if (supersededByAvif(url)) continue;
     media.add(url);
   } else {
     continue;

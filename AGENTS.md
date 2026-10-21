@@ -56,6 +56,12 @@ Each of these was expensive to find. Don't undo them.
   and reflows the page mid-scroll.
 - Source photos are capped at 2000px on ingest and served much smaller. Decoded
   cost is `width × height × 4` regardless of file size.
+- **Heroes stay one image at every aspect ratio.** An art-directed portrait crop
+  behind a `max-aspect-ratio` switch was tried and rejected twice over: the
+  Mykonos crop loses two of the five windmills, and the breakpoint is a cliff
+  that lands on the wrong side of itself on an ultrawide or a tall foldable.
+  The hero box is tall, so a 3:2 photo shows about half its width on a phone -
+  that waste is the accepted price of never breaking at an odd size.
 
 ## Design
 
@@ -138,6 +144,14 @@ admitted gap. Places carry an `unverified` flag and the card hedges honestly
 rather than stating something we could not confirm. Several places that every
 guidebook still lists have closed or moved. The current list and the reasoning
 behind each is kept in my own notes, not here.
+
+## Checking your work
+
+`npm run verify` - it runs `astro check` then the build, and `&&` stops at the
+first failure so the error summary is the last thing on screen. Read the whole
+tail of it. Truncating the output has already let a duplicate object key reach
+`main`: the error count sits *above* the warning and hint counts, so a
+`tail -3` shows a reassuring "0 warnings, 0 hints" while hiding "1 error".
 
 ## Deploying
 
