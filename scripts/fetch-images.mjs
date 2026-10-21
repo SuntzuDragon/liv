@@ -112,10 +112,31 @@ for (const e of entries) {
   }
 }
 
-await writeFile(
-  join(ROOT, 'src/data/credits.json'),
-  JSON.stringify(credits, null, 2) + '\n',
-  'utf8',
-);
+/**
+ * Merge, never replace. This script is normally run with a small manifest of
+ * whatever is being added that day, and writing `credits` straight out silently
+ * dropped every photographer not in that manifest - it took the file from 98
+ * entries to 7, and nothing failed or warned. Existing ids win, so re-running a
+ * manifest never duplicates or rewrites a credit already on record.
+ */
+const creditsPath = join(ROOT, 'src/data/credits.json');
+let existing = [];
+try {
+  existing = JSON.parse(await readFile(creditsPath, 'utf8'));
+} catch {
+  /* first run, or the file is gone */
+}
+const byId = new Map(existing.map((c) => [c.id, c]));
+let added = 0;
+for (const c of credits) {
+  if (!byId.has(c.id)) {
+    byId.set(c.id, c);
+    added += 1;
+  }
+}
+await writeFile(creditsPath, JSON.stringify([...byId.values()], null, 2) + '\n', 'utf8');
 
-console.log(`\n${ok} downloaded, ${failed} failed. Credits written to src/data/credits.json`);
+console.log(
+  `\n${ok} downloaded, ${failed} failed. ` +
+    `Credits: ${added} added, ${byId.size} on record.`,
+);
