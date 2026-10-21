@@ -31,12 +31,6 @@ export const FACTS: Fact[] = [
     tone: 'warm',
   },
   {
-    label: 'Shoes',
-    value: 'Grippy',
-    note: 'Polished marble and smooth cobble, slick even bone dry',
-    tone: 'cool',
-  },
-  {
     label: 'Water',
     value: 'Bottled',
     note: 'Tap water is desalinated and tastes it',

@@ -76,6 +76,16 @@ real Greek street addresses. Each place also offers a Google link, because
 Apple's web Maps does not hand off to an app on Android. Map links open in a
 new tab so the guide is never lost behind Maps.
 
+## Editing content
+
+Blurbs and other copy live as **single string literals**, however long the line
+gets. Do not wrap them into `'...' + '...'` concatenations to keep lines short.
+That was tried, and it silently produced glued words ("aroundnoon",
+"cheapestthing") whenever a join lost its space - which nothing catches,
+because the concatenation is valid TypeScript either way and the build is
+perfectly happy. One long line is uglier in the editor and correct in the
+browser.
+
 ## Voice
 
 The copy is written to sound like Ian, not like a travel site. This was derived
