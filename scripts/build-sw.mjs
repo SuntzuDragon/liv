@@ -54,9 +54,24 @@ let files = (await walk(DIST)).sort();
  */
 const html = files.filter((f) => f.endsWith('.html'));
 const referenced = new Set();
+/**
+ * Images a browser will actually request. Every <img> also carries a `src`
+ * fallback that is NOT one of its srcset candidates, and no browser that
+ * understands srcset ever fetches it - on this site that was ~740KB of
+ * precache for bytes nobody downloads. They stay in dist (the HTML points at
+ * them, and an ancient browser online would still resolve them); they just
+ * don't belong in the offline cache.
+ */
+const inSrcset = new Set();
 for (const f of html) {
   const text = await readFile(f, 'utf8');
   for (const m of text.matchAll(/\/_astro\/[A-Za-z0-9._-]+/g)) referenced.add(m[0]);
+  for (const m of text.matchAll(/srcset="([^"]+)"/g)) {
+    for (const cand of m[1].split(',')) {
+      const url = cand.trim().split(/\s+/)[0];
+      if (url.startsWith('/_astro/')) inSrcset.add(url);
+    }
+  }
 }
 
 const pruned = [];
@@ -84,7 +99,10 @@ for (const f of files) {
     else if (rel.endsWith('/index.html')) shell.add('/' + rel.slice(0, -'/index.html'.length));
     else shell.add('/' + rel);
   } else if (MEDIA_EXT.has(ext)) {
-    media.add('/' + rel);
+    const url = '/' + rel;
+    // Skip the unfetched <img src> fallbacks described above.
+    if (url.startsWith('/_astro/') && !inSrcset.has(url)) continue;
+    media.add(url);
   } else {
     continue;
   }
