@@ -70,6 +70,33 @@ Each of these was expensive to find. Don't undo them.
   is needed.
 - Fonts are self-hosted in `public/fonts/` so nothing needs a CDN at sea. Inter
   carries the Greek subset - the phrase cards need it.
+- **The shipped fonts are subset, and the full originals live in `fonts-src/`.**
+  Regenerate with `python3 scripts/subset-fonts.py` (needs
+  `pip install fonttools brotli`). It is a manual step on purpose, not part of
+  the build.
+
+  **You almost certainly do not need to re-run it.** The subset deliberately
+  carries far more than the site uses, so writing new copy - including new Greek
+  phrases - never requires a re-run. What is already available:
+
+  | Range | Covers |
+  |---|---|
+  | U+0020-007E | printable ASCII |
+  | U+00A0-00FF | Latin-1: accents, °, £ |
+  | U+0100-017F | Latin Extended-A |
+  | U+0370-03FF | **the whole Greek block** |
+  | U+1F00-1FFF | polytonic Greek |
+  | U+2000-206F | curly quotes, ellipsis, dashes |
+  | U+20A0-20BF | currency symbols |
+  | U+2190-21FF, U+2600-26FF | arrows, misc symbols |
+
+  Re-run it only to change that coverage, or if a font file itself is replaced.
+  It saves 71KB (-38%), about half of which is pinning Fraunces' `SOFT` and
+  `WONK` axes - `global.css` sets both to fixed values, so the rest of those
+  axes was dead weight. Each `wght` range is copied from that font's
+  `@font-face` in `src/styles/fonts.css`; pinning narrower would silently clamp
+  a weight the CSS may still ask for. **Never subset from `public/fonts/`** -
+  a subset cannot be widened from itself, the glyphs are gone.
 - Tilt angles stay small (around 1°) and only ever apply to images.
 
 ## Maps
