@@ -147,7 +147,8 @@ export const OIA: Place[] = [
     star: true,
     blurb:
       '"Best coffee in Oia" is the claim and it’s probs true. Also the cheapest ' +
-      'thing on this page. Opens at 06:00. Small, and it fills up.',
+      'thing on this page. Opens at 06:00. Small, and it fills up. A splendid ' +
+      'start.',
     hours: 'From 06:00',
     price: '€',
     coords: { lat: 36.46793, lng: 25.37943 },
@@ -160,8 +161,9 @@ export const OIA: Place[] = [
     kind: 'cafe',
     town: 'oia',
     blurb:
-      'Relaxed, right on the main walkway, caldera straight out in front of you. ' +
-      'You’re paying for the view - espresso €4.50, cappuccino €7. Worth it once.',
+      'Relaxed, right on the main walkway, caldera straight out in front of ' +
+      'you. You’re paying for the view - espresso €4.50, cappuccino €7. Worth ' +
+      'it precisely once.',
     hours: '08:00-23:30',
     price: 'Coffee €4.50-7',
     coords: { lat: 36.46194, lng: 25.37777 },
@@ -177,9 +179,10 @@ export const AMMOUDI: Place[] = [
     town: 'ammoudi',
     star: true,
     blurb:
-      'A converted stone warehouse right on the water, and the reason most people ' +
-      'go down. Fish is sold by weight, so ask the price per kilo and have it ' +
-      'weighed before you order. Otherwise the bill is a surprise.',
+      'Let’s take a gander at the fish. A converted stone warehouse right on ' +
+      'the water, and the reason most people go down. It’s sold by weight, so ' +
+      'ask the price per kilo and have it weighed before you order. Otherwise ' +
+      'the bill is a surprise.',
     hours: '11:00-23:00',
     price: '€25-45pp',
     coords: { lat: 36.46062, lng: 25.37023 },
@@ -227,10 +230,10 @@ export const FIRA: Place[] = [
     town: 'fira',
     star: true,
     blurb:
-      'The Akrotiri stuff - the wall paintings and the gold ibex from the "Minoan ' +
-      'Pompeii". If you only do one museum this is the one, and it’s indoors and ' +
-      'air conditioned. Ten mins south of the cable car, not in the shopping ' +
-      'streets.',
+      'The Akrotiri stuff - the wall paintings and the gold ibex from the ' +
+      '"Minoan Pompeii". If you only do one museum this is the one, and it’s ' +
+      'indoors and air conditioned. Genuinely excellent. Ten mins south of the ' +
+      'shopping streets.',
     hours: '08:30-15:30, closed Tue',
     price: '€10 / €5',
     coords: { lat: 36.4165, lng: 25.4326 },
@@ -260,9 +263,9 @@ export const FIRA: Place[] = [
     kind: 'museum',
     town: 'fira',
     blurb:
-      'A 17th-century mansion in the Catholic quarter. Engravings, photos of the ' +
-      'island before and after the 1956 earthquake, and almost nobody in it. Best ' +
-      'value hour in Fira at €3.',
+      'A 17th-century mansion in the Catholic quarter. Engravings, photos of ' +
+      'the island before and after the 1956 earthquake, and almost nobody in ' +
+      'it. €3, which is frankly a bargain.',
     hours: 'Mon-Sat 10:00-16:00',
     price: '€3',
     coords: { lat: 36.42082, lng: 25.43096 },
@@ -300,9 +303,9 @@ export const FIRA: Place[] = [
     kind: 'shop',
     town: 'fira',
     blurb:
-      'Ypapantis Street, a whole lane of jewellers along the caldera edge. Worth ' +
-      'walking even if you buy nothing. Prices climb and quality gets patchier ' +
-      'the further north you go.',
+      'Ypapantis Street, a whole lane of jewellers along the caldera edge. ' +
+      'Worth a wander even if you buy nothing. Prices climb and quality gets ' +
+      'patchier the further north you go.',
     coords: { lat: 36.41763, lng: 25.4322 },
     tags: ['Browse, then decide'],
   },

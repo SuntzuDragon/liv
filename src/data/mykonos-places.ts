@@ -128,8 +128,8 @@ export const MYKONOS_FOOD: Place[] = [
     blurb:
       'Oldest working bread oven on the island. 18th century, wood-fired, same ' +
       'family for over two hundred years. Underground, no street sign, down a ' +
-      'back alley. Get the spanakopita, and the cheese-and-honey pie if you want ' +
-      'to try melopita. Cash.',
+      'back alley. A magnificent lil room. Get the spanakopita, and the ' +
+      'cheese-and-honey pie if you want to try melopita. Cash.',
     price: 'Cheap, for Mykonos',
     coords: { lat: 37.44444, lng: 25.32754 },
     tags: ['Cash only', 'No sign - look for the alley'],
@@ -166,7 +166,7 @@ export const MYKONOS_FOOD: Place[] = [
     blurb:
       'A hundred metres from the water, and the most reliable place to actually ' +
       'order the local stuff. Mykonian sausage, and ask for kopanisti and louza ' +
-      'by name.',
+      'by name. Order boldly.',
     price: '€€',
     coords: { lat: 37.44716, lng: 25.32719 },
     tags: ['Order kopanisti'],
