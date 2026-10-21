@@ -16,9 +16,9 @@ export const OIA: Place[] = [
     star: true,
     blurb:
       
-      'The shot everyone comes for. Walk east along the main lane about 150m past' +
+      'The shot everyone comes for. Walk east along the main lane about 150m past ' +
       'where Atlantis Books used to be, then drop down the side lane by the' +
-      'Aspaki hotel. The spot is past the churches, looking back west at them.' +
+      'Aspaki hotel. The spot is past the churches, looking back west at them. ' +
       'Morning light is way better, they’re backlit at sunset.',
     hours: 'Always open',
     price: 'Free',
@@ -34,7 +34,7 @@ export const OIA: Place[] = [
     star: true,
     blurb:
       
-      'A ruined Venetian lookout on the tip of the headland, built out of lava' +
+      'A ruined Venetian lookout on the tip of the headland, built out of lava ' +
       'rock. No gate, no ticket, no roof. Just the best open view west down the' +
       'caldera, and where the whole island shows up to watch the sun go down.',
     hours: 'Always open',
@@ -49,7 +49,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'Restored, up on the ridge above Ammoudi, a minute past the castle. They’re' +
+      'Restored, up on the ridge above Ammoudi, a minute past the castle. They’re ' +
       'private holiday lets now so you can walk right up and photograph them,' +
       'just not go inside.',
     hours: 'Always open',
@@ -64,9 +64,9 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'The blue-domed church on the main square, thirty seconds from the bus' +
+      'The blue-domed church on the main square, thirty seconds from the bus ' +
       'stop. Rebuilt in 1965 after the 1956 earthquake took out the original, so' +
-      'it’s way more modern than it looks. Shoulders and knees covered if you go' +
+      'it’s way more modern than it looks. Shoulders and knees covered if you go ' +
       'in.',
     price: 'Free',
     coords: { lat: 36.46213, lng: 25.37626 },
@@ -81,7 +81,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'In an old sea captain’s mansion: figureheads, sea chests, sextants, model' +
+      'In an old sea captain’s mansion: figureheads, sea chests, sextants, model ' +
       'ships, watercolours. Small, and about forty mins well spent if the lane' +
       'outside is heaving.',
     hours: 'Usually 10:00-14:00 & 17:00-20:00, closed Tue',
@@ -97,7 +97,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'The lanes off the main walkway are where Oia is actually pleasant. One' +
+      'The lanes off the main walkway are where Oia is actually pleasant. One ' +
       'turn inland and the crowd just stops. There’s nothing to find, that’s the' +
       'point.',
     hours: 'Always',
@@ -113,7 +113,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'Art, antiques and genuinely odd lil objects rather than souvenirs. The' +
+      'Art, antiques and genuinely odd lil objects rather than souvenirs. The ' +
       'kind of shop where a 1980s brass bottle opener is €20 and you want it' +
       'anyway. On the central square.',
     hours: '10:00-19:00',
@@ -127,7 +127,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'Started in 1986 by the sculptor Stavros Galanopoulos, still run by his' +
+      'Started in 1986 by the sculptor Stavros Galanopoulos, still run by his ' +
       'family. Originals and prints, on the main walkway at Armenoi.',
     coords: { lat: 36.46165, lng: 25.37482 },
     url: 'https://galanopo28740.cmdwebsites.com',
@@ -140,7 +140,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'A tiny shop right on the main walkway with a rly good reputation, 5.0' +
+      'A tiny shop right on the main walkway with a rly good reputation, 5.0 ' +
       'across a hundred-odd reviews. Getting offered a discount without asking is' +
       'normal here, not a trick.',
     hours: '10:00-21:00',
@@ -156,7 +156,7 @@ export const OIA: Place[] = [
     star: true,
     blurb:
       
-      '"Best coffee in Oia" is the claim and it’s probs true. Also the cheapest' +
+      '"Best coffee in Oia" is the claim and it’s probs true. Also the cheapest ' +
       'thing on this page. Opens at 06:00. Small, and it fills up.',
     hours: 'From 06:00',
     price: '€',
@@ -171,7 +171,7 @@ export const OIA: Place[] = [
     town: 'oia',
     blurb:
       
-      'Relaxed, right on the main walkway, caldera straight out in front of you.' +
+      'Relaxed, right on the main walkway, caldera straight out in front of you. ' +
       'You’re paying for the view - espresso €4.50, cappuccino €7. Worth it once.',
     hours: '08:00-23:30',
     price: 'Coffee €4.50-7',
@@ -189,7 +189,7 @@ export const AMMOUDI: Place[] = [
     star: true,
     blurb:
       
-      'A converted stone warehouse right on the water, and the reason most people' +
+      'A converted stone warehouse right on the water, and the reason most people ' +
       'go down. Fish is sold by weight, so ask the price per kilo and have it' +
       'weighed before you order. Otherwise the bill is a surprise.',
     hours: '11:00-23:00',
@@ -205,7 +205,7 @@ export const AMMOUDI: Place[] = [
     town: 'ammoudi',
     blurb:
       
-      'About 280 switchbacks starting below the castle. Ten to fifteen mins down,' +
+      'About 280 switchbacks starting below the castle. Ten to fifteen mins down, ' +
       'twenty to thirty back up with zero shade. It’s a working donkey path so' +
       'watch your footing. Walk down, then take the €10 taxi back up.',
     price: 'Free down, €10 taxi up',
@@ -224,9 +224,9 @@ export const FIRA: Place[] = [
     star: true,
     blurb:
       
-      'The blue dome with three bells stacked above it, fifteen mins north along' +
+      'The blue dome with three bells stacked above it, fifteen mins north along ' +
       'the caldera path. Built 1757. It goes by two names and Agioi Theodoroi is' +
-      'the same church, not a different one. Go up the road behind it for the' +
+      'the same church, not a different one. Go up the road behind it for the ' +
       'classic photo. The inside is normally shut.',
     price: 'Free',
     coords: { lat: 36.42333, lng: 25.42855 },
@@ -242,9 +242,9 @@ export const FIRA: Place[] = [
     star: true,
     blurb:
       
-      'The Akrotiri stuff - the wall paintings and the gold ibex from the "Minoan' +
+      'The Akrotiri stuff - the wall paintings and the gold ibex from the "Minoan ' +
       'Pompeii". If you only do one museum this is the one, and it’s indoors and' +
-      'air conditioned. Ten mins south of the cable car, not in the shopping' +
+      'air conditioned. Ten mins south of the cable car, not in the shopping ' +
       'streets.',
     hours: '08:30-15:30, closed Tue',
     price: '€10 / €5',
@@ -260,7 +260,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Geometric through Roman rather than the famous frescoes, so less striking' +
+      'Geometric through Roman rather than the famous frescoes, so less striking ' +
       'than the Prehistoric one. But it’s right by the cable car station, which' +
       'makes it the easy one to fit in.',
     hours: '08:30-15:30, closed Mon (Sat to 21:00)',
@@ -277,7 +277,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'A 17th-century mansion in the Catholic quarter. Engravings, photos of the' +
+      'A 17th-century mansion in the Catholic quarter. Engravings, photos of the ' +
       'island before and after the 1956 earthquake, and almost nobody in it. Best' +
       'value hour in Fira at €3.',
     hours: 'Mon-Sat 10:00-16:00',
@@ -293,7 +293,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'The big white one with the arched terrace on the caldera edge at the south' +
+      'The big white one with the arched terrace on the caldera edge at the south ' +
       'end of town. Free, and the terrace out front is one of the easiest good' +
       'views in Fira.',
     price: 'Free',
@@ -306,7 +306,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Up in the old Catholic quarter - pale yellow and pink with a bell tower,' +
+      'Up in the old Catholic quarter - pale yellow and pink with a bell tower, ' +
       'completely different mood from the Orthodox one. The quarter around it is' +
       'the prettiest part of Fira to wander.',
     price: 'Free',
@@ -320,7 +320,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Ypapantis Street, a whole lane of jewellers along the caldera edge. Worth' +
+      'Ypapantis Street, a whole lane of jewellers along the caldera edge. Worth ' +
       'walking even if you buy nothing. Prices climb and quality gets patchier' +
       'the further north you go.',
     coords: { lat: 36.41763, lng: 25.4322 },
@@ -334,9 +334,9 @@ export const FIRA: Place[] = [
     star: true,
     blurb:
       
-      'The famous one, and it’s not in Oia anymore. Moved to Firostefani in 2024,' +
+      'The famous one, and it’s not in Oia anymore. Moved to Firostefani in 2024, ' +
       'at the foot of the Nomikos Cultural Centre, so it’s a Fira-side stop on' +
-      'the caldera walk now. Hand-written shelf recommendations, new and' +
+      'the caldera walk now. Hand-written shelf recommendations, new and ' +
       'second-hand, some rare.',
     hours: 'Roughly midday to sunset',
     coords: { lat: 36.42167, lng: 25.42859 },
@@ -352,9 +352,9 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'The famous Greek jeweller, on Ypapantis just north of the Orthodox' +
+      'The famous Greek jeweller, on Ypapantis just north of the Orthodox ' +
       'cathedral. Archaeological-revival pieces copied off Minoan and Byzantine' +
-      'originals. This is the island’s actual luxury end - lovely to look at, no' +
+      'originals. This is the island’s actual luxury end - lovely to look at, no ' +
       'prices in the window.',
     coords: { lat: 36.41725, lng: 25.4317 },
     url: 'https://www.lalaounis.com/',
@@ -368,7 +368,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Yorgos Kypris’s gallery on Gold Street. Glass and metal fish, shoals and' +
+      'Yorgos Kypris’s gallery on Gold Street. Glass and metal fish, shoals and ' +
       'birds, some of it wearable. Genuinely unlike the rest of the street.',
     coords: { lat: 36.41711, lng: 25.43171 },
     url: 'https://matiartgallery.com/',
@@ -382,7 +382,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Oldest gallery on the island, in a converted flour mill just north on' +
+      'Oldest gallery on the island, in a converted flour mill just north on ' +
       'Ypapantis. Paintings by Christoforos Asimis and sculpture by Eleni' +
       'Kolaitou.',
     coords: { lat: 36.41732, lng: 25.4317 },
@@ -397,7 +397,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Beads carved out of lava, near the Archaeological Museum. Worth a look if' +
+      'Beads carved out of lava, near the Archaeological Museum. Worth a look if ' +
       'you pass it.',
     coords: { lat: 36.41632, lng: 25.4323 },
     unverified: true,
@@ -412,7 +412,7 @@ export const FIRA: Place[] = [
     star: true,
     blurb:
       
-      'Cheap, fast and rly good. No view, no ceremony, €4-6 and you eat it' +
+      'Cheap, fast and rly good. No view, no ceremony, €4-6 and you eat it ' +
       'standing up. Correct lunch when time is the scarce thing.',
     price: 'Gyros €4-6',
     coords: { lat: 36.41727, lng: 25.43242 },
@@ -427,7 +427,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'Behind the main square in the Fabrika area, where people who live here' +
+      'Behind the main square in the Fabrika area, where people who live here ' +
       'actually eat. Gyros €5-9. The website is Greek only, which tells you most' +
       'of what you need to know.',
     price: '€5-9',
@@ -459,7 +459,7 @@ export const FIRA: Place[] = [
     town: 'firostefani',
     blurb:
       
-      'In Firostefani near the Three Bells, with the caldera view. Go here' +
+      'In Firostefani near the Three Bells, with the caldera view. Go here ' +
       'instead of Galini Cafe, which half the internet still recommends - Galini' +
       'is a hotel now and doesn’t reopen until 2027.',
     coords: { lat: 36.42402, lng: 25.42839 },
@@ -474,7 +474,7 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       
-      'A small traditional Greek cafe on the way north out of town. Unfussy, and' +
+      'A small traditional Greek cafe on the way north out of town. Unfussy, and ' +
       'priced like somewhere locals actually drink.',
     coords: { lat: 36.42144, lng: 25.42905 },
   },
@@ -488,9 +488,9 @@ export const BEYOND: Place[] = [
     town: 'pyrgos',
     blurb:
       
-      'The caldera-view terrace everyone photographs, 4km south near Pyrgos. Tour' +
+      'The caldera-view terrace everyone photographs, 4km south near Pyrgos. Tour ' +
       '€14, flights €35 / €40 / €45, and only the €45 one has Vinsanto. Rows' +
-      'three and four can’t be reserved so there’s always a walk-up tier.' +
+      'three and four can’t be reserved so there’s always a walk-up tier. ' +
       'Realistically this costs you Oia.',
     price: 'Tour €14 · flights €35-45',
     coords: { lat: 36.38757, lng: 25.43651 },
