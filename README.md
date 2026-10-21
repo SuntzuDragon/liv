@@ -65,45 +65,19 @@ node scripts/fetch-images.mjs <manifest.json>
 
 ## Deploying - one-time setup
 
-### 1. DNS, and the game server server
+### 1. DNS
 
-`liv.ianmcbride.com` currently serves a game server server over an SRV record. The
-SRV record itself (`the service record`) is a different DNS name and coexists
-with a Worker at `liv` fine - SRV can't be proxied, so Cloudflare won't touch it.
+The site is attached to its hostname as a Worker **Custom Domain**, not a Route:
+a Route needs you to already own a proxied DNS record there, which is exactly
+what the Custom Domain creates for you. A Custom Domain cannot be created over
+an existing CNAME, so any pre-existing record at that hostname has to go first.
 
-**The problem is the SRV *target*.** If it points at `liv.ianmcbride.com`
-itself, attaching the Worker swaps that hostname's A record to Cloudflare's
-anycast IPs, and the Java client - which resolves the SRV target's A record -
-ends up at Cloudflare. Cloudflare's proxy only carries HTTP(S) ports and is an
-L7 HTTP proxy anyway, so game server's binary protocol dies regardless of port.
-
-Split the two services:
-
-| Type | Name | Content | Proxy |
-|---|---|---|---|
-| A | `mc` | the server's public IPv4 | **DNS only (grey)** |
-| SRV | `the service record` | prio 0, weight 5, port `<MC port>`, target `the game server host` | n/a |
-| SRV | `the service record` | prio 0, weight 5, port `<MC port>`, target `the game server host` | n/a |
-| Worker | `liv` | created automatically by the Custom Domain - don't hand-create | managed |
-
-Delete the existing A/CNAME at `liv.ianmcbride.com` first; a Custom Domain can't
-be created over an existing record.
-
-Caveats: SRV targets must be hostnames, never IPs (RFC 2782). **Bedrock ignores
-SRV entirely** - Bedrock players need `the game server host` plus the port. Some
-launchers skip the SRV lookup and fall back to the A record at `liv`, which is
-now Cloudflare, so **publish `the game server host` as the canonical address** and
-treat the `liv` SRV as back-compat.
-
-Verify:
-
-```sh
-dig +short SRV the service record   # -> 0 5 <port> the game server host.
-dig +short A the game server host                      # -> your real IP, NOT 104.x/172.6x
-dig +short A liv.ianmcbride.com                     # -> Cloudflare
-```
-
-`ping` does not honour SRV records, so a failed ping proves nothing.
+**Check what else lives on that hostname before touching it.** A hostname can
+carry non-HTTP service records that an A/CNAME change will break, because
+Cloudflare's proxy only carries HTTP(S) ports and is an L7 proxy regardless.
+Service records at `_service._proto.name` are a different DNS node and coexist
+fine - what breaks them is repointing or proxying the host their *target*
+resolves to.
 
 ### 2. GitHub secrets
 

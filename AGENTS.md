@@ -89,8 +89,8 @@ browser.
 ## Voice
 
 The copy is written to sound like Ian, not like a travel site. This was derived
-from ~18,900 of his own messages, so it is measured, not guessed. The full
-rules live in `~/repos/personal/ian-text-style/STYLE.md`.
+from a large sample of his own writing, so it is measured, not guessed. The
+full rules live outside this repo.
 
 Do:
 
@@ -111,7 +111,7 @@ Do:
 Never:
 
 - **Em dashes or en dashes.** Zero in the sample. This is the loudest tell.
-- **Semicolons.** One in 10,700 messages. (The `;` in `Πόσο κάνει;` is a Greek
+- **Semicolons.** Essentially never. (The `;` in `Πόσο κάνει;` is a Greek
   question mark, not a semicolon - leave it.)
 - Brochure adjectives: vibrant, bustling, charming, picturesque, quaint,
   idyllic, hidden gem, must-see, breathtaking, curated, nestled.
@@ -127,7 +127,7 @@ Never:
   copy that over-explains reads as condescending. If they'd figure it out
   standing there, cut it.
 
-One deliberate departure: his messages end without a period 87.7% of the time.
+One deliberate departure: he ends a short line without a period almost always.
 That works in a chat bubble and reads as broken in a paragraph, so prose here
 keeps its terminal punctuation.
 
@@ -136,14 +136,15 @@ keeps its terminal punctuation.
 The guides are used in the field, so a confidently wrong detail is worse than an
 admitted gap. Places carry an `unverified` flag and the card hedges honestly
 rather than stating something we could not confirm. Several places that every
-guidebook still lists have closed or moved - see `my own notes`
-for the current list and the reasoning behind each.
+guidebook still lists have closed or moved. The current list and the reasoning
+behind each is kept in my own notes, not here.
 
 ## Deploying
 
 `npx wrangler deploy`, or push to `main` and GitHub Actions does it.
 
-**`liv.ianmcbride.com` also hosts a game server server** via
-`SRV the service record → the game server host:the game port`. That works because the
-Java client resolves the SRV *before* any A lookup, and `home` is unproxied.
-Never add an A or CNAME at `liv` by hand, and never let `home` become proxied.
+**This hostname also carries an SRV record for a game server.** It keeps
+working because a client resolves the SRV *before* any A lookup, and the SRV
+target is a separate unproxied hostname. So: never hand-create an A or CNAME at
+this hostname, and never let the SRV target become proxied. Check the live DNS
+before changing anything here.
