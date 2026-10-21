@@ -89,7 +89,8 @@ browser.
 ## Voice
 
 The copy is written to sound like Ian, not like a travel site. This was derived
-from ~10,700 of his own messages, so it is measured, not guessed.
+from ~18,900 of his own messages, so it is measured, not guessed. The full
+rules live in `~/repos/personal/ian-text-style/STYLE.md`.
 
 Do:
 
@@ -101,6 +102,8 @@ Do:
 - Hedge in front, then state the thing plainly: "I think", "probs", "idk".
 - Sparing shorthand that he actually uses: `rly`, `probs`, `mins`, `lil`,
   `ofc`, `idk`, `tmrw`, `bc`.
+- **American spelling.** flashlight not torch, meters not metres, colors not
+  colours, jewelry not jewellery.
 - Criticise by understatement, never by verdict. "It's no SF museum", not
   "overrated" or "tourist trap".
 - Start a sentence with Also / But / And / Oh when it suits.
@@ -119,6 +122,10 @@ Never:
 - "not only ... but also", "whether you're X or Y", or any rhetorical
   scaffolding ("let's dive in", "in conclusion").
 - `lmao`, `smth`, `cuz`, `hehe` - wrong flavour of casual for him.
+- **Explaining what the reader already knows or could work out.** No "don't
+  forget to", "make sure you", "be aware that". Liv and her mum travel well;
+  copy that over-explains reads as condescending. If they'd figure it out
+  standing there, cut it.
 
 One deliberate departure: his messages end without a period 87.7% of the time.
 That works in a chat bubble and reads as broken in a paragraph, so prose here

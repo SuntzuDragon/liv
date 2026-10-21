@@ -70,7 +70,7 @@ export const OIA: Place[] = [
     kind: 'museum',
     town: 'oia',
     blurb:
-      'In an old sea captain’s mansion: figureheads, sea chests, sextants, model ships, watercolours. Quaint.',
+      'In an old sea captain’s mansion: figureheads, sea chests, sextants, model ships, watercolors. Quaint.',
     hours: '10:00-14:00 & 17:00-20:00, closed Tue',
     price: '€5',
     placeId: 'I562771093BF47055',

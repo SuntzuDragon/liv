@@ -114,7 +114,7 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      'A hundred metres from the water. Mykonian sausage, kopanisti and louza. Order boldly.',
+      'A hundred meters from the water. Mykonian sausage, kopanisti and louza. Order boldly.',
     price: '€€',
     placeId: 'I777A427EF5EF7F5',
     coords: { lat: 37.4472102, lng: 25.3272682 },

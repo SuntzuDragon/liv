@@ -43,7 +43,7 @@ export interface Place {
   imageAlt?: string;
   /** Short flags rendered as chips: 'cash only', '280 steps down', … */
   tags?: string[];
-  /** Liv-should-not-miss-this. Gets the sun-coloured treatment. */
+  /** Liv-should-not-miss-this. Gets the sun-colored treatment. */
   star?: boolean;
   /** Set when a detail could not be confirmed, so the page can hedge honestly. */
   unverified?: boolean;
