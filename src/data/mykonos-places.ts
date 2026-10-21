@@ -65,17 +65,6 @@ export const MYKONOS_SIGHTS: Place[] = [
     coords: { lat: 37.4471, lng: 25.32691 },
     tags: ['Best odds around midday'],
   },
-  {
-    id: 'folklore-museum',
-    name: 'Folklore Museum',
-    kind: 'museum',
-    town: 'chora',
-    blurb:
-      'In an 18th-century captain’s house seventy metres from where you land. Might be shut for the season - worth trying the door as you pass.',
-    price: '€5',
-    unverified: true,
-    coords: { lat: 37.44746, lng: 25.32594 },
-  },
 ];
 
 export const MYKONOS_FOOD: Place[] = [

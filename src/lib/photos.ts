@@ -87,7 +87,6 @@ const ALIAS: Record<string, string> = {
   'kato-mili': 'mykonos-windmills-3',
   'mykonos-alley': 'mykonos-alley-1',
   pelican: 'mykonos-harbour-1',
-  'folklore-museum': 'mykonos-white-house-1',
   'nice-n-easy': 'mykonos-little-venice-2',
   sakis: 'greek-gyros-1',
   kadena: 'greek-meze-1',
