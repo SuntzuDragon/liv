@@ -17,7 +17,7 @@ const islands = [
     hours: '07:00 - 22:00',
     imageId: 'santorini-card',
     blurb:
-      'Oia and Fira - the views, the shops worth going into, where to eat, and how to get up the cliff.',
+      'Oia and Fira. The views, the shops worth going into, and where to eat.',
     status: 'ready' as const,
   },
   {
@@ -28,7 +28,7 @@ const islands = [
     hours: '07:00 - 17:00',
     imageId: 'mykonos-card',
     blurb:
-      'The windmills, Little Venice, and the alleys you are supposed to get lost in. Shorter day - one town, all on foot.',
+      'The windmills, Little Venice, and the alleys you\'re supposed to get lost in. Shorter day, one town, all on foot.',
     status: 'ready' as const,
   },
 ];
@@ -36,14 +36,14 @@ const islands = [
 
 <Base
   title="Liv's Islands"
-  description="Santorini and Mykonos, worked out ahead of time. Made for Liv's Greek Isles sailing, 18-25 October 2026."
+  description="Santorini and Mykonos, worked out ahead of time. Made for Liv, October 2026."
   themeColor="#0d3a5c"
 >
   <Hero
     eyebrow={`${SHIP} · ${SAILING}`}
     title="Two islands,"
     accent="worked out ahead"
-    lede="Everything you'd want to know before you step off the tender - and it all still works with no signal."
+    lede="Everything worth knowing before you step off the boat. Works with no signal too."
     imageId="oia-hero"
     alt="White houses and blue domes stepping down the caldera cliff at Oia, Santorini"
   />
@@ -53,7 +53,7 @@ const islands = [
       id="islands"
       eyebrow="Start here"
       title="Where you're going"
-      lede="Both are tender ports, so you'll ride a small boat ashore. Tap an island."
+      lede="Tap an island."
     >
       <ul class="islands">
         {islands.map((is, i) => {
@@ -99,7 +99,7 @@ const islands = [
       tone="sunk"
       eyebrow="The whole week"
       title="Your sailing"
-      lede="Today is highlighted. ⛴ means you tender ashore rather than walk off."
+      lede="Today is highlighted. ⛴ means you ride a small boat in rather than walk off."
     >
       <Itinerary />
     </Section>

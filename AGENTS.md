@@ -76,6 +76,44 @@ real Greek street addresses. Each place also offers a Google link, because
 Apple's web Maps does not hand off to an app on Android. Map links open in a
 new tab so the guide is never lost behind Maps.
 
+## Voice
+
+The copy is written to sound like Ian, not like a travel site. This was derived
+from ~10,700 of his own messages, so it is measured, not guessed.
+
+Do:
+
+- Sentence case, normal contractions, curly apostrophes.
+- Short sentences. Fragments are fine. Median message length in the sample was
+  five words, so err shorter than feels right.
+- ` - ` (spaced hyphen) where a dash is wanted.
+- Quote someone else's claim rather than asserting it: "best coffee in Oia".
+- Hedge in front, then state the thing plainly: "I think", "probs", "idk".
+- Sparing shorthand that he actually uses: `rly`, `probs`, `mins`, `lil`,
+  `ofc`, `idk`, `tmrw`, `bc`.
+- Criticise by understatement, never by verdict. "It's no SF museum", not
+  "overrated" or "tourist trap".
+- Start a sentence with Also / But / And / Oh when it suits.
+
+Never:
+
+- **Em dashes or en dashes.** Zero in the sample. This is the loudest tell.
+- **Semicolons.** One in 10,700 messages. (The `;` in `Πόσο κάνει;` is a Greek
+  question mark, not a semicolon - leave it.)
+- Brochure adjectives: vibrant, bustling, charming, picturesque, quaint,
+  idyllic, hidden gem, must-see, breathtaking, curated, nestled.
+- Formal connectives: however, therefore, moreover, furthermore, that said,
+  additionally, ultimately, in terms of.
+- Consultant verbs: utilize, ensure, leverage, facilitate, elevate, embark,
+  unwind, indulge, delve.
+- "not only ... but also", "whether you're X or Y", or any rhetorical
+  scaffolding ("let's dive in", "in conclusion").
+- `lmao`, `smth`, `cuz`, `hehe` - wrong flavour of casual for him.
+
+One deliberate departure: his messages end without a period 87.7% of the time.
+That works in a chat bubble and reads as broken in a paragraph, so prose here
+keeps its terminal punctuation.
+
 ## Content accuracy
 
 The guides are used in the field, so a confidently wrong detail is worse than an

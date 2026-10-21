@@ -29,7 +29,7 @@ type Place = (typeof OIA)[number];
 
 <Base
   title="Santorini - Liv's Islands"
-  description="Oia and Fira on one cruise day: the views, the shops, the food, and how to get up the cliff. Wednesday 21 October 2026."
+  description="Oia and Fira in one day. The views, the shops worth going into, and where to eat. Wednesday 21 October 2026."
   themeColor="#0d3a5c"
   ogImage="/icon-512.png"
 >
@@ -38,7 +38,7 @@ type Place = (typeof OIA)[number];
     eyebrow="Wednesday 21 October · 07:00 - 22:00"
     title="Santorini"
     accent="fifteen hours"
-    lede={`Long enough to do Oia properly, come back for Fira, and still be standing on a wall at ${SUNSET} when the sun goes down. Most ships sail before that. Yours doesn't.`}
+    lede={`Long enough to do Oia properly, come back for Fira, and still be sitting on a wall at ${SUNSET} when the sun goes down. Most ships sail way before that. Yours doesn't.`}
     imageId="santorini-hero"
     alt="White houses stepping down the caldera cliff at Oia, a windmill above them"
   >
@@ -52,7 +52,7 @@ type Place = (typeof OIA)[number];
       id="day"
       eyebrow="At a glance"
       title="The numbers that matter"
-      lede="Screenshot this bit. It is the whole day in six tiles."
+      lede="Screenshot this bit."
     >
       <FactStrip facts={FACTS} />
 
@@ -63,7 +63,7 @@ type Place = (typeof OIA)[number];
       tone="sunk"
       eyebrow="Save these"
       title="Pins worth having"
-      lede="Tap one and it opens in Apple Maps. They work with no signal once this page is saved."
+      lede="Tap one and it opens in Apple Maps. Works with no signal once you've opened this page."
     >
       <PinList pins={TRANSPORT} />
     </Section>
@@ -72,7 +72,7 @@ type Place = (typeof OIA)[number];
       id="oia"
       eyebrow="Morning"
       title="Oia"
-      lede="Go early. The excursion coaches land between 10:00 and 11:00, and before that you get the whole thing in low warm light with room to stand."
+      lede="Go early if you can. The coaches land between 10:00 and 11:00, and before that you get the whole thing in low warm light with room to stand."
     >
       {OIA.length > 0 ? (
         <>
@@ -105,7 +105,7 @@ type Place = (typeof OIA)[number];
       tone="sky"
       eyebrow="Afternoon"
       title="Fira"
-      lede="More shade, more shops, more lunch, and you're already next to the cable car. The better afternoon town."
+      lede="More shade, more shops, more places to eat. The better afternoon town."
     >
       {FIRA.length > 0 ? (
         <>
@@ -136,14 +136,14 @@ type Place = (typeof OIA)[number];
       <div class="prose stack" data-reveal>
         <ul class="plain">
           <li>
-            <strong>Sun.</strong> 22°C feels mild, but the UV index is 5 and every
-            wall and paving slab on the island is white. People burn here in
-            October precisely because the air is cool. SPF 30-50, reapplied, and a
-            hat that survives wind.
+            <strong>Sun.</strong> 22°C feels mild but the UV is 5, and every wall
+            and paving slab on the island is white. People burn here in October
+            exactly because the air feels cool. Sunscreen, reapplied, and a hat
+            that survives wind.
           </li>
           <li>
-            <strong>Water.</strong> The tap water is desalinated and brackish.
-            Buy bottled, or fill bottles on the ship before you go.
+            <strong>Water.</strong> Tap water is desalinated and tastes it. Buy
+            bottled, or fill up on the ship before you go.
           </li>
           <li>
             <strong>Cards.</strong> Apple Pay works essentially everywhere -
@@ -151,8 +151,8 @@ type Place = (typeof OIA)[number];
             having a few small notes on you.
           </li>
           <li>
-            <strong>Tipping.</strong> Not obligatory. Rounding up, or 5-10% for
-            good table service, is plenty.
+            <strong>Tipping.</strong> Not expected. Rounding up, or 5-10% for good
+            table service, is plenty.
           </li>
         </ul>
       </div>
@@ -162,7 +162,7 @@ type Place = (typeof OIA)[number];
       id="greek"
       eyebrow="Useful"
       title="Enough Greek to be polite"
-      lede="The middle line is the one to say out loud. Nobody expects you to try, which is exactly why it lands."
+      lede="The middle line is the one to say out loud. Nobody expects you to try, which is the whole reason it lands."
     >
       <PhraseList phrases={PHRASES} />
 

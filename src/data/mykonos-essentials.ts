@@ -26,7 +26,7 @@ export const FACTS: Fact[] = [
   {
     label: 'A drink in Little Venice',
     value: '€10-18',
-    note: 'One street inland it is half that',
+    note: 'One street inland it\'s half that',
     tone: 'cool',
   },
 ];
@@ -36,28 +36,28 @@ export const SPECIALITIES = [
     name: 'Kopanisti',
     greek: 'κοπανιστή',
     what:
-      'The island’s own cheese and the thing to ask for by name - soft, peppery, properly pungent, and genuinely local. It turns up on meze plates rather than in shops.',
+      'The island’s own cheese and the thing to ask for by name. Soft, peppery, properly pungent. Turns up on meze plates rather than in shops.',
   },
   {
     name: 'Louza',
     greek: 'λούζα',
     what:
-      'Air-cured spiced pork loin, sliced thin. Mykonos’s great charcuterie, and the other half of the order when you ask for kopanisti.',
+      'Air-cured spiced pork loin, sliced thin. The other half of the order when you ask for kopanisti.',
   },
   {
     name: 'Melopita',
     greek: 'μελόπιτα',
     what:
-      'Honey and fresh-cheese pie, baked and served warm. Gioras bakery’s cheese-and-honey pie is the realistic way to try it.',
+      'Honey and fresh cheese pie, baked, served warm. Gioras\' cheese-and-honey pie is the realistic way to try it.',
   },
   {
     name: 'Amygdalota',
     greek: 'αμυγδαλωτά',
-    what: 'Soft almond-paste sweets under icing sugar. Gioras again, or any decent bakery.',
+    what: 'Soft almond paste sweets under icing sugar. Gioras again, or any decent bakery.',
   },
   {
     name: 'Freddo espresso',
     what:
-      'The Greek default. Expect €4-6 inland and considerably more if you drink it looking at the water.',
+      'The Greek default. €4-6 inland, way more if you drink it looking at the water.',
   },
 ];

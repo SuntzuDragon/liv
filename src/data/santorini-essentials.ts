@@ -27,7 +27,7 @@ export const FACTS: Fact[] = [
   {
     label: 'Weather',
     value: '22°C',
-    note: 'UV 5, so you will burn without noticing',
+    note: 'UV 5, so you\'ll burn without noticing',
     tone: 'warm',
   },
   {
@@ -39,7 +39,7 @@ export const FACTS: Fact[] = [
   {
     label: 'Water',
     value: 'Bottled',
-    note: 'The tap water is desalinated and brackish',
+    note: 'Tap water is desalinated and tastes it',
     tone: 'cool',
   },
 ];
@@ -60,32 +60,32 @@ export const SPECIALITIES: Speciality[] = [
   {
     name: 'Freddo cappuccino',
     what:
-      'Iced espresso under a cap of cold-frothed milk. This is what Greeks actually drink all day, not iced lattes. Order a freddo espresso if you want it without the milk.',
+      'Iced espresso under a cap of cold-frothed milk. This is what Greeks actually drink all day, not iced lattes. Ask for a freddo espresso if you want it without the milk.',
   },
   {
     name: 'Chlorotyri',
     greek: 'χλωροτύρι',
     what:
-      "Santorini's own fresh goat's-milk cheese - soft, creamy, slightly sour. Ask for it at a deli rather than a restaurant.",
+      "Santorini's own fresh goat's-milk cheese. Soft, creamy, a lil sour. Ask at a deli rather than a restaurant.",
   },
   {
     name: 'Fava',
     what:
-      'Yellow split pea purée, warm, with olive oil and capers on top. A Santorini PDO product and on basically every menu.',
+      'Yellow split pea purée, warm, olive oil and capers on top. On basically every menu and rly good.',
   },
   {
     name: 'Tomatokeftedes',
     what:
-      'Tomato fritters made from the island\'s tiny, intense sun-dried tomatoes. The best thing on most meze menus.',
+      'Tomato fritters made from the island\'s tiny intense tomatoes. Best thing on most meze menus.',
   },
   {
     name: 'White aubergine',
     what:
-      'A local variety that is sweeter and less bitter than purple. Usually grilled or in a dip.',
+      'A local one, sweeter and less bitter than the purple kind. Usually grilled or in a dip.',
   },
   {
     name: 'Assyrtiko & Vinsanto',
     what:
-      'The island\'s white grape, grown in baskets on the ground against the wind, from vines in volcanic ash. Assyrtiko is bone dry and mineral; Vinsanto is the sweet sun-dried version.',
+      'The island\'s white grape, grown in baskets on the ground so the wind doesn\'t get it. Assyrtiko is bone dry, Vinsanto is the sweet sun-dried version.',
   },
 ];

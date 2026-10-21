@@ -50,7 +50,7 @@ export const ITINERARY: Day[] = [
     depart: '22:00',
     tender: true,
     href: '/santorini',
-    note: '15 hours ashore - long enough for the sunset',
+    note: '15 hours ashore, so the sunset is actually doable',
   },
   {
     date: '2026-10-22',
@@ -61,7 +61,7 @@ export const ITINERARY: Day[] = [
     depart: '17:00',
     tender: true,
     href: '/mykonos',
-    note: 'Tenders land in the old port, already in town',
+    note: 'You land right in town',
   },
   { date: '2026-10-23', label: 'Day 6', port: 'At sea' },
   {
