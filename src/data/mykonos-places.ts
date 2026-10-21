@@ -50,7 +50,7 @@ export const MYKONOS_SIGHTS: Place[] = [
   {
     id: 'agios-nikolaos-kadena',
     imageAlt:
-      'The old port quay, where the chapel stands',
+      'Mykonos Town from the water, the quay the chapel stands on',
     name: 'Agios Nikolaos of Kadena',
     greek: 'Άγιος Νικόλαος ο Θαλασσινός',
     kind: 'church',
