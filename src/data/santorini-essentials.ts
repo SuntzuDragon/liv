@@ -26,7 +26,7 @@ export const FACTS: Fact[] = [
   },
   {
     label: 'Weather',
-    value: '22°C',
+    value: '22°C (72°F)',
     note: 'UV 5, so you\'ll burn without noticing',
     tone: 'warm',
   },
