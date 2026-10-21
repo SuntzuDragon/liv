@@ -153,23 +153,18 @@ const { items, home = '/', homeLabel = 'Islands' } = Astro.props;
   .snav__home:active { scale: 0.95; }
   .snav__home:hover { background: var(--c-sky); color: var(--c-aegean); }
 
-  /* A hairline so the pills visibly scroll under the home button. */
-  .snav::after {
-    content: '';
-    position: absolute;
-    inset-block: 0.5rem;
-    inset-inline-start: calc(var(--gutter) + 5.4rem);
-    width: 1px;
-    background: var(--line);
-    pointer-events: none;
-  }
-
   .snav__list {
     display: flex;
     gap: 0.4rem;
     list-style: none;
-    margin: 0;
-    padding-inline: 0.5rem var(--gutter);
+    /* Longhands, not `margin: 0` plus an override - the minifier collapses that
+       pair back to `margin: 0` and the gap disappears. */
+    margin-block: 0;
+    margin-inline: 0.35rem 0;
+    /* The divider lives on the scroller's own edge, so it always sits exactly
+       where the pills begin regardless of how wide the home button renders. */
+    border-inline-start: 1px solid var(--line);
+    padding-inline: 0.6rem var(--gutter);
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
@@ -204,6 +199,5 @@ const { items, home = '/', homeLabel = 'Islands' } = Astro.props;
   @media (max-width: 24rem) {
     .snav__home span { display: none; }
     .snav__home { padding-inline: 0.5rem; }
-    .snav::after { inset-inline-start: calc(var(--gutter) + 2.4rem); }
   }
 </style>

@@ -11,9 +11,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      
       'Five chapels fused into one white mass that looks melted rather than ' +
-      'built. Most photographed church in Greece. Ninety seconds from the pier' +
+      'built. Most photographed church in Greece. Ninety seconds from the pier ' +
       'and empty at 08:15. Come at it from the south-west.',
     price: 'Free',
     coords: { lat: 37.4471, lng: 25.32572 },
@@ -27,9 +26,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      
       'The row of five up on the ridge, five mins uphill from Little Venice. ' +
-      'Morning is right - shoot back north over the white bowl of the town with' +
+      'Morning is right - shoot back north over the white bowl of the town with ' +
       'the sun behind you. Fully exposed to the wind, which is both the point and ' +
       'the warning.',
     price: 'Free',
@@ -43,9 +41,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      
       'Old houses with balconies hanging straight over the water. Everyone comes ' +
-      'at sunset, but you sail before then, and honestly the empty 08:30 version' +
+      'at sunset, but you sail before then, and honestly the empty 08:30 version ' +
       'is the better photo. Face north-west along the balconies.',
     price: 'Free',
     coords: { lat: 37.44586, lng: 25.32643 },
@@ -57,9 +54,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'view',
     town: 'chora',
     blurb:
-      
       'Matogianni for the famous names, Enoplon Dynameon for calmer design shops, ' +
-      'Kalogera for restaurants, Mitropoleos for the smaller proper ones. You’ll' +
+      'Kalogera for restaurants, Mitropoleos for the smaller proper ones. You’ll ' +
       'get lost. That’s fine, the island is small and every lane eventually hits ' +
       'the water.',
     price: 'Free',
@@ -71,9 +67,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'view',
     town: 'chora',
     blurb:
-      
       'Three pelicans roam the town and one is always called Petros. The known ' +
-      'haunt is the kitchen door of Niko’s Taverna, and your best odds are around' +
+      'haunt is the kitchen door of Niko’s Taverna, and your best odds are around ' +
       'noon when lunch prep starts and there’s fish going spare.',
     price: 'Free',
     coords: { lat: 37.4471, lng: 25.32691 },
@@ -85,9 +80,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'museum',
     town: 'chora',
     blurb:
-      
       'In an 18th-century captain’s house seventy metres from where you land. ' +
-      'Small, and the hours are anyone’s guess in late October. Costs nothing to' +
+      'Small, and the hours are anyone’s guess in late October. Costs nothing to ' +
       'try the door on the way past.',
     coords: { lat: 37.44746, lng: 25.32594 },
     unverified: true,
@@ -100,7 +94,6 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'shop',
     town: 'chora',
     blurb:
-      
       'Contemporary art, hyperreal sculpture, properly good. Free, indoors, air ' +
       'conditioned, opens at 10:00. Best hour in town that costs nothing.',
     hours: 'From 10:00',
@@ -115,9 +108,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'shop',
     town: 'chora',
     blurb:
-      
       'Orsalia Parthenis’s shop near Little Venice. The Greek label that actually ' +
-      'belongs here, all soft neutral linen. The antidote to the luxury flagships' +
+      'belongs here, all soft neutral linen. The antidote to the luxury flagships ' +
       'on Matogianni.',
     coords: { lat: 37.44514, lng: 25.32637 },
   },
@@ -134,9 +126,8 @@ export const MYKONOS_FOOD: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      
       'Oldest working bread oven on the island. 18th century, wood-fired, same ' +
-      'family for over two hundred years. Underground, no street sign, down a' +
+      'family for over two hundred years. Underground, no street sign, down a ' +
       'back alley. Get the spanakopita, and the cheese-and-honey pie if you want ' +
       'to try melopita. Cash.',
     price: 'Cheap, for Mykonos',
@@ -150,7 +141,6 @@ export const MYKONOS_FOOD: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      
       'On Alefkandra Square with Little Venice on one side and the windmills on ' +
       'the other. Opens at 09:00, so it solves breakfast and lunch both.',
     hours: '09:00-00:00',
@@ -163,7 +153,6 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      
       'The budget pick two guides name separately. Fast, loud, crowded, meat ' +
       'carved all day. €5-10 and you’ve saved the money for something better.',
     price: '€5-10',
@@ -175,9 +164,8 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      
       'A hundred metres from the water, and the most reliable place to actually ' +
-      'order the local stuff. Mykonian sausage, and ask for kopanisti and louza' +
+      'order the local stuff. Mykonian sausage, and ask for kopanisti and louza ' +
       'by name.',
     price: '€€',
     coords: { lat: 37.44716, lng: 25.32719 },
@@ -189,9 +177,8 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'cafe',
     town: 'chora',
     blurb:
-      
       'The Little Venice balcony bar, two mins from the pier. Read the posted ' +
-      'hours as you walk past Paraportiani in the morning - if it’s open at' +
+      'hours as you walk past Paraportiani in the morning - if it’s open at ' +
       'lunch, this is where the balcony is.',
     coords: { lat: 37.447, lng: 25.32567 },
     unverified: true,

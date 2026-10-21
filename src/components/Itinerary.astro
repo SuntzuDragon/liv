@@ -46,15 +46,30 @@ const fmt = (iso: string) =>
 <script is:inline>
   // The page is static, so "today" is decided in her timezone, on her phone.
   (() => {
+    const mark = () => {
     const now = new Date();
     const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(
       now.getDate(),
     ).padStart(2, '0')}`;
     const row = document.querySelector(`.itin__day[data-date="${today}"]`);
     if (!row) return;
+    for (const el of document.querySelectorAll('.itin__day.is-today')) {
+      el.classList.remove('is-today');
+      const b = el.querySelector('.itin__badge');
+      if (b) b.hidden = true;
+    }
     row.classList.add('is-today');
     const badge = row.querySelector('.itin__badge');
     if (badge) badge.hidden = false;
+    };
+
+    mark();
+    // The page can sit cached in a tab for days, so re-check on return rather
+    // than trusting whatever day it was when it first loaded.
+    addEventListener('pageshow', mark);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) mark();
+    });
   })();
 </script>
 

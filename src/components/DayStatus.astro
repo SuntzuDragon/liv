@@ -16,6 +16,7 @@ const { date, fallback } = Astro.props;
   (() => {
     const el = document.querySelector('[data-when]');
     if (!el) return;
+    const render = () => {
     const target = new Date(el.dataset.when + 'T00:00:00');
     const now = new Date();
     const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -29,8 +30,15 @@ const { date, fallback } = Astro.props;
       `${Math.abs(days)} days ago`;
 
     el.textContent = label;
-    if (days === 0) el.classList.add('when--now');
-    else if (days < 0) el.classList.add('when--past');
+    el.classList.toggle('when--now', days === 0);
+    el.classList.toggle('when--past', days < 0);
+    };
+
+    render();
+    addEventListener('pageshow', render);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) render();
+    });
   })();
 </script>
 
