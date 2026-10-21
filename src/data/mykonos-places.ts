@@ -11,14 +11,14 @@ export const MYKONOS_SIGHTS: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      'Five chapels fused into one white mass that looks melted rather than built — and the most photographed church in Greece. Ninety seconds from the pier, and empty at 08:15. Approach from the south-west.',
+      'Five chapels fused into one white mass that looks melted rather than built - and the most photographed church in Greece. Ninety seconds from the pier, and empty at 08:15. Approach from the south-west.',
     price: 'Free',
     coords: { lat: 37.4471, lng: 25.32572 },
     tags: ['Go first, go early'],
   },
   {
     id: 'kato-mili',
-    name: 'Kato Mili — the windmills',
+    name: 'Kato Mili - the windmills',
     greek: 'Κάτω Μύλοι',
     kind: 'view',
     town: 'chora',
@@ -47,7 +47,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'view',
     town: 'chora',
     blurb:
-      'Matogianni for the famous names, Enoplon Dynameon for calmer design shops, Kalogera for restaurants, Mitropoleos for the smaller proper ones. You will get lost. That is fine — the island is small and every lane eventually reaches the water.',
+      'Matogianni for the famous names, Enoplon Dynameon for calmer design shops, Kalogera for restaurants, Mitropoleos for the smaller proper ones. You will get lost. That is fine - the island is small and every lane eventually reaches the water.',
     price: 'Free',
     coords: { lat: 37.4462, lng: 25.3282 },
   },
@@ -68,7 +68,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'museum',
     town: 'chora',
     blurb:
-      'In an 18th-century captain’s house seventy metres from where you land. Small, and the hours are anyone’s guess in late October — but it costs nothing to try the door on the way past.',
+      'In an 18th-century captain’s house seventy metres from where you land. Small, and the hours are anyone’s guess in late October - but it costs nothing to try the door on the way past.',
     coords: { lat: 37.44746, lng: 25.32594 },
     unverified: true,
   },
@@ -80,7 +80,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'shop',
     town: 'chora',
     blurb:
-      'Contemporary art, hyperreal sculpture, properly good. Free, indoors, air-conditioned, and opens at 10:00 — the best hour in town that costs nothing.',
+      'Contemporary art, hyperreal sculpture, properly good. Free, indoors, air-conditioned, and opens at 10:00 - the best hour in town that costs nothing.',
     hours: 'From 10:00',
     price: 'Free',
     coords: { lat: 37.44599, lng: 25.32861 },
@@ -93,7 +93,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'shop',
     town: 'chora',
     blurb:
-      'Orsalia Parthenis’s shop near Little Venice — the Greek label that actually belongs here, all soft neutral linen. The antidote to the luxury flagships on Matogianni.',
+      'Orsalia Parthenis’s shop near Little Venice - the Greek label that actually belongs here, all soft neutral linen. The antidote to the luxury flagships on Matogianni.',
     coords: { lat: 37.44514, lng: 25.32637 },
   },
 ];
@@ -109,10 +109,10 @@ export const MYKONOS_FOOD: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      'The oldest working bread oven on the island — 18th century, wood-fired, held by the same family for over two hundred years. Underground, no street sign, down a back alley. Get the spanakopita, and the cheese-and-honey pie if you want to try melopita. Cash.',
+      'The oldest working bread oven on the island - 18th century, wood-fired, held by the same family for over two hundred years. Underground, no street sign, down a back alley. Get the spanakopita, and the cheese-and-honey pie if you want to try melopita. Cash.',
     price: 'Cheap, for Mykonos',
     coords: { lat: 37.44444, lng: 25.32754 },
-    tags: ['Cash only', 'No sign — look for the alley'],
+    tags: ['Cash only', 'No sign - look for the alley'],
   },
   {
     id: 'nice-n-easy',
@@ -122,8 +122,8 @@ export const MYKONOS_FOOD: Place[] = [
     star: true,
     blurb:
       'On Alefkandra Square with Little Venice on one side and the windmills on the other, and the only place with that view whose hours are actually verified. Opens at 09:00, so it solves both breakfast and lunch.',
-    hours: '09:00–00:00',
-    price: '€20–40pp',
+    hours: '09:00-00:00',
+    price: '€20-40pp',
     coords: { lat: 37.44553, lng: 25.32624 },
   },
   {
@@ -132,8 +132,8 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      'The budget pick two guides name independently — fast, loud, crowded, meat carved all day. €5–10 and you have saved the money for something better.',
-    price: '€5–10',
+      'The budget pick two guides name independently - fast, loud, crowded, meat carved all day. €5-10 and you have saved the money for something better.',
+    price: '€5-10',
     coords: { lat: 37.44586, lng: 25.32934 },
   },
   {
@@ -142,7 +142,7 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      'A hundred metres from the water and the most reliable place to actually order the local things — Mykonian sausage, and ask for kopanisti and louza by name.',
+      'A hundred metres from the water and the most reliable place to actually order the local things - Mykonian sausage, and ask for kopanisti and louza by name.',
     price: '€€',
     coords: { lat: 37.44716, lng: 25.32719 },
     tags: ['Order kopanisti'],
@@ -153,22 +153,22 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'cafe',
     town: 'chora',
     blurb:
-      'The Little Venice balcony bar, two minutes from the pier. Read the posted hours as you walk past Paraportiani in the morning — if it is open at lunch, this is where the balcony is.',
+      'The Little Venice balcony bar, two minutes from the pier. Read the posted hours as you walk past Paraportiani in the morning - if it is open at lunch, this is where the balcony is.',
     coords: { lat: 37.447, lng: 25.32567 },
     unverified: true,
   },
 ];
 
-/** Where the tender lands — she doesn't get to choose which. */
+/** Where the tender lands - she doesn't get to choose which. */
 export const MYKONOS_PINS = [
   {
     name: 'Tender pier (town hall)',
-    note: 'The good one — you step off already in town',
+    note: 'The good one - you step off already in town',
     coords: { lat: 37.44737, lng: 25.3269 },
   },
   {
     name: 'Tender pier (old port end)',
-    note: 'The other one. Flat 10–12 min walk south-west along the water',
+    note: 'The other one. Flat 10-12 min walk south-west along the water',
     coords: { lat: 37.45116, lng: 25.3287 },
   },
   {

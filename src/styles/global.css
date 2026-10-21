@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Liv's islands — design tokens + base
+   Liv's islands - design tokens + base
    Santorini palette: whitewashed plaster, dome blue, deep Aegean, sunset warm.
    ========================================================================== */
 
@@ -92,7 +92,7 @@
   }
 }
 
-/* Cross-document view transitions — Safari 18.2+. Pure CSS, so there is no
+/* Cross-document view transitions - Safari 18.2+. Pure CSS, so there is no
    client-side router for the service worker to reason about. */
 @view-transition {
   navigation: auto;
@@ -116,7 +116,7 @@
        a nav jump covers 10,000px+, which animates for seconds and fights the
        native edge-swipe-back gesture on iOS. Instant is the right answer here. */
     /* Clears the sticky section nav when jumping to an anchor. This is the
-       only offset in play — bands deliberately carry no scroll-margin, or the
+       only offset in play - bands deliberately carry no scroll-margin, or the
        two stack and every jump lands low. */
     scroll-padding-block-start: 4.25rem;
   }

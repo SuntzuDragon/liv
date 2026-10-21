@@ -1,4 +1,4 @@
-# liv — working rules
+# liv - working rules
 
 A hub of island guides made for Liv, at `liv.ianmcbride.com`. Astro 7, static
 output, no SSR, deployed to Cloudflare Workers static assets.
@@ -11,7 +11,7 @@ This file states the *rules*, and is the one to read before changing anything.
 - Commit subjects: one short sentence, no body, **no attribution lines of any
   kind** (no Co-Authored-By, no generated-with, no session links).
 - Comments explain **why**, and name the thing that motivated the code. Most of
-  the non-obvious code here exists because of a specific browser behaviour — say
+  the non-obvious code here exists because of a specific browser behaviour - say
   which one, so the next person doesn't "simplify" it back into a bug.
 - Content lives in plain `.ts` files under `src/data/`, typed from
   `src/data/types.ts`. No content collections, no CMS, no markdown pipeline.
@@ -43,7 +43,7 @@ Each of these was expensive to find. Don't undo them.
 - **Cards never rotate; only the photo inside them does.** Three layers:
   wrapper rotates → inner clips → image plain. Rotated text is rasterized and
   goes soft, and a transformed child escapes its parent's rounded clip.
-- **No compositing hints on gallery images** — no `will-change`, no
+- **No compositing hints on gallery images** - no `will-change`, no
   `translateZ(0)`, no `filter`, no `drop-shadow`. Each promoted layer is its own
   device-pixel surface and there are dozens of these.
 - **No `content-visibility: auto` on cards.** It estimates height until first
@@ -52,7 +52,7 @@ Each of these was expensive to find. Don't undo them.
   tall; a nav jump animates for seconds and fights the iOS edge-swipe-back.
 - **No `maximum-scale` or `user-scalable=no`.** Blocking zoom fails WCAG 1.4.4,
   and it is still honoured in home-screen web apps.
-- Use `svh` for full-height heroes, never `dvh` — `dvh` tracks the toolbar live
+- Use `svh` for full-height heroes, never `dvh` - `dvh` tracks the toolbar live
   and reflows the page mid-scroll.
 - Source photos are capped at 2000px on ingest and served much smaller. Decoded
   cost is `width × height × 4` regardless of file size.
@@ -63,7 +63,7 @@ Each of these was expensive to find. Don't undo them.
   Colours are `oklch()`; Safari has supported it since 15.4, so no hex fallback
   is needed.
 - Fonts are self-hosted in `public/fonts/` so nothing needs a CDN at sea. Inter
-  carries the Greek subset — the phrase cards need it.
+  carries the Greek subset - the phrase cards need it.
 - Tilt angles stay small (around 1°) and only ever apply to images.
 
 ## Maps
@@ -71,16 +71,17 @@ Each of these was expensive to find. Don't undo them.
 Links use Apple's unified schema,
 `https://maps.apple.com/place?coordinate=LAT,LNG&name=NAME`, built in
 `src/lib/maps.ts`. `name` is a label, not a search, so the pin lands exactly
-where we put it. Never use `address=` — it is geocoder-dependent and 404s on
+where we put it. Never use `address=` - it is geocoder-dependent and 404s on
 real Greek street addresses. Each place also offers a Google link, because
-Apple's web Maps does not hand off to an app on Android.
+Apple's web Maps does not hand off to an app on Android. Map links open in a
+new tab so the guide is never lost behind Maps.
 
 ## Content accuracy
 
 The guides are used in the field, so a confidently wrong detail is worse than an
 admitted gap. Places carry an `unverified` flag and the card hedges honestly
 rather than stating something we could not confirm. Several places that every
-guidebook still lists have closed or moved — see `my own notes`
+guidebook still lists have closed or moved - see `my own notes`
 for the current list and the reasoning behind each.
 
 ## Deploying

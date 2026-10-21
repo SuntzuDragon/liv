@@ -37,7 +37,7 @@ export interface Place {
   placeId?: string;
   /**
    * What the photo actually shows. Required when the image is representative
-   * rather than a picture of this place — a generic gyros must not be
+   * rather than a picture of this place - a generic gyros must not be
    * described to a screen reader as "Lucky's Souvlakis".
    */
   imageAlt?: string;

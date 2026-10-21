@@ -6,7 +6,7 @@ import { photo } from '../lib/photos';
 
 interface Props {
   place: Place;
-  /** Index in the grid — drives which way the photo leans. */
+  /** Index in the grid - drives which way the photo leans. */
   i?: number;
 }
 
@@ -30,7 +30,7 @@ const lean = i % 2 === 0 ? 1 : -1;
   {img && (
     /* Three layers on purpose: .tilt rotates, .frame clips, the img is plain.
        Safari loses a border-radius when the clipping box itself is transformed,
-       and rotated text goes soft — so only the photo leans, never the copy. */
+       and rotated text goes soft - so only the photo leans, never the copy. */
     <div class="card__tilt">
       <div class="card__frame">
         <Image
@@ -67,12 +67,12 @@ const lean = i % 2 === 0 ? 1 : -1;
     )}
 
     {p.unverified && (
-      <p class="card__hedge">Couldn’t confirm this one — worth a look as you pass.</p>
+      <p class="card__hedge">Couldn’t confirm this one - worth a look as you pass.</p>
     )}
 
     <div class="card__actions">
       {maps && (
-        <a class="btn btn--map" href={maps}>
+        <a class="btn btn--map" href={maps} target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15">
             <path
               d="M12 2.6a6.6 6.6 0 0 0-6.6 6.6c0 4.8 6.6 12.2 6.6 12.2s6.6-7.4 6.6-12.2A6.6 6.6 0 0 0 12 2.6Zm0 9.3a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z"
@@ -117,7 +117,7 @@ const lean = i % 2 === 0 ? 1 : -1;
     box-shadow: 0 0 0 2px var(--c-sun), var(--sh-md);
   }
 
-  /* The only thing that rotates — a photo pinned on slightly askew. Inset far
+  /* The only thing that rotates - a photo pinned on slightly askew. Inset far
      enough that the rotated corners stay inside the card and nothing clips. */
   .card__tilt {
     margin: 0.7rem 0.7rem 0;
@@ -151,7 +151,7 @@ const lean = i % 2 === 0 ? 1 : -1;
     inset-inline-start: var(--sp-xs);
     padding: 0.2rem 0.6rem;
     border-radius: var(--r-pill);
-    /* Opaque rather than blurred — a backdrop-filter over a photo is the most
+    /* Opaque rather than blurred - a backdrop-filter over a photo is the most
        expensive thing you can put on a card you then have forty of. */
     background: oklch(100% 0 0 / 0.93);
     font-size: 0.7rem;
@@ -253,7 +253,7 @@ const lean = i % 2 === 0 ? 1 : -1;
     color: var(--fg-soft);
   }
   .btn--ghost:hover { background: var(--bg-sunk); color: var(--fg); }
-  /* Secondary, for a non-Apple phone — Apple's web Maps won't hand off there. */
+  /* Secondary, for a non-Apple phone - Apple's web Maps won't hand off there. */
   .btn--quiet {
     padding-inline: 0.5rem;
     color: oklch(62% 0.02 255);

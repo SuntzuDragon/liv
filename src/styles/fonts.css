@@ -1,6 +1,6 @@
 /* Self-hosted so the site renders with zero network at sea. */
 
-/* Fraunces — display. Variable: opsz 9-144, wght 300-700, SOFT, WONK. */
+/* Fraunces - display. Variable: opsz 9-144, wght 300-700, SOFT, WONK. */
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
@@ -13,7 +13,7 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Inter — text. Greek subset carries the ευχαριστώ / γεια σας phrases. */
+/* Inter - text. Greek subset carries the ευχαριστώ / γεια σας phrases. */
 @font-face {
   font-family: 'Inter';
   font-style: normal;

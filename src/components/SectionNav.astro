@@ -1,6 +1,6 @@
 ---
 interface Props {
-  /** In document order — the scrollspy relies on it. */
+  /** In document order - the scrollspy relies on it. */
   items: { id: string; label: string }[];
   /** Where the back arrow goes. */
   home?: string;
@@ -51,7 +51,7 @@ const { items, home = '/', homeLabel = 'Islands' } = Astro.props;
       let current = null;
 
       /**
-       * Scrolls the pill strip only — never the page.
+       * Scrolls the pill strip only - never the page.
        *
        * This used to call pill.scrollIntoView({block:'nearest'}), which on iOS
        * Safari also moves the document and yanks you mid-scroll. Setting
@@ -81,7 +81,7 @@ const { items, home = '/', homeLabel = 'Islands' } = Astro.props;
         if (pill) keepPillVisible(pill);
       };
 
-      // "Which section owns the top of the screen" — measured against a line a
+      // "Which section owns the top of the screen" - measured against a line a
       // little below the nav, so a section jumped to by anchor reads as current.
       const compute = () => {
         const line = Math.max(140, innerHeight * 0.3);

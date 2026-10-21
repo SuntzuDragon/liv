@@ -4,27 +4,18 @@ import Hero from '../components/Hero.astro';
 import SectionNav from '../components/SectionNav.astro';
 import Section from '../components/Section.astro';
 import FactStrip from '../components/FactStrip.astro';
-import Warnings from '../components/Warnings.astro';
-import Timeline from '../components/Timeline.astro';
 import PlaceGrid from '../components/PlaceGrid.astro';
 import PhraseList from '../components/PhraseList.astro';
 import PinList from '../components/PinList.astro';
 import DayStatus from '../components/DayStatus.astro';
 import Footer from '../components/Footer.astro';
-import {
-  FACTS,
-  WARNINGS,
-  PLAN,
-  PHRASES,
-  SPECIALITIES,
-  SUNSET,
-} from '../data/santorini-essentials';
+import { FACTS, PHRASES, SPECIALITIES, SUNSET } from '../data/santorini-essentials';
 import { OIA, AMMOUDI, FIRA, BEYOND } from '../data/santorini-places';
 import { TRANSPORT } from '../data/santorini-transport';
 
 const nav = [
   { id: 'day', label: 'The day' },
-  { id: 'ashore', label: 'Getting ashore' },
+  { id: 'pins', label: 'Pins' },
   { id: 'oia', label: 'Oia' },
   { id: 'fira', label: 'Fira' },
   { id: 'know', label: 'Know this' },
@@ -37,14 +28,14 @@ type Place = (typeof OIA)[number];
 ---
 
 <Base
-  title="Santorini — Liv's Islands"
+  title="Santorini - Liv's Islands"
   description="Oia and Fira on one cruise day: the views, the shops, the food, and how to get up the cliff. Wednesday 21 October 2026."
   themeColor="#0d3a5c"
   ogImage="/icon-512.png"
 >
   <Hero
     backHref="/"
-    eyebrow="Wednesday 21 October · 07:00 – 22:00"
+    eyebrow="Wednesday 21 October · 07:00 - 22:00"
     title="Santorini"
     accent="fifteen hours"
     lede={`Long enough to do Oia properly, come back for Fira, and still be standing on a wall at ${SUNSET} when the sun goes down. Most ships sail before that. Yours doesn't.`}
@@ -65,82 +56,16 @@ type Place = (typeof OIA)[number];
     >
       <FactStrip facts={FACTS} />
 
-      <div class="plan" data-reveal>
-        <h3 class="plan__h">A shape for the day</h3>
-        <p class="plan__p">
-          Oia first, then Fira. Oia at 09:00 is a completely different village from
-          Oia at 13:00, and doing it this way keeps the bus out of the endgame —
-          by late afternoon you are already in Fira, nine minutes from the cable car.
-        </p>
-      </div>
-      <Timeline legs={PLAN} />
-    </Section>
+</Section>
 
     <Section
-      id="ashore"
+      id="pins"
       tone="sunk"
-      eyebrow="The bit that goes wrong"
-      title="Getting ashore, and back"
-      lede="Santorini has no cruise pier. The ship anchors in the caldera and tenders you to the Old Port, at the bottom of a 220-metre cliff."
+      eyebrow="Save these"
+      title="Pins worth having"
+      lede="Tap one and it opens in Apple Maps. They work with no signal once this page is saved."
     >
-      <div class="prose stack" data-reveal>
-        <h3>Up the cliff: three ways, one answer</h3>
-        <p>
-          <strong>The cable car.</strong> €10 one way per person, three minutes,
-          a car every 20 minutes from 07:00 to 22:00, last one down from the top
-          at 21:40. It carries about 600 people an hour in each direction, which
-          is the whole problem — a full ship wants to go up at once in the morning
-          and down at once in the evening. If you are ashore before about 08:30
-          you may walk straight on. Between 09:30 and 11:00 expect 45–60 minutes.
-          It also shuts without warning in strong wind.
-        </p>
-        <p>
-          <strong>The 587 steps — status uncertain.</strong> A wall beside them
-          collapsed in late July 2026 and they were closed. Two cruise outlets
-          reported them reopening on 3 August; a separate check found no
-          reopening ever announced. So: <strong>assume they are shut and plan on
-          the cable car</strong>, and treat it as a bonus if they're open. Either
-          way they're the donkey route — manure, slippery marble-edged treads,
-          loaded animals pushing past you — 25–45 minutes up, 15–30 down. Walking
-          <em>down</em> is a useful escape hatch if the evening queue is hopeless.
-          Walking up is a waste of a 15-hour day.
-        </p>
-        <p>
-          <strong>The donkeys.</strong> Don't. There is a cable car that does the
-          same climb in three minutes. Around a hundred animals work those steps
-          all day; the documented picture is saddle wounds, animals tethered in
-          full sun without water, and a legal weight limit set at roughly double
-          what vets consider safe and reportedly not enforced. In September 2026
-          handlers assaulted protesters on the stairway. €10 is the whole answer.
-        </p>
-
-        <h3>One thing to look up before you go ashore</h3>
-        <p>
-          The <strong>final tender time</strong>, from the day's Cruise Compass or
-          the Royal app. It is not the 22:00 sailing time — the two can be 60–90
-          minutes apart, and everything else on this page bends around it. Write
-          it on your hand.
-        </p>
-
-        <h3>Fira to Oia</h3>
-        <p>
-          The KTEL bus, €2.20 each per leg, 20–25 minutes, roughly every 30
-          minutes from 07:00 to 21:00 out of Fira and until 21:20 coming back
-          from Oia. <strong>Cash to a conductor on board — no cards.</strong>
-          The station is an open yard off 25is Martiou, about nine minutes' walk
-          from the cable car top station. Queue rather than drifting up at
-          departure time, because full buses skip stops and the next is half an
-          hour away.
-        </p>
-        <p>
-          Taxis exist but there are about 25 on the whole island, they aren't
-          metered in practice, and the rank in Fira is usually empty. Agree a
-          price before getting in; budget €25–35 for Fira to Oia. The one fixed
-          fare worth knowing is <strong>Oia to Ammoudi Bay, €10</strong>.
-        </p>
-      </div>
-
-      <PinList title="The five pins worth having" pins={TRANSPORT} />
+      <PinList pins={TRANSPORT} />
     </Section>
 
     <Section
@@ -161,7 +86,7 @@ type Place = (typeof OIA)[number];
             <>
               <h3 class="sub">Down at Ammoudi Bay</h3>
               <p class="sub__note">
-                About 280 steps below the village — 10–15 minutes down, 20–30 back
+                About 280 steps below the village - 10-15 minutes down, 20-30 back
                 up with no shade. Walk down, eat, take the fixed €10 taxi up.
                 Fish is sold by weight here: ask the price per kilo and have it
                 weighed <em>before</em> you order.
@@ -205,18 +130,15 @@ type Place = (typeof OIA)[number];
     <Section
       id="know"
       tone="sunk"
-      eyebrow="Before you step off"
-      title="Five things that decide the day"
+      eyebrow="Worth knowing"
+      title="A few small things"
     >
-      <Warnings items={WARNINGS} />
-
       <div class="prose stack" data-reveal>
-        <h3>Everything else, briefly</h3>
         <ul class="plain">
           <li>
             <strong>Sun.</strong> 22°C feels mild, but the UV index is 5 and every
             wall and paving slab on the island is white. People burn here in
-            October precisely because the air is cool. SPF 30–50, reapplied, and a
+            October precisely because the air is cool. SPF 30-50, reapplied, and a
             hat that survives wind.
           </li>
           <li>
@@ -224,23 +146,13 @@ type Place = (typeof OIA)[number];
             Buy bottled, or fill bottles on the ship before you go.
           </li>
           <li>
-            <strong>Cards.</strong> Apple Pay works essentially everywhere —
-            terminals are legally mandatory in Greek retail now. The bus is the
-            one exception that matters.
+            <strong>Cards.</strong> Apple Pay works essentially everywhere -
+            card terminals are legally mandatory in Greek retail now. Still worth
+            having a few small notes on you.
           </li>
           <li>
-            <strong>Tipping.</strong> Not obligatory. Rounding up, or 5–10% for
+            <strong>Tipping.</strong> Not obligatory. Rounding up, or 5-10% for
             good table service, is plenty.
-          </li>
-          <li>
-            <strong>Data.</strong> Put your phone on airplane mode with wifi on.
-            This page is saved to your phone and works with no signal at all.
-          </li>
-          <li>
-            <strong>Season's end.</strong> Late October is the quiet half of the
-            month, which is lovely — but some shops and tavernas start closing for
-            the winter, especially down at Ammoudi. Worth a glance before you
-            commit to a specific lunch.
           </li>
         </ul>
       </div>

@@ -3,16 +3,16 @@
 A hub of guides made for Liv. Static Astro site on Cloudflare Workers static
 assets, deployed on every push to `main`.
 
-- `/` — hub: the islands, and the sailing with today highlighted
-- `/santorini` — Wednesday 21 October 2026
-- `/mykonos` — Thursday 22 October 2026
-- `/credits` — photographers
+- `/` - hub: the islands, and the sailing with today highlighted
+- `/santorini` - Wednesday 21 October 2026
+- `/mykonos` - Thursday 22 October 2026
+- `/credits` - photographers
 
 ## Why it's built the way it is
 
 **It has to work with no signal.** She opens it on ship wifi and then walks an
 island on airplane mode. A service worker generated at build time
-(`scripts/build-sw.mjs`) precaches the whole site — every page, font and photo —
+(`scripts/build-sw.mjs`) precaches the whole site - every page, font and photo -
 so a page she never visited on wifi still opens ashore. Shell and photos live in
 separate caches and the shell goes first, so if the photos blow a quota the site
 is still fully usable as text.
@@ -26,7 +26,7 @@ know why:
 - The sticky section nav is opaque, not frosted. A `backdrop-filter` on a
   sticky element tears during rubber-band overscroll *and* hijacks that toolbar
   tint.
-- Cards don't rotate — only the photo inside them does, via a three-layer
+- Cards don't rotate - only the photo inside them does, via a three-layer
   structure (wrapper rotates → inner clips → image plain). Rotated text gets
   rasterized and goes soft, and Safari has a decade-old bug where a transformed
   child escapes its parent's rounded clip.
@@ -63,17 +63,17 @@ rate-limits hard. Astro does the AVIF/WebP conversion at build time.
 node scripts/fetch-images.mjs <manifest.json>
 ```
 
-## Deploying — one-time setup
+## Deploying - one-time setup
 
 ### 1. DNS, and the game server server
 
 `liv.ianmcbride.com` currently serves a game server server over an SRV record. The
 SRV record itself (`the service record`) is a different DNS name and coexists
-with a Worker at `liv` fine — SRV can't be proxied, so Cloudflare won't touch it.
+with a Worker at `liv` fine - SRV can't be proxied, so Cloudflare won't touch it.
 
 **The problem is the SRV *target*.** If it points at `liv.ianmcbride.com`
 itself, attaching the Worker swaps that hostname's A record to Cloudflare's
-anycast IPs, and the Java client — which resolves the SRV target's A record —
+anycast IPs, and the Java client - which resolves the SRV target's A record -
 ends up at Cloudflare. Cloudflare's proxy only carries HTTP(S) ports and is an
 L7 HTTP proxy anyway, so game server's binary protocol dies regardless of port.
 
@@ -84,13 +84,13 @@ Split the two services:
 | A | `mc` | the server's public IPv4 | **DNS only (grey)** |
 | SRV | `the service record` | prio 0, weight 5, port `<MC port>`, target `the game server host` | n/a |
 | SRV | `the service record` | prio 0, weight 5, port `<MC port>`, target `the game server host` | n/a |
-| Worker | `liv` | created automatically by the Custom Domain — don't hand-create | managed |
+| Worker | `liv` | created automatically by the Custom Domain - don't hand-create | managed |
 
 Delete the existing A/CNAME at `liv.ianmcbride.com` first; a Custom Domain can't
 be created over an existing record.
 
 Caveats: SRV targets must be hostnames, never IPs (RFC 2782). **Bedrock ignores
-SRV entirely** — Bedrock players need `the game server host` plus the port. Some
+SRV entirely** - Bedrock players need `the game server host` plus the port. Some
 launchers skip the SRV lookup and fall back to the A record at `liv`, which is
 now Cloudflare, so **publish `the game server host` as the canonical address** and
 treat the `liv` SRV as back-compat.

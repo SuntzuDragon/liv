@@ -4,21 +4,22 @@ import Hero from '../components/Hero.astro';
 import SectionNav from '../components/SectionNav.astro';
 import Section from '../components/Section.astro';
 import FactStrip from '../components/FactStrip.astro';
-import Warnings from '../components/Warnings.astro';
-import Timeline from '../components/Timeline.astro';
 import PlaceGrid from '../components/PlaceGrid.astro';
 import PinList from '../components/PinList.astro';
+import PhraseList from '../components/PhraseList.astro';
 import DayStatus from '../components/DayStatus.astro';
 import Footer from '../components/Footer.astro';
-import { FACTS, WARNINGS, PLAN, SPECIALITIES, SUNSET } from '../data/mykonos-essentials';
+import { FACTS, SPECIALITIES, SUNSET } from '../data/mykonos-essentials';
+import { PHRASES } from '../data/santorini-essentials';
 import { MYKONOS_SIGHTS, MYKONOS_FOOD, MYKONOS_PINS } from '../data/mykonos-places';
 
 const nav = [
   { id: 'day', label: 'The day' },
-  { id: 'ashore', label: 'Getting ashore' },
+  { id: 'pins', label: 'Pins' },
   { id: 'see', label: 'See' },
   { id: 'eat', label: 'Eat' },
   { id: 'know', label: 'Know this' },
+  { id: 'greek', label: 'Greek' },
 ];
 
 const sights = MYKONOS_SIGHTS.filter((p) => p.kind !== 'shop');
@@ -26,16 +27,16 @@ const shops = MYKONOS_SIGHTS.filter((p) => p.kind === 'shop');
 ---
 
 <Base
-  title="Mykonos — Liv's Islands"
+  title="Mykonos - Liv's Islands"
   description="One day in Mykonos Town on foot: the windmills, Little Venice, the alleys and where to eat. Thursday 22 October 2026."
   themeColor="#0d3a5c"
 >
   <Hero
     backHref="/"
-    eyebrow="Thursday 22 October · 07:00 – 17:00"
+    eyebrow="Thursday 22 October · 07:00 - 17:00"
     title="Mykonos"
     accent="all within 400 metres"
-    lede="The tender drops you in the middle of the thing you came to see. No bus, no shuttle, no transfer — every famous sight is a five-minute walk from the pier."
+    lede="The tender drops you in the middle of the thing you came to see. No bus, no shuttle, no transfer - every famous sight is a five-minute walk from the pier."
     imageId="mykonos-hero"
     alt="The row of windmills at Kato Mili above Mykonos Town"
   >
@@ -53,61 +54,16 @@ const shops = MYKONOS_SIGHTS.filter((p) => p.kind === 'shop');
     >
       <FactStrip facts={FACTS} />
 
-      <div class="plan" data-reveal>
-        <h3 class="plan__h">Front-load everything</h3>
-        <p class="plan__p">
-          Paraportiani and Little Venice are empty at 08:15 and unbearable by
-          noon, and you sail before the sunset everyone else is waiting for.
-          So do the famous things first, in the morning light, and spend the
-          middle of the day in the alleys where the crowd doesn't matter.
-        </p>
-      </div>
-      <Timeline legs={PLAN} />
-    </Section>
+</Section>
 
     <Section
-      id="ashore"
+      id="pins"
       tone="sunk"
-      eyebrow="The bit that goes wrong"
-      title="Getting ashore, and back"
-      lede="Another tender port — the ship is too big for the quay, so she anchors and you ride in."
+      eyebrow="Save these"
+      title="Pins worth having"
+      lede="Everything is a few minutes' walk from the water. Tap one and it opens in Apple Maps."
     >
-      <div class="prose stack" data-reveal>
-        <h3>Two landing points, and you don't pick</h3>
-        <p>
-          The port authority and the ship decide. Best case is the town pier by
-          the Town Hall, where you step off directly into Chora. The other is the
-          old port bus station end, which is a flat ten to twelve minute walk
-          south-west along the water — still no shuttle needed, but
-          <strong>shift every leg of the day twelve minutes earlier</strong> if
-          that's where you land.
-        </p>
-        <p>
-          A new tender berth at the old port was finished in May 2026 and may be
-          in service for your call, which can only make the landing better.
-        </p>
-
-        <h3>The deadline, honestly</h3>
-        <p>
-          The ship sails at 17:00, but that is not your deadline. Tendering eats
-          thirty to forty-five minutes at each end, and the last-tender queue is
-          the longest of the day. <strong>Be in the queue by 15:45</strong> and
-          treat whatever time the Cruise Compass prints as half an hour earlier
-          than printed. The forty-five minutes that buys you is the plan, not
-          slack.
-        </p>
-
-        <h3>Don't bother with a beach</h3>
-        <p>
-          The sea is about 20°C, the beach clubs have shut for the season, and
-          Ornos or Platys Gialos costs you two and a half to three hours of an
-          eight-hour day on an hourly winter bus — miss one and you cannot get
-          that back against a hard tender time. If you want your feet in the sea,
-          walk to Megali Ammos instead. It's close enough to be safe.
-        </p>
-      </div>
-
-      <PinList title="Pin these before you lose signal" pins={MYKONOS_PINS} />
+      <PinList pins={MYKONOS_PINS} />
     </Section>
 
     <Section
@@ -147,23 +103,19 @@ const shops = MYKONOS_SIGHTS.filter((p) => p.kind === 'shop');
     <Section
       id="know"
       tone="sunk"
-      eyebrow="Before you step off"
-      title="Five things that decide the day"
+      eyebrow="Worth knowing"
+      title="A few small things"
     >
-      <Warnings items={WARNINGS} />
-
       <div class="prose stack" data-reveal>
-        <h3>Everything else, briefly</h3>
         <ul class="plain">
           <li>
             <strong>Sunset is {SUNSET}</strong>, and you'll be aboard about ninety
             minutes before it. Anyone telling you Mykonos sunsets in October are
-            at half five is an hour wrong — the clocks don't change until the
+            at half five is an hour wrong - the clocks don't change until the
             25th.
           </li>
           <li>
-            <strong>Water.</strong> Don't drink the tap water. Buy bottled, and
-            buy some for the tender queue before you walk down.
+            <strong>Water.</strong> Don't drink the tap water. Buy bottled.
           </li>
           <li>
             <strong>There is no good bookshop</strong> in Mykonos Town. Don't
@@ -171,7 +123,7 @@ const shops = MYKONOS_SIGHTS.filter((p) => p.kind === 'shop');
           </li>
           <li>
             <strong>Most "best of Mykonos" restaurant lists are dinner-only</strong>
-            — To Maereio, m-eating, Kalita and the rest open at 19:00. If you walk
+            - To Maereio, m-eating, Kalita and the rest open at 19:00. If you walk
             past To Maereio on Kalogera, read the door anyway; it costs nothing.
           </li>
           <li>
@@ -179,13 +131,18 @@ const shops = MYKONOS_SIGHTS.filter((p) => p.kind === 'shop');
             guidance says most shops and restaurants stay open through the month.
             Some won't be. Have a second option for lunch.
           </li>
-          <li>
-            <strong>The Greek on the Santorini page works here too</strong> —
-            same country, same please and thank you.
-          </li>
         </ul>
         <p><a class="xlink" href="/santorini">The Santorini page &rarr;</a></p>
       </div>
+    </Section>
+
+    <Section
+      id="greek"
+      eyebrow="Useful"
+      title="Enough Greek to be polite"
+      lede="The middle line is the one to say out loud. Nobody expects you to try, which is exactly why it lands."
+    >
+      <PhraseList phrases={PHRASES} />
     </Section>
   </main>
 

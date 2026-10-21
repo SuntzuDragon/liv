@@ -19,7 +19,7 @@ for (const [path, mod] of Object.entries(files)) {
  */
 const ALIAS: Record<string, string> = {
   // Heroes. A full-bleed hero on a phone is tall, so an ultra-wide panorama
-  // crops to a narrow strip of itself — these are 3:2 or portrait on purpose.
+  // crops to a narrow strip of itself - these are 3:2 or portrait on purpose.
   'oia-hero': 'oia-hero-2',
   'santorini-hero': 'oia-hero-3',
   'fira-hero': 'fira-caldera-1',
@@ -62,7 +62,7 @@ const ALIAS: Record<string, string> = {
   'blue-dome': 'blue-dome-detail-1',
 
   // Museums and galleries. Several of these are the museum's own collection
-  // rather than its building — a truthful way to show what is inside.
+  // rather than its building - a truthful way to show what is inside.
   'naval-museum': 'naval-museum-1',
   'prehistoric-thera': 'prehistoric-thera-1',
   'archaeological-museum': 'archaeological-museum-1',

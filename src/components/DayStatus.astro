@@ -22,7 +22,7 @@ const { date, fallback } = Astro.props;
     const days = Math.round((target - midnight) / 86400000);
 
     const label =
-      days === 0 ? 'Today — you’re here' :
+      days === 0 ? 'Today - you’re here' :
       days === 1 ? 'Tomorrow' :
       days === -1 ? 'That was yesterday' :
       days > 1 ? `In ${days} days` :

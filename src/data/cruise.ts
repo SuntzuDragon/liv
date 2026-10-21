@@ -1,5 +1,5 @@
 /**
- * Odyssey of the Seas — 7 Night Greek Isles & Italy, round trip Civitavecchia.
+ * Odyssey of the Seas - 7 Night Greek Isles & Italy, round trip Civitavecchia.
  * Port sequence and the "Tendered" labels are Royal Caribbean's own; the date
  * assignment is corroborated by five independent published schedules plus two
  * port-arrival databases. Times are local port time (Greece UTC+3 until 25 Oct,
@@ -50,7 +50,7 @@ export const ITINERARY: Day[] = [
     depart: '22:00',
     tender: true,
     href: '/santorini',
-    note: '15 hours ashore — long enough for the sunset',
+    note: '15 hours ashore - long enough for the sunset',
   },
   {
     date: '2026-10-22',

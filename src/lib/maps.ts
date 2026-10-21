@@ -3,14 +3,14 @@
  *
  * Apple's unified Maps URL schema (iOS 18.4+) is the documented current form;
  * the old `?q=&ll=` idiom is just an undocumented alias that 301s to this one,
- * so we skip the redirect. `name` is a pure label, not a search term — the pin
+ * so we skip the redirect. `name` is a pure label, not a search term - the pin
  * lands on our exact coordinates and carries our exact title, with nothing to
  * geocode and nothing to fail. `address=` is deliberately unused: it is
  * geocoder-dependent and 404s on real Greek street addresses.
  *
  * On iOS the handoff to Maps.app is a system special case rather than a
  * universal link. Everywhere else the same URL renders Apple's web Maps, so
- * nothing is broken for a non-Apple visitor — but Android stays in the browser,
+ * nothing is broken for a non-Apple visitor - but Android stays in the browser,
  * which is why each place also offers a Google link that does hand off there.
  */
 
@@ -43,7 +43,7 @@ export function appleWalk(c: Coords): string {
   return `https://maps.apple.com/directions?destination=${c.lat},${c.lng}&mode=walking`;
 }
 
-/** Secondary link — this one does hand off to the Google Maps app on Android. */
+/** Secondary link - this one does hand off to the Google Maps app on Android. */
 export function googleMaps(c: Coords): string {
   return `https://www.google.com/maps/search/?api=1&query=${c.lat}%2C${c.lng}`;
 }
