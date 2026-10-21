@@ -10,12 +10,62 @@ const { phrases } = Astro.props;
 <ul class="phrases">
   {phrases.map((p, i) => (
     <li class="phrase" style={`--reveal-delay:${i * 45}ms;`} data-reveal>
-      <span class="phrase__greek" lang="el">{p.greek}</span>
+      <span class="phrase__row">
+        <span class="phrase__greek" lang="el">{p.greek}</span>
+        <button class="phrase__say-btn" type="button" data-say={p.greek} hidden>
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+            <path
+              d="M11 5 6.5 9H3v6h3.5L11 19zM15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="visually-hidden">Hear it</span>
+        </button>
+      </span>
       <span class="phrase__say">{p.say}</span>
       <span class="phrase__means">{p.means}</span>
     </li>
   ))}
 </ul>
+
+<script is:inline>
+  // Only promise audio we can actually deliver. iOS ships Greek voices on some
+  // devices and not others, so the buttons stay hidden unless one exists.
+  (() => {
+    if (!('speechSynthesis' in window)) return;
+    const buttons = [...document.querySelectorAll('[data-say]')];
+    if (!buttons.length) return;
+
+    const greekVoice = () =>
+      speechSynthesis.getVoices().find((v) => /^el(-|$)/i.test(v.lang));
+
+    const reveal = () => {
+      if (!greekVoice()) return;
+      for (const b of buttons) b.hidden = false;
+    };
+
+    reveal();
+    // Voices load asynchronously in Safari, so wait for them too.
+    speechSynthesis.addEventListener?.('voiceschanged', reveal);
+
+    for (const b of buttons) {
+      b.addEventListener('click', () => {
+        const v = greekVoice();
+        if (!v) return;
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(b.dataset.say);
+        u.voice = v;
+        u.lang = v.lang;
+        u.rate = 0.85;
+        speechSynthesis.speak(u);
+      });
+    }
+  })();
+</script>
 
 <style>
   .phrases {
@@ -39,6 +89,30 @@ const { phrases } = Astro.props;
     );
     box-shadow: var(--sh-sm);
   }
+
+  .phrase__row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .phrase__say-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--c-dome);
+    cursor: pointer;
+    transition: background-color var(--t-fast) var(--ease-out), scale var(--t-fast) var(--ease-spring);
+  }
+  .phrase__say-btn[hidden] { display: none; }
+  .phrase__say-btn:hover { background: oklch(100% 0 0 / 0.6); }
+  .phrase__say-btn:active { scale: 0.9; }
 
   .phrase__greek {
     font-family: var(--font-display);
