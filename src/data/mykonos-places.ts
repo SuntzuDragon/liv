@@ -5,6 +5,8 @@ import type { Place } from './types';
 export const MYKONOS_SIGHTS: Place[] = [
   {
     id: 'aegean-maritime',
+    imageAlt:
+      'The restored Armenistis lighthouse lantern, in the museum garden',
     name: 'Aegean Maritime Museum',
     greek: 'Ναυτικό Μουσείο Αιγαίου',
     kind: 'museum',
@@ -19,6 +21,8 @@ export const MYKONOS_SIGHTS: Place[] = [
   },
   {
     id: 'archaeological-museum-mykonos',
+    imageAlt:
+      'The Mykonos vase, the relief jar showing the wooden horse',
     name: 'Archaeological Museum',
     greek: 'Αρχαιολογικό Μουσείο Μυκόνου',
     kind: 'museum',
@@ -31,6 +35,8 @@ export const MYKONOS_SIGHTS: Place[] = [
   },
   {
     id: 'mccabe-kastro',
+    imageAlt:
+      'Paraportiani, the church the Kastro site sits behind',
     name: "McCabe's Mykonos of the '50s",
     kind: 'museum',
     town: 'chora',
@@ -43,6 +49,8 @@ export const MYKONOS_SIGHTS: Place[] = [
   },
   {
     id: 'agios-nikolaos-kadena',
+    imageAlt:
+      'The old port quay, where the chapel stands',
     name: 'Agios Nikolaos of Kadena',
     greek: 'Άγιος Νικόλαος ο Θαλασσινός',
     kind: 'church',
@@ -56,6 +64,8 @@ export const MYKONOS_SIGHTS: Place[] = [
   },
   {
     id: 'municipal-gallery',
+    imageAlt:
+      'A Mykonos street wall, not the gallery itself',
     name: 'Municipal Gallery',
     greek: 'Δημοτική Πινακοθήκη Μυκόνου',
     kind: 'museum',
@@ -134,6 +144,8 @@ export const MYKONOS_SIGHTS: Place[] = [
 export const MYKONOS_FOOD: Place[] = [
   {
     id: 'baboulas',
+    imageAlt:
+      'Mykonos Town from the water, the old port end where Baboulas is',
     name: 'Baboulas Ouzeri',
     greek: 'Μπαμπούλας',
     kind: 'food',
@@ -147,6 +159,8 @@ export const MYKONOS_FOOD: Place[] = [
   },
   {
     id: 'captains',
+    imageAlt:
+      'The Mykonos waterfront, near where the tender lands',
     name: "Captain's",
     kind: 'food',
     town: 'chora',
@@ -157,6 +171,8 @@ export const MYKONOS_FOOD: Place[] = [
   },
   {
     id: 'vegera',
+    imageAlt:
+      'The old port waterfront, where Vegera is',
     name: 'Vegera',
     kind: 'cafe',
     town: 'chora',
@@ -168,6 +184,8 @@ export const MYKONOS_FOOD: Place[] = [
   },
   {
     id: 'katerinas',
+    imageAlt:
+      'Little Venice, where the balcony is',
     name: "Katerina's",
     kind: 'cafe',
     town: 'chora',
@@ -178,6 +196,8 @@ export const MYKONOS_FOOD: Place[] = [
   },
   {
     id: 'karavaki',
+    imageAlt:
+      'Greek fava, not a photo of this restaurant',
     name: 'Karavaki',
     kind: 'food',
     town: 'chora',

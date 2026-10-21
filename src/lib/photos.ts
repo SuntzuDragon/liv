@@ -89,6 +89,21 @@ const ALIAS: Record<string, string> = {
   pelican: 'mykonos-harbour-1',
   'nice-n-easy': 'mykonos-little-venice-2',
   sakis: 'greek-gyros-1',
+
+  // Mykonos, added for the second pass. The two museum shots are the real
+  // thing: the lantern really is in that garden and the pithos really is in
+  // that museum. The rest are the place she'll be standing in rather than the
+  // business itself, so each carries an imageAlt that says so.
+  'aegean-maritime': 'aegean-maritime-1',
+  'archaeological-museum-mykonos': 'mykonos-pithos-1',
+  'mccabe-kastro': 'mykonos-paraportiani-2',
+  'agios-nikolaos-kadena': 'mykonos-oldport-3',
+  'municipal-gallery': 'mykonos-white-house-1',
+  baboulas: 'mykonos-oldport-1',
+  captains: 'mykonos-town-water-1',
+  vegera: 'mykonos-oldport-2',
+  katerinas: 'mykonos-little-venice-3',
+  karavaki: 'greek-fava-1',
   kadena: 'greek-meze-1',
 };
 
