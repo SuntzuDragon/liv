@@ -97,7 +97,7 @@ const ALIAS: Record<string, string> = {
   'aegean-maritime': 'aegean-maritime-1',
   'archaeological-museum-mykonos': 'mykonos-pithos-1',
   'mccabe-kastro': 'mykonos-paraportiani-2',
-  'agios-nikolaos-kadena': 'mykonos-town-water-1',
+  'agios-nikolaos-kadena': 'mykonos-oldport-3',
   'municipal-gallery': 'mykonos-white-house-1',
   baboulas: 'mykonos-oldport-1',
   captains: 'mykonos-town-water-1',
