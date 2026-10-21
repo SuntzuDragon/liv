@@ -19,6 +19,12 @@ export interface Fact {
 
 export const FACTS: Fact[] = [
   {
+    label: 'Last tender',
+    value: '21:15',
+    note: 'The only hard deadline of the day. Be at the Old Port by 21:00',
+    tone: 'warn',
+  },
+  {
     label: 'Sunset',
     value: SUNSET,
     note: 'Golden hour from about 17:45',
