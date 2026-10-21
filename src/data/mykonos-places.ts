@@ -165,7 +165,7 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      'Right where the tender lands, and open when almost nothing else is. Meze to share, calamari, octopus. Portions are small.',
+      'Right where the tender puts you down, so it is the first thing you walk past. Meze to share, calamari, octopus. Portions are small.',
     hours: 'From 07:00',
     coords: { lat: 37.447297, lng: 25.327162 },
     tags: ['At the tender pier'],

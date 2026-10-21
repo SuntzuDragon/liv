@@ -1,6 +1,10 @@
 import type { Fact } from './santorini-essentials';
 
-/** Mykonos, Thursday 22 October 2026, 07:00-17:00, tender port. */
+/**
+ * Mykonos, Thursday 22 October 2026, tender port. The ship sits there
+ * 07:00-17:00, but the tender in is 09:00 and last call back is 16:30, so her
+ * day is the shorter window, not the ship's.
+ */
 
 export const SUNSET = '18:32';
 
@@ -9,6 +13,12 @@ export const FACTS: Fact[] = [
     label: 'Everything is within',
     value: '400m',
     note: 'Of where you land. The whole town is walkable',
+    tone: 'cool',
+  },
+  {
+    label: 'Ashore',
+    value: '09:00',
+    note: 'Last tender back is 16:30',
     tone: 'cool',
   },
   {
