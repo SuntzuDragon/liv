@@ -42,7 +42,6 @@ export const MYKONOS_SIGHTS: Place[] = [
     price: 'Free',
     placeId: 'I674BF331EF8DDC55',
     coords: { lat: 37.446174, lng: 25.326317 },
-    placeId: 'I674BF331EF8DDC55',
     tags: ['Quietest in the morning'],
   },
   {
@@ -143,7 +142,8 @@ export const MYKONOS_PINS: {
   {
     name: 'Little Venice',
     note: '3 min from the pier',
-    coords: { lat: 37.44586, lng: 25.32643 },
+    coords: { lat: 37.446174, lng: 25.326317 },
+    placeId: 'I674BF331EF8DDC55',
   },
   {
     name: 'The windmills',
