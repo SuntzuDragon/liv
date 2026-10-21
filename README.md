@@ -45,10 +45,10 @@ off to an app on Android.
 ## Running it
 
 ```sh
-npm install
-npm run dev          # localhost:4321
-npm run build        # dist/ + dist/sw.js
-npx wrangler dev     # serve dist the way Cloudflare will
+pnpm install
+pnpm run dev          # localhost:4321
+pnpm run build        # dist/ + dist/sw.js
+pnpm exec wrangler dev  # serve dist the way Cloudflare will
 ```
 
 Node is pinned by `.nvmrc` (Astro 7 needs ≥22.22).
@@ -95,7 +95,7 @@ Nothing else. Not a Global API Key. Then add two repository secrets:
 ### 3. First deploy
 
 ```sh
-npx wrangler deploy
+pnpm exec wrangler deploy
 ```
 
 That creates the Worker and attaches the Custom Domain from `wrangler.jsonc`.

@@ -8,6 +8,9 @@ This file states the *rules*, and is the one to read before changing anything.
 
 ## Conventions
 
+- **pnpm, not npm.** The version is pinned by `packageManager` in
+  `package.json`, and CI runs `pnpm/action-setup` *before* `setup-node` because
+  `cache: pnpm` needs pnpm on PATH to find the store.
 - Commit subjects: one short sentence, no body, **no attribution lines of any
   kind** (no Co-Authored-By, no generated-with, no session links).
 - Comments explain **why**, and name the thing that motivated the code. Most of
@@ -174,7 +177,7 @@ behind each is kept in my own notes, not here.
 
 ## Checking your work
 
-`npm run verify` - it runs `astro check` then the build, and `&&` stops at the
+`pnpm run verify` - it runs `astro check` then the build, and `&&` stops at the
 first failure so the error summary is the last thing on screen. Read the whole
 tail of it. Truncating the output has already let a duplicate object key reach
 `main`: the error count sits *above* the warning and hint counts, so a
@@ -182,7 +185,7 @@ tail of it. Truncating the output has already let a duplicate object key reach
 
 ## Deploying
 
-`npx wrangler deploy`, or push to `main` and GitHub Actions does it.
+`pnpm exec wrangler deploy`, or push to `main` and GitHub Actions does it.
 
 **This hostname also carries an SRV record for a game server.** It keeps
 working because a client resolves the SRV *before* any A lookup, and the SRV
