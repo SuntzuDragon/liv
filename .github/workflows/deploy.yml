@@ -21,19 +21,23 @@ jobs:
           # The deploy authenticates to Cloudflare, not to git.
           persist-credentials: false
 
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       # Built here rather than via wrangler so a build failure is its own
       # red step instead of being buried in deploy output.
-      - run: npm run build
+      - run: pnpm run build
 
       - uses: cloudflare/wrangler-action@v4
         with:
+          # Stated rather than left to detection: the action otherwise guesses
+          # from the lockfile, and a wrong guess fails at deploy time.
+          packageManager: pnpm
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
