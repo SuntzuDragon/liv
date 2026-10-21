@@ -13,7 +13,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     blurb:
       'Five chapels fused into one white mass that looks melted rather than built. Most photographed church in Greece.',
     price: 'Free',
-    coords: { lat: 37.4471, lng: 25.32572 },
+    placeId: 'ID12122C600FE5F16',
+    coords: { lat: 37.4471317, lng: 25.3257242 },
     tags: ['Go first, go early'],
   },
   {
@@ -26,7 +27,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     blurb:
       'The row of five up on the ridge, five mins uphill from Little Venice. Better in the morning.',
     price: 'Free',
-    coords: { lat: 37.4445, lng: 25.32554 },
+    placeId: 'I449703DF61A1714A',
+    coords: { lat: 37.4444803, lng: 25.3256267 },
   },
   {
     id: 'little-venice',
@@ -38,7 +40,8 @@ export const MYKONOS_SIGHTS: Place[] = [
     blurb:
       'Old houses with balconies hanging straight over the water.',
     price: 'Free',
-    coords: { lat: 37.44586, lng: 25.32643 },
+    placeId: 'I674BF331EF8DDC55',
+    coords: { lat: 37.446174, lng: 25.326317 },
     tags: ['Do it in the morning'],
   },
   {
@@ -68,34 +71,10 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'museum',
     town: 'chora',
     blurb:
-      'In an 18th-century captain’s house seventy metres from where you land. Closed Sundays.',
-    hours: '11:00-16:00',
+      'In an 18th-century captain’s house seventy metres from where you land. Might be shut for the season - worth trying the door as you pass.',
     price: '€5',
+    unverified: true,
     coords: { lat: 37.44746, lng: 25.32594 },
-  },
-  {
-    id: 'rarity-gallery',
-    imageAlt:
-      'Inside Rarity Gallery, Mykonos Town',
-    name: 'Rarity Gallery',
-    kind: 'shop',
-    town: 'chora',
-    blurb:
-      'Contemporary art, hyperreal sculpture, properly good. Free, indoors, air conditioned, opens at 10:00. Best hour in town that costs nothing.',
-    hours: 'From 10:00',
-    price: 'Free',
-    coords: { lat: 37.44599, lng: 25.32861 },
-  },
-  {
-    id: 'parthenis',
-    imageAlt:
-      'The Parthenis store in Mykonos: a white vaulted room with linen on a brass rail',
-    name: 'Parthenis',
-    kind: 'shop',
-    town: 'chora',
-    blurb:
-      'Orsalia Parthenis’s shop near Little Venice. The Greek label that actually belongs here, all soft neutral linen.',
-    coords: { lat: 37.44514, lng: 25.32637 },
   },
 ];
 
@@ -112,7 +91,8 @@ export const MYKONOS_FOOD: Place[] = [
     blurb:
       'Oldest working bread oven on the island. 18th century, wood-fired, same family for over two hundred years. A magnificent lil room. Get the spanakopita, and the cheese-and-honey pie if you want to try melopita.',
     price: 'Cheap, for Mykonos',
-    coords: { lat: 37.44444, lng: 25.32754 },
+    placeId: 'IFFB2C0F0132E8376',
+    coords: { lat: 37.4444592, lng: 25.3275985 },
     tags: ['Cash only', 'No sign - look for the alley'],
   },
   {
@@ -125,7 +105,8 @@ export const MYKONOS_FOOD: Place[] = [
       'On Alefkandra Square with Little Venice on one side and the windmills on the other.',
     hours: '09:00-00:00',
     price: '€20-40pp',
-    coords: { lat: 37.44553, lng: 25.32624 },
+    placeId: 'I7AAB7AFC58654B02',
+    coords: { lat: 37.4455045, lng: 25.326312 },
   },
   {
     id: 'sakis',
@@ -135,7 +116,8 @@ export const MYKONOS_FOOD: Place[] = [
     blurb:
       'Fast, loud, crowded, meat carved all day.',
     price: '€5-10',
-    coords: { lat: 37.44586, lng: 25.32934 },
+    placeId: 'IE5854CF16853AA83',
+    coords: { lat: 37.4459427, lng: 25.3293699 },
   },
   {
     id: 'kadena',
@@ -145,7 +127,8 @@ export const MYKONOS_FOOD: Place[] = [
     blurb:
       'A hundred metres from the water. Mykonian sausage, kopanisti and louza. Order boldly.',
     price: '€€',
-    coords: { lat: 37.44716, lng: 25.32719 },
+    placeId: 'I777A427EF5EF7F5',
+    coords: { lat: 37.4472102, lng: 25.3272682 },
     tags: ['Order kopanisti'],
   },
 ];

@@ -80,8 +80,6 @@ const ALIAS: Record<string, string> = {
   gioras: 'gioras-real',
 
   // Mykonos shops
-  'rarity-gallery': 'rarity-gallery-real',
-  parthenis: 'parthenis-real',
 
   // Mykonos
   'little-venice': 'mykonos-little-venice-1',
