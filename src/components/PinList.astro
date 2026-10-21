@@ -1,11 +1,13 @@
 ---
-import { appleMaps, googleMaps, type Coords } from '../lib/maps';
+import { mapLink, googleMaps, type Coords } from '../lib/maps';
 
 interface Pin {
   name: string;
   greek?: string;
   note?: string;
   coords: Coords;
+  /** Opens the real Apple Maps listing, with live hours, instead of a pin. */
+  placeId?: string;
 }
 interface Props {
   pins: Pin[];
@@ -25,7 +27,7 @@ const { pins, title } = Astro.props;
           {p.note && <span class="pin__note">{p.note}</span>}
         </div>
         <div class="pin__links">
-          <a class="pin__go" href={appleMaps(p.name, p.coords)} target="_blank" rel="noopener">
+          <a class="pin__go" href={mapLink(p.name, p.coords, p.placeId)} target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14">
               <path
                 d="M12 2.6a6.6 6.6 0 0 0-6.6 6.6c0 4.8 6.6 12.2 6.6 12.2s6.6-7.4 6.6-12.2A6.6 6.6 0 0 0 12 2.6Zm0 9.3a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z"

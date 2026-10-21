@@ -42,6 +42,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     price: 'Free',
     placeId: 'I674BF331EF8DDC55',
     coords: { lat: 37.446174, lng: 25.326317 },
+    placeId: 'I674BF331EF8DDC55',
     tags: ['Quietest in the morning'],
   },
   {
@@ -123,7 +124,12 @@ export const MYKONOS_FOOD: Place[] = [
 ];
 
 /** Where the tender lands - she doesn't get to choose which. */
-export const MYKONOS_PINS = [
+export const MYKONOS_PINS: {
+  name: string;
+  note?: string;
+  coords: { lat: number; lng: number };
+  placeId?: string;
+}[] = [
   {
     name: 'Tender pier (town hall)',
     note: 'The good one, you step off already in town',
@@ -143,5 +149,6 @@ export const MYKONOS_PINS = [
     name: 'The windmills',
     note: '5 min, slightly uphill',
     coords: { lat: 37.4445, lng: 25.32554 },
+    placeId: 'I449703DF61A1714A',
   },
 ];
