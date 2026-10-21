@@ -20,7 +20,8 @@ export const TRANSPORT: {
     name: 'Fira bus terminal',
     greek: 'Φηρά Bus Terminal',
     note: 'Inland from the caldera edge. Every island route leaves from here',
-    coords: { lat: 36.41655, lng: 25.43343 },
+    coords: { lat: 36.4165945, lng: 25.4334676 },
+    placeId: 'I32EA65BD21412AF2',
   },
   {
     name: 'Oia bus stop',
