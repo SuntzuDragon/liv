@@ -50,48 +50,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
     <slot name="head" />
 
-    <script is:inline>
-      // Opt in to reveal animations only where we can actually drive them.
-      if ('IntersectionObserver' in window) {
-        document.documentElement.classList.add('js-reveal');
-      }
-    </script>
   </head>
 
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <slot />
 
-    <script is:inline>
-      // Reveal on scroll. Decoration only - this must never be the reason she
-      // can't read something, so there are two safety nets: anything already in
-      // view is shown immediately, and everything is force-shown after 2.5s no
-      // matter what the observer did.
-      (() => {
-        const els = document.querySelectorAll('[data-reveal]');
-        if (!els.length || !('IntersectionObserver' in window)) return;
-
-        const show = (el) => el.classList.add('is-in');
-        const showAll = () => els.forEach(show);
-
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
-              if (!e.isIntersecting) continue;
-              show(e.target);
-              io.unobserve(e.target);
-            }
-          },
-          { rootMargin: '0px 0px -8% 0px', threshold: 0.06 },
-        );
-        for (const el of els) io.observe(el);
-
-        setTimeout(showAll, 2500);
-        addEventListener('beforeprint', showAll);
-        // Restoring from the back/forward cache can skip observer callbacks.
-        addEventListener('pageshow', (e) => { if (e.persisted) showAll(); });
-      })();
-    </script>
 
     <script is:inline>
       // Offline cache. Registered after load so it never competes with first
