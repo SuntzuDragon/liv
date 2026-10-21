@@ -46,11 +46,30 @@ const fmt = (iso: string) =>
 <script is:inline>
   // The page is static, so "today" is decided in her timezone, on her phone.
   (() => {
+      // The itinerary is written in local port time, so the current day is
+      // decided in Greece - not in whatever timezone the reader happens to be
+      // in. Without this, viewing from the US shows the wrong day entirely.
+      // (Greece is UTC+3 vs Italy's UTC+2, so on the Italian days the badge
+      // flips an hour early. Far better than being a whole day out.)
+      const cruiseToday = () => {
+        try {
+          const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Europe/Athens',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).formatToParts(new Date());
+          const get = (t) => parts.find((p) => p.type === t).value;
+          return get('year') + '-' + get('month') + '-' + get('day');
+        } catch {
+          const n = new Date();
+          const p = (v) => String(v).padStart(2, '0');
+          return n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate());
+        }
+      };
+
     const mark = () => {
-    const now = new Date();
-    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(
-      now.getDate(),
-    ).padStart(2, '0')}`;
+      const today = cruiseToday();
     const row = document.querySelector(`.itin__day[data-date="${today}"]`);
     if (!row) return;
     for (const el of document.querySelectorAll('.itin__day.is-today')) {

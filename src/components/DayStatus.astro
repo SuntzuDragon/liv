@@ -16,11 +16,32 @@ const { date, fallback } = Astro.props;
   (() => {
     const el = document.querySelector('[data-when]');
     if (!el) return;
+      // The itinerary is written in local port time, so the current day is
+      // decided in Greece - not in whatever timezone the reader happens to be
+      // in. Without this, viewing from the US shows the wrong day entirely.
+      // (Greece is UTC+3 vs Italy's UTC+2, so on the Italian days the badge
+      // flips an hour early. Far better than being a whole day out.)
+      const cruiseToday = () => {
+        try {
+          const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Europe/Athens',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).formatToParts(new Date());
+          const get = (t) => parts.find((p) => p.type === t).value;
+          return get('year') + '-' + get('month') + '-' + get('day');
+        } catch {
+          const n = new Date();
+          const p = (v) => String(v).padStart(2, '0');
+          return n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate());
+        }
+      };
+
     const render = () => {
-    const target = new Date(el.dataset.when + 'T00:00:00');
-    const now = new Date();
-    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const days = Math.round((target - midnight) / 86400000);
+      const target = new Date(el.dataset.when + 'T00:00:00Z');
+      const today = new Date(cruiseToday() + 'T00:00:00Z');
+      const days = Math.round((target - today) / 86400000);
 
     const label =
       days === 0 ? 'Today - you’re here' :
