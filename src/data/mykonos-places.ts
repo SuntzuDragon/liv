@@ -68,8 +68,23 @@ export const MYKONOS_SIGHTS: Place[] = [
     kind: 'museum',
     town: 'chora',
     blurb:
-      'In an 18th-century captain’s house seventy metres from where you land. Hours are anyone’s guess in late October.',
+      'In an 18th-century captain’s house seventy metres from where you land. Closed Sundays.',
+    hours: '11:00-16:00',
+    price: '€5',
     coords: { lat: 37.44746, lng: 25.32594 },
+  },
+  {
+    id: 'rarity-gallery',
+    imageAlt:
+      'Inside Rarity Gallery, Mykonos Town',
+    name: 'Rarity Gallery',
+    kind: 'shop',
+    town: 'chora',
+    blurb:
+      'Contemporary art, hyperreal sculpture, properly good. Free, indoors, air conditioned, opens at 10:00. Best hour in town that costs nothing.',
+    hours: 'From 10:00',
+    price: 'Free',
+    coords: { lat: 37.44599, lng: 25.32861 },
   },
   {
     id: 'parthenis',
@@ -132,15 +147,6 @@ export const MYKONOS_FOOD: Place[] = [
     price: '€€',
     coords: { lat: 37.44716, lng: 25.32719 },
     tags: ['Order kopanisti'],
-  },
-  {
-    id: 'kastros',
-    name: "Kastro's",
-    kind: 'cafe',
-    town: 'chora',
-    blurb:
-      'The Little Venice balcony bar, two mins from the pier.',
-    coords: { lat: 37.447, lng: 25.32567 },
   },
 ];
 

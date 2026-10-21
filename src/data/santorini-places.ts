@@ -307,18 +307,6 @@ export const FIRA: Place[] = [
     url: 'https://matiartgallery.com/',
   },
   {
-    id: 'ak-gallery',
-    imageAlt:
-      'The AK Art Gallery shopfront in Fira, in the old flour mill',
-    name: 'AK Art Gallery',
-    kind: 'shop',
-    town: 'fira',
-    blurb:
-      'Oldest gallery on the island, in a converted flour mill just north on Ypapantis.',
-    coords: { lat: 36.41732, lng: 25.4317 },
-    url: 'https://www.ak-galleries.com/ak-art-gallery-fira',
-  },
-  {
     id: 'bead-shop',
     imageAlt:
       'A bracelet of carved black volcanic lava beads - the kind of thing sold here',

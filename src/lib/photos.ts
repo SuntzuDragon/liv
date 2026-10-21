@@ -69,7 +69,6 @@ const ALIAS: Record<string, string> = {
   'megaro-gyzi': 'megaro-gyzi-1',
   lalaounis: 'lalaounis-3',
   'mati-gallery': 'mati-gallery-1',
-  'ak-gallery': 'ak-gallery-1',
   'bead-shop': 'bead-shop-1',
 
   // Food. Mostly representative of what you'd eat, not the premises.
@@ -81,6 +80,7 @@ const ALIAS: Record<string, string> = {
   gioras: 'gioras-real',
 
   // Mykonos shops
+  'rarity-gallery': 'rarity-gallery-real',
   parthenis: 'parthenis-real',
 
   // Mykonos
@@ -91,7 +91,6 @@ const ALIAS: Record<string, string> = {
   pelican: 'mykonos-harbour-1',
   'folklore-museum': 'mykonos-white-house-1',
   'nice-n-easy': 'mykonos-little-venice-2',
-  kastros: 'mykonos-town-water-1',
   sakis: 'greek-gyros-1',
   kadena: 'greek-meze-1',
 };
