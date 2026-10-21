@@ -44,7 +44,7 @@ export const OIA: Place[] = [
       'Restored, up on the ridge above Ammoudi, a minute past the castle. You can walk right up and photograph them, just not go inside.',
     hours: 'Always open',
     price: 'Free',
-    coords: { lat: 36.46059, lng: 25.3739 },
+    coords: { lat: 36.46163, lng: 25.37219 },
   },
   {
     id: 'panagia-platsani',
@@ -127,7 +127,7 @@ export const OIA: Place[] = [
     town: 'oia',
     star: true,
     blurb:
-      '"Best coffee in Oia". Also the cheapish. Small, and it fills up. A splendid start.',
+      '"Best coffee in Oia". Also the cheapish. Small, and it fills up. A splendid start. Worth knowing it’s a 10 min walk inland, not on the caldera.',
     hours: 'From 06:00',
     price: '€2.50-4.50',
     coords: { lat: 36.46793, lng: 25.37943 },
@@ -171,7 +171,7 @@ export const AMMOUDI: Place[] = [
     blurb:
       'About 280 steps starting below the castle. Kinda steep.',
     price: 'Free down, €10 taxi up',
-    coords: { lat: 36.46019, lng: 25.37328 },
+    coords: { lat: 36.46063, lng: 25.37336 },
     tags: ['No shade', 'Donkey path'],
   },
 ];
@@ -262,9 +262,13 @@ export const FIRA: Place[] = [
     town: 'fira',
     blurb:
       'Ypapantis Street, a whole lane of jewellers along the caldera edge. Worth a wander even if you buy nothing.',
-    coords: { lat: 36.41763, lng: 25.4322 },
+    coords: { lat: 36.41723, lng: 25.43162 },
     tags: ['Browse, then decide'],
   },
+  // OSM still carries a stale node for this shop at 36.46148, 25.37439 - the
+  // pre-2024 cave location in Oia. Anyone re-researching from OSM or Nominatim
+  // will be handed that and "fix" this backwards. The move to Firostefani is
+  // confirmed by the shop's own site and Instagram.
   {
     id: 'atlantis-books',
     name: 'Atlantis Books',
@@ -324,7 +328,6 @@ export const FIRA: Place[] = [
     blurb:
       'Beads carved out of lava, near the Archaeological Museum.',
     coords: { lat: 36.41632, lng: 25.4323 },
-    unverified: true,
   },
   {
     id: 'luckys',

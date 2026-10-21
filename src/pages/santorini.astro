@@ -122,6 +122,19 @@ type Place = (typeof OIA)[number];
       ) : (
         <p class="pending">Still being filled in.</p>
       )}
+
+      <h3 class="sub">Order these</h3>
+      <ul class="specs">
+        {SPECIALITIES.map((s, i) => (
+          <li class="spec" style={`--reveal-delay:${i * 45}ms;`} data-reveal>
+            <h4 class="spec__name">
+              {s.name}
+              {s.greek && <span class="spec__greek" lang="el">{s.greek}</span>}
+            </h4>
+            <p class="spec__what">{s.what}</p>
+          </li>
+        ))}
+      </ul>
     </Section>
 
     <Section
@@ -166,19 +179,6 @@ type Place = (typeof OIA)[number];
       lede="Click the speaker icon to hear the pronunciation."
     >
       <PhraseList phrases={PHRASES} />
-
-      <h3 class="sub">Order these</h3>
-      <ul class="specs">
-        {SPECIALITIES.map((s, i) => (
-          <li class="spec" style={`--reveal-delay:${i * 45}ms;`} data-reveal>
-            <h4 class="spec__name">
-              {s.name}
-              {s.greek && <span class="spec__greek" lang="el">{s.greek}</span>}
-            </h4>
-            <p class="spec__what">{s.what}</p>
-          </li>
-        ))}
-      </ul>
     </Section>
   </main>
 
