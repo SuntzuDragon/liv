@@ -21,7 +21,7 @@ export const FACTS: Fact[] = [
   {
     label: 'Last tender',
     value: '21:15',
-    note: 'The only hard deadline of the day. Be at the Old Port by 21:00',
+    note: 'No second chance. Be in the cable car queue by 20:15, at the Old Port by 20:45',
     tone: 'warn',
   },
   {
