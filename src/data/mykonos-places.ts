@@ -15,7 +15,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     price: 'Free',
     placeId: 'ID12122C600FE5F16',
     coords: { lat: 37.4471317, lng: 25.3257242 },
-    tags: ['Go first, go early'],
+    tags: ['Empty at 08:15'],
   },
   {
     id: 'kato-mili',
@@ -42,7 +42,7 @@ export const MYKONOS_SIGHTS: Place[] = [
     price: 'Free',
     placeId: 'I674BF331EF8DDC55',
     coords: { lat: 37.446174, lng: 25.326317 },
-    tags: ['Do it in the morning'],
+    tags: ['Quietest in the morning'],
   },
   {
     id: 'mykonos-alley',
@@ -78,11 +78,11 @@ export const MYKONOS_FOOD: Place[] = [
     town: 'chora',
     star: true,
     blurb:
-      'Oldest working bread oven on the island. 18th century, wood-fired, same family for over two hundred years. A magnificent lil room. Get the spanakopita, and the cheese-and-honey pie if you want to try melopita.',
+      'Oldest working bread oven on the island. 18th century, wood-fired, same family for over two hundred years. A magnificent lil room. The spanakopita is the thing, and the cheese-and-honey pie is melopita.',
     price: 'Cheap, for Mykonos',
     placeId: 'IFFB2C0F0132E8376',
     coords: { lat: 37.4444592, lng: 25.3275985 },
-    tags: ['Cash only', 'No sign - look for the alley'],
+    tags: ['Cash only', 'No street sign'],
   },
   {
     id: 'nice-n-easy',
@@ -114,11 +114,11 @@ export const MYKONOS_FOOD: Place[] = [
     kind: 'food',
     town: 'chora',
     blurb:
-      'A hundred meters from the water. Mykonian sausage, kopanisti and louza. Order boldly.',
+      'A hundred meters from the water, and the most reliable place for the local stuff. Mykonian sausage, kopanisti and louza.',
     price: '€€',
     placeId: 'I777A427EF5EF7F5',
     coords: { lat: 37.4472102, lng: 25.3272682 },
-    tags: ['Order kopanisti'],
+    tags: ['Kopanisti and louza'],
   },
 ];
 
